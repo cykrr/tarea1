@@ -1,0 +1,41 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-Iinclude",
+      "-o",
+      "out/csv.o",
+      "src/csv.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/csv.c",
+    "output": "/home/krr/tarea1/out/csv.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-Iinclude",
+      "-o",
+      "out/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/main.c",
+    "output": "/home/krr/tarea1/out/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-Iinclude",
+      "-o",
+      "out/playlist.o",
+      "src/playlist.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/playlist.c",
+    "output": "/home/krr/tarea1/out/playlist.o"
+  }
+]
