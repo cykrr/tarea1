@@ -4,27 +4,14 @@
 /* manipulación de Strings */
 #include <string.h>
 
+#include "csv.h"
+
 // Tarea 1:
 /* 
   1.- Declaración de funciones
 
 */
 
-/*  Importar canciones desde un 
- *  archivo CSV (char* nombre_archivo):
- *  El usuario ingresa el nombre del
- *  archivo y la aplicación carga 
- *  todas las canciones.
- */
-int importCSV(char *fileName);
-
-/*  Exportar canciones
- *  CSV(char* nombre_archivo):
- *  La aplicación exporta las canciones
- *  y sus datos a un archivo csv indicado
- *  por el usuario.
- */
-int exportCSV(char *fileName);
 
 /* Agregar canción (char* nombre, char*
  * artista, char** géneros, int año, char*
@@ -74,21 +61,6 @@ int searchGenre(char *genre);
  */
 int deleteSong(char *song, char * artist, int year);
 
-/* Mostrar nombres de las listas de reproducción ():
- * La aplicación muestra por pantalla los nombres
- * de todas las listas de reproducción y la
- * cantidad de canciones que tiene cada lista.
- */
-int showPlaylists();
-
-/*  Mostrar una lista de reproducción (char* Lista_reproduccion):
- *  El usuario ingresa el nombre de una lista de reproducción y
- *  la aplicación muestra por pantalla todas las canciones 
- *  pertenecientes a ella (y su respectiva información).
- *  Si la lista de reproducción no existe se debe mostrar
- *  un mensaje por pantalla. 
- */
-int showPlaylist(char *playlist);
 
 /* Mostrar todas las canciones ():
  * Muestra todas las canciones de Helen,
@@ -99,5 +71,9 @@ int showAllSongs();
 
 /* main function */
 int main(){
+    CSV csv;
+    importCSV(&csv, "Canciones.csv");
+
+
     return 0;
 }
