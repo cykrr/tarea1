@@ -1,10 +1,16 @@
 #ifndef CSV_H
 #define CSV_H
 #include <stdio.h>
+#include <string.h>
+#include "list.h"
+#include "song.h"
+
+
 
 typedef struct {
     char *name;
     FILE *fd;
+    List *list;
 }CSV;
 
 /*  Importar canciones desde un 
