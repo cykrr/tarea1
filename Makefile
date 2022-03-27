@@ -11,7 +11,7 @@ TESTS=$(wildcard tests/*)
 
 
 $(NAME): $(OBJS) $(INCLUDE)
-	$(CC) $(INCLUDES) $(OBJS) -o $(NAME)
+	$(CC) $(INCLUDES) $(OBJS) -o $(NAME) -g
 
 prepare:
 	mkdir -p src out include tests/testList
@@ -19,7 +19,7 @@ prepare:
 all: tests prepare $(OBJS) link
 
 out/%.o: src/%.c
-	$(CC) -o $@ -c $^ $(INCLUDES)
+	$(CC) -o $@ -c $^ $(INCLUDES) -g
 
 clean:
 	rm $(NAME) $(OBJS)
