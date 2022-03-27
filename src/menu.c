@@ -3,8 +3,8 @@
 
 void mostrarMenu(List* lista, int repetida){
     system("clear");
-
-    if(lista->head) mostrarLista(lista, repetida);
+    printf("%s", buf);
+    strcpy(buf, "");
 
     printf("Reproductor de Musica\n");
     printf("i: Ingresar cancion\n");
