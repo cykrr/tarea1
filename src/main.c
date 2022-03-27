@@ -128,7 +128,6 @@ int addSong(List *list){
     if(list->head)
         for(Node *node = list->head; node != NULL; node= node->next){
             if(strcmp(voidToSong(node->data)->name, song->name) == 0){
-                printf("Repetida\n");
                 existe = 1;
                 break;
             }
@@ -136,6 +135,8 @@ int addSong(List *list){
 
     if(!existe){
         listPushBack(list, song);
+    } else {
+        strcat(buf, "Error: la cancion ya existe\n");
     }
 
     return existe;
