@@ -107,10 +107,6 @@ int main(){
     return 0;
 }
 
-Song *voidToSong(void *ptr){
-    return (Song*)ptr;
-}
-
 int addSong(List *list){
     Song *song = createSong();
     printf("Nombre cancion: ");
