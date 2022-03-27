@@ -22,7 +22,7 @@ void mostrarLista(List *lista, int repetida){
         for(Node *node = lista->head; node != NULL; node = node->next){
             mostrarCancion(voidToSong(node->data));
         }
-        putchar('\n');
+        strcat(buf, "\n");
     } else {
         strcat(buf, "  No hay canciones\n\n");
     }
