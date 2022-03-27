@@ -3,7 +3,7 @@
 #include "list.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 typedef struct {
     char name[30];
     char artist[30];
