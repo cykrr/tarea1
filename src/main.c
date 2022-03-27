@@ -86,7 +86,7 @@ int main(){
         getchar();
         switch(in) {
             case 'i':
-                repetida = addSong(csv.list);
+                addSong(csv.list);
                 break;
         }
         mostrarMenu(csv.list, repetida);
