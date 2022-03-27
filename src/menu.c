@@ -3,9 +3,6 @@
 
 void mostrarMenu(List* lista, int repetida){
     system("clear");
-    if (repetida) {
-        printf("Error: Cancion repetida.\n\n");
-    }
 
     if(lista->head) mostrarLista(lista, repetida);
 
