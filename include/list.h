@@ -17,7 +17,7 @@ Node *createNode(void * data){
 	Node *n = (Node*) calloc(1, sizeof(Node));
   	n -> data = data;
   	n -> next = NULL;
- 	 return n;
+ 	return n;
 }
 
 List *createList(){
@@ -28,5 +28,14 @@ List *createList(){
 	return list;
 }
 
+void pushBack(List * list, void * data) {
+    Node *nodo = createNode(data);
+    if(list -> head == NULL){
+      list -> head = nodo;
+    }else{
+      list -> tail -> next = nodo;
+    }
+    list -> tail = nodo;
+}
 
 #endif
