@@ -16,7 +16,7 @@ void mostrarMenu(List* lista, int repetida){
 }
 
 void mostrarLista(List *lista, int repetida){
-    printf("Canciones añadidas\n");
+    strcat(buf, "Canciones añadidas:\n");
 
     for(Node *node = lista->head; node != NULL; node = node->next){
         printf("Nombre: %s\n", ((Song*)node->data)->name);
