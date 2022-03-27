@@ -22,7 +22,7 @@
  * validarse que la canción no exista
  * previamente en la lista de reproducción. 
  * */
-int addSong(char *name, char *artist, char **genres, int year, char *playlist);
+int addSong();
 
 /* Buscar cancion por nombre (char* nombre):
  * El usuario ingresa el nombre de una canción
@@ -71,6 +71,24 @@ int showAllSongs();
 
 /* main function */
 int main(){
+    char in = '\0';
+    printf("Reproductor de Musica\n");
+    printf("i: Ingresar cancion\n");
+    printf("q: Salir\n");
+
+    while(in != '\0' ){
+        switch(in) {
+            case('i'):
+                addSong();
+                break;
+            case('q'):
+                exit(1);
+                break;
+        }
+
+    }
+    scanf("%c", &in);
+
 
     /* importamos las canciones en CSV */
     CSV csv;
