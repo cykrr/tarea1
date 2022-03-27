@@ -9,10 +9,6 @@ typedef struct {
     int year;
 }Song;
 
-Song *createSong(char *name,
-        char *artist,
-        char **genres,
-        int year,
-        char *playlist);
+Song *createSong();
 
 #endif
