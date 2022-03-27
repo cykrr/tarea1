@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "csv.h"
+#include "menu.h"
 
 // Tarea 1:
 /* 
@@ -72,29 +73,53 @@ int showAllSongs();
 /* main function */
 int main(){
     char in = '\0';
-    printf("Reproductor de Musica\n");
-    printf("i: Ingresar cancion\n");
-    printf("q: Salir\n");
+    CSV csv;
 
-    while(in != '\0' ){
+    CSVcreate(&csv);
+
+    mostrarMenu(csv.list);
+
+    while(in != 'q' ){
+        scanf("%c", &in);
         switch(in) {
-            case('i'):
-                addSong();
-                break;
-            case('q'):
-                exit(1);
+            case 'i':
+                addSong(csv.list);
                 break;
         }
+        mostrarMenu(csv.list);
 
     }
-    scanf("%c", &in);
 
 
     /* importamos las canciones en CSV */
-    CSV csv;
-    importCSV(&csv, "Canciones.csv");
+    //importCSV(&csv, "Canciones.csv");
 
-    exportCSV(&csv, "Canciones.csv");
+    //exportCSV(&csv, "Canciones.csv");
 
     return 0;
+}
+
+int addSong(List *list){
+    Song *song = createSong();
+    printf("Nombre cancion: ");
+    scanf("%s", song->name);
+    printf("\nArtista: ");
+    scanf("%s", song->artist);
+    printf("\nGeneros: ");
+    scanf("%s", song->genres);
+    printf("\nPlaylist: ");
+    scanf("%s", song->playlist);
+    putchar('\n');
+
+    int existe = 0;
+    if(list->head)
+        for(Node *node = list->head; node != NULL; node= node->next){
+            printf("Nombre: %s", ((Song*)node->data)->name);
+        }
+
+    if(!existe){
+        listPushBack(list, song);
+    }
+
+    return EXIT_SUCCESS;
 }
