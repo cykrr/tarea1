@@ -1,6 +1,9 @@
 #ifndef SONG_H
 #define SONG_H
 #include "list.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <strings.h>
 typedef struct {
     char name[30];
     char artist[30];
