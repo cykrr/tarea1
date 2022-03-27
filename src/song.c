@@ -1,13 +1,14 @@
 #include "song.h"
 #include <stdlib.h>
 #include <stdio.h>
-Song *createSong(char *name, char *artist, char **genres,
-        int year, char *playlist)
-{
-    Song *song = (Song *)malloc(sizeof(Song));
-    if (!song) {
-        printf("Error alocando memoria para canción\n");
-        exit(1);
-    }
-    return song;
+Song *createSong(){
+	Song *song = (Song *)malloc(sizeof(Song));
+	song->name = NULL;
+	song->artist = NULL;
+	song->playlist = NULL;
+	song->genres = NULL;
+	song->year = 0;
+	return song;
 }
+
+
