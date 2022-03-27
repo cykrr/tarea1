@@ -77,16 +77,18 @@ int main(){
 
     CSVcreate(&csv);
 
-    mostrarMenu(csv.list);
+    mostrarMenu(csv.list, 0);
 
+    int repetida = 0;
     while(in != 'q' ){
         scanf("%c", &in);
+        getchar();
         switch(in) {
             case 'i':
-                addSong(csv.list);
+                repetida = addSong(csv.list);
                 break;
         }
-        mostrarMenu(csv.list);
+        mostrarMenu(csv.list, repetida);
 
     }
 
@@ -99,27 +101,40 @@ int main(){
     return 0;
 }
 
+Song *voidToSong(void *ptr){
+    return (Song*)ptr;
+}
+
 int addSong(List *list){
     Song *song = createSong();
     printf("Nombre cancion: ");
-    scanf("%s", song->name);
+    scanf("%[^\n]*s", song->name);
+    getchar();
     printf("\nArtista: ");
-    scanf("%s", song->artist);
-    printf("\nGeneros: ");
-    scanf("%s", song->genres);
+    scanf("%[^\n]*s", song->artist);
+    getchar();
+    printf("\nGeneros: (separados por comas. Ejemplo: Rock, Pop)\n");
+    scanf("%[^\n]*s", song->genres);
+    getchar();
     printf("\nPlaylist: ");
-    scanf("%s", song->playlist);
+    scanf("%[^\n]*s", song->playlist);
+    getchar();
+
     putchar('\n');
 
     int existe = 0;
     if(list->head)
         for(Node *node = list->head; node != NULL; node= node->next){
-            printf("Nombre: %s", ((Song*)node->data)->name);
+            if(strcmp(voidToSong(node->data)->name, song->name) == 0){
+                printf("Repetida\n");
+                existe = 1;
+                break;
+            }
         }
 
     if(!existe){
         listPushBack(list, song);
     }
 
-    return EXIT_SUCCESS;
+    return existe;
 }
