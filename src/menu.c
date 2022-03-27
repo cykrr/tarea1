@@ -25,3 +25,10 @@ void mostrarLista(List *lista, int repetida){
     putchar('\n');
 }
 
+void mostrarCancion(Song *song){
+    strcat(buf, "  Nombre: " );
+    strcat(buf, song->name);
+    strcat(buf, "\n  Artista: " );
+    strcat(buf, song->artist);
+    strcat(buf, "\n\n");
+}
