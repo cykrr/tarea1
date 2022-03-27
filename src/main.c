@@ -88,6 +88,11 @@ int main(){
             case 'i':
                 addSong(csv.list);
                 break;
+            case 'n':
+                searchSong(csv.list);
+                break;
+            case 'm':
+                mostrarLista(csv.list, 0);
         }
         mostrarMenu(csv.list, repetida);
 
