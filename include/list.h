@@ -13,29 +13,9 @@ typedef struct LinkedList {
     Node *current;
 }List;
 
-Node *nodeCreate(void * data){
-	Node *n = (Node*) calloc(1, sizeof(Node));
-  	n -> data = data;
-  	n -> next = NULL;
- 	return n;
-}
+Node *nodeCreate(void * data);
 
-List *listCreate(){
-	List *list = (List *) calloc(1,sizeof(List));
-	list -> head = NULL;
-	list -> tail = NULL;
-	list -> current = NULL;
-	return list;
-}
+List *listCreate();
 
-void listPushBack(List * list, void * data) {
-    Node *nodo = nodeCreate(data);
-    if(list -> head == NULL){
-      list -> head = nodo;
-    }else{
-      list -> tail -> next = nodo;
-    }
-    list -> tail = nodo;
-}
-
+void listPushBack(List * list, void * data);
 #endif

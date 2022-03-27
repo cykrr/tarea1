@@ -1,13 +1,26 @@
 #include "list.h"
 
-List *createList()
-{
-    List *list = (List*)malloc(sizeof(List));
-    return list;
+Node *nodeCreate(void * data){
+	Node *n = (Node*) calloc(1, sizeof(Node));
+  	n -> data = data;
+  	n -> next = NULL;
+ 	return n;
 }
 
-Node *createNode() 
-{
-    Node *node = (Node*)malloc(sizeof(Node));
-    return node;
+List *listCreate(){
+	List *list = (List *) calloc(1,sizeof(List));
+	list -> head = NULL;
+	list -> tail = NULL;
+	list -> current = NULL;
+	return list;
+}
+
+void listPushBack(List * list, void * data) {
+    Node *nodo = nodeCreate(data);
+    if(list -> head == NULL){
+      list -> head = nodo;
+    }else{
+      list -> tail -> next = nodo;
+    }
+    list -> tail = nodo;
 }
