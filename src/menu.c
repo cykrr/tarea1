@@ -24,7 +24,7 @@ void mostrarLista(List *lista, int repetida){
         }
         strcat(buf, "\n");
     } else {
-        strcat(buf, "  No hay canciones\n\n");
+        strcat(buf, "\033[0;31mError:  No hay canciones\n\n\033[0m");
     }
 }
 

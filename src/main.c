@@ -136,7 +136,7 @@ int addSong(List *list){
     if(!existe){
         listPushBack(list, song);
     } else {
-        strcat(buf, "Error: la cancion ya existe\n");
+        strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n");
     }
 
     return existe;
@@ -144,6 +144,7 @@ int addSong(List *list){
 
 int searchSong(List *list){
     char busqueda[30];
+    int found = 0;
     printf("Introduce el nombre de la canción a buscar:\n");
     scanf("%[^\n]*s", busqueda);
     getchar();
@@ -151,8 +152,12 @@ int searchSong(List *list){
         if(strcmp(voidToSong(node->data)->name, busqueda) == 0){
             strcat(buf, "Resultado busqueda: \n");
             mostrarCancion(voidToSong(node->data));
+            found = 1;
 
         }
+    }
+    if (!found) {
+        strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
     }
     return EXIT_SUCCESS;
 }
