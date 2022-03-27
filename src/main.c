@@ -141,3 +141,19 @@ int addSong(List *list){
 
     return existe;
 }
+
+int searchSong(List *list){
+    char busqueda[30];
+    printf("Introduce el nombre de la canción a buscar:\n");
+    scanf("%[^\n]*s", busqueda);
+    getchar();
+    for (Node *node = list->head; node != NULL; node=node->next){
+        if(strcmp(voidToSong(node->data)->name, busqueda) == 0){
+            strcat(buf, "Resultado busqueda: \n");
+            mostrarCancion(voidToSong(node->data));
+
+        }
+    }
+    return EXIT_SUCCESS;
+}
+
