@@ -74,6 +74,7 @@ int main(){
     CSV csv;
     importCSV(&csv, "Canciones.csv");
 
+    exportCSV(&csv, "Canciones.csv");
 
     return 0;
 }

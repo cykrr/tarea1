@@ -1,3 +1,4 @@
+CC=gcc
 NAME=tarea1
 SRC=$(wildcard src/*.c)
 INCLUDES=-Iinclude

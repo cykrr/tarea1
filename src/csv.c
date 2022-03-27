@@ -34,6 +34,21 @@ void populateList(CSV *csv){
 
         strcpy(song.artist, linecpy);
 
+        i++;
+
+        j = 0;
+        if ( line [i] == '\"') {
+            i++;
+            while (line[i] != '\"'){
+                linecpy[j] =  line[i];
+                if (line[i] == ','){
+
+                }
+                i++; j++;
+            }
+        }
+
+
         printf("Artist: %s\n", song.artist);
 
 

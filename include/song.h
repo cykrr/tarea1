@@ -1,10 +1,11 @@
 #ifndef SONG_H
 #define SONG_H
+#include "list.h"
 typedef struct {
     char name[30];
     char artist[30];
     char playlist[10];
-    char **genres;
+    List *genres;
     int year;
 }Song;
 
