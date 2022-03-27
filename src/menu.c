@@ -18,11 +18,14 @@ void mostrarMenu(List* lista, int repetida){
 void mostrarLista(List *lista, int repetida){
     strcat(buf, "Canciones añadidas:\n");
 
-    for(Node *node = lista->head; node != NULL; node = node->next){
-        printf("Nombre: %s\n", ((Song*)node->data)->name);
-        printf("Artista: %s\n", ((Song*)node->data)->artist);
+    if(lista->head){
+        for(Node *node = lista->head; node != NULL; node = node->next){
+            mostrarCancion(voidToSong(node->data));
+        }
+        putchar('\n');
+    } else {
+        strcat(buf, "  No hay canciones\n\n");
     }
-    putchar('\n');
 }
 
 void mostrarCancion(Song *song){
