@@ -71,6 +71,8 @@ int showAllSongs();
 
 /* main function */
 int main(){
+
+    /* importamos las canciones en CSV */
     CSV csv;
     importCSV(&csv, "Canciones.csv");
 
