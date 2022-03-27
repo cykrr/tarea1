@@ -33,7 +33,7 @@ int addSong();
  * que tengan ese nombre. Si no existe ninguna 
  * canción con ese nombre debe mostrar un aviso. 
  */
-int searchSong(char *name);
+int searchSong(List *list);
 
 /*  Buscar canción por artista (char* artista):
  *  El usuario ingresa el nombre de un artista
