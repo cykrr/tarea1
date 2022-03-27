@@ -76,9 +76,8 @@ void populateList(CSV *csv){
     }
 }
 
-void importCSV(CSV *csv, char *name){
+void CSVimport(CSV *csv, char *name){
 
-    List *list = listCreate();
     
     csv->fd = fopen(name, "rw");
     if(!csv->fd){
@@ -90,7 +89,13 @@ void importCSV(CSV *csv, char *name){
     
 }
 
-void exportCSV(CSV *csv, char *name){
+void CSVexport(CSV *csv, char *name){
     
+}
+
+void CSVcreate(CSV *csv){
+    csv->fd = NULL;
+    csv->list = listCreate();
+    csv->name = NULL;
 }
 

@@ -20,7 +20,7 @@ typedef struct {
  *  archivo y la aplicación carga 
  *  todas las canciones.
  */
-void importCSV(CSV *csv, char *fileName);
+void CSVimport(CSV *csv, char *fileName);
 
 /*  Exportar canciones
  *  CSV(char* nombre_archivo):
@@ -28,5 +28,7 @@ void importCSV(CSV *csv, char *fileName);
  *  y sus datos a un archivo csv indicado
  *  por el usuario.
  */
-void exportCSV(CSV *csv, char *fileName);
+void CSVexport(CSV *csv, char *fileName);
+
+void CSVcreate(CSV *csv);
 #endif
