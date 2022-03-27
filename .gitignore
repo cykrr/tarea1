@@ -3,3 +3,4 @@
 out
 tarea1
 *.exe
+tests/test*
