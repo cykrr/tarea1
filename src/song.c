@@ -1,9 +1,9 @@
 #include "song.h"
 Song *createSong(){
 	Song *song = (Song *)malloc(sizeof(Song));
-	song->name = NULL;
-	song->artist = NULL;
-	song->playlist = NULL;
+        strcpy(song->name, "");
+        strcpy(song->artist, "");
+        strcpy(song->playlist, "");
 	song->genres = NULL;
 	song->year = 0;
 	return song;
