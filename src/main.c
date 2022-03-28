@@ -121,6 +121,10 @@ int addSong(List *list){
     printf("\nPlaylist: ");
     scanf("%[^\n]*s", song->playlist);
     getchar();
+    printf("\nAño: ");
+    scanf("%[^\n]*s", song->year);
+    getchar();
+
 
     putchar('\n');
 
