@@ -33,5 +33,9 @@ void mostrarCancion(Song *song){
     strcat(buf, song->name);
     strcat(buf, "\n  Artista: " );
     strcat(buf, song->artist);
+    strcat(buf, "\n  Género(s): " );
+    strcat(buf, song->genres);
+    strcat(buf, "\n  Año: " );
+    strcat(buf, song->year );
     strcat(buf, "\n\n");
 }
