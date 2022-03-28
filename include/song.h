@@ -9,7 +9,7 @@ typedef struct {
     char artist[30];
     char playlist[10];
     char genres[30];
-    int year;
+    char year[10];
 }Song;
 
 Song *createSong();
