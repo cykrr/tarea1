@@ -18,4 +18,8 @@ Node *nodeCreate(void * data);
 List *listCreate();
 
 void listPushBack(List * list, void * data);
+
+void *listHead(List *list);
+void *listNext(List *list);
+
 #endif

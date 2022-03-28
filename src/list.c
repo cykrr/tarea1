@@ -24,3 +24,16 @@ void listPushBack(List * list, void * data) {
     }
     list -> tail = nodo;
 }
+
+void *listHead(List *list){
+    if(list->head)
+        return list->head->data;
+    else return NULL;
+}
+
+void *listNext(List *list){
+    if(list->current->next) 
+        return list->current->next->data;
+    else return NULL;
+
+}
