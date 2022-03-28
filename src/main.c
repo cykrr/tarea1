@@ -131,14 +131,14 @@ int addSong(List *list){
     putchar('\n');
 
     int existe = 0;
-    if(list->head)
-        for(Node *node = list->head; node != NULL; node= node->next){
-            if(strcmp(voidToSong(node->data)->name, song->name) == 0){
+    Song *songAux = voidToSong(listHead(list));
+    while (songAux != NULL){ 
+        if(strcmp(songAux->name, song->name) == 0){
                 existe = 1;
                 break;
-            }
         }
-
+        songAux = voidToSong(listNext(list));
+    }
     if(!existe){
         listPushBack(list, song);
     } else {
