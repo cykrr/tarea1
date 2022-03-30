@@ -11,4 +11,6 @@ void mostrarMenu(List *lista, int repetida);
 void mostrarLista(List *lista, int repetida);
 
 void mostrarCancion(Song *song);
+
+void mostrarMenuBuscar()
 #endif

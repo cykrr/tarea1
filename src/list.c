@@ -31,9 +31,8 @@ void *listHead(List *list){
     else return NULL;
 }
 
-void *listNext(List *list){
-    if(list->current->next) 
-        return list->current->next->data;
-    else return NULL;
-
+void * listNext(List * list) {
+    if (list == NULL || list->head == NULL || list->current == NULL || list->current->next == NULL) return NULL;
+    list->current = list->current->next;
+    return (void *)list->current->data;
 }
