@@ -73,6 +73,7 @@ int showAllSongs();
 
 /* main function */
 int main(){
+
     char in = '\0';
     CSV csv;
 
@@ -81,10 +82,14 @@ int main(){
     mostrarMenu(csv.list, 0);
 
     int repetida = 0;
+
     while(in != 'q' ){
+
         scanf("%c", &in);
         getchar();
+
         switch(in) {
+            
             case 'i':
                 addSong(csv.list);
                 break;
@@ -110,23 +115,29 @@ int main(){
 }
 
 int addSong(List *list){
+
     Song *song = createSong();
+
     printf("Nombre cancion: ");
     scanf("%[^\n]*s", song->name);
     getchar();
+
     printf("\nArtista: ");
     scanf("%[^\n]*s", song->artist);
     getchar();
+
     printf("\nGeneros: (separados por comas. Ejemplo: Rock, Pop)\n");
     scanf("%[^\n]*s", song->genres);
     getchar();
+
     printf("\nPlaylist: ");
     scanf("%[^\n]*s", song->playlist);
     getchar();
+
     printf("\nAño: ");
     scanf("%[^\n]*s", song->year);
     getchar();
-
+    
 
     putchar('\n');
 
@@ -149,15 +160,21 @@ int addSong(List *list){
 }
 
 int searchSong(List *list){
+
     char busqueda[30];
     int found = 0;
+
     printf("Introduce el nombre de la canción a buscar:\n");
     scanf("%[^\n]*s", busqueda);
     getchar();
+
     for (Node *node = list->head; node != NULL; node=node->next){
+
         if(strcmp(voidToSong(node->data)->name, busqueda) == 0){
+
             strcat(buf, "Resultado busqueda: \n");
             mostrarCancion(voidToSong(node->data));
+
             found = 1;
 
         }
