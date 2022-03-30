@@ -100,7 +100,6 @@ int main(){
                 mostrarLista(csv.list, 0);
         }
 
-        mostrarLista(csv.list, 0);
         mostrarMenu(csv.list, repetida);
 
     }
