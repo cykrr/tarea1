@@ -2,7 +2,7 @@
 #define CSV_H
 #include <stdio.h>
 #include <string.h>
-
+#include <stdbool.h>
 #include "list.h"
 #include "song.h"
 

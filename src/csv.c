@@ -14,6 +14,39 @@
  *
  *
  */
+ 
+ char *saltarComas(char *cadena, int numSaltos){
+ 	int i=0;
+	bool variosGeneros = false;
+ 	int comasSaltadas = 0;
+ 	
+ 	while(cadena[i]!='\0'){
+ 		
+ 		if(cadena[i] == '\"'){
+ 			variosGeneros = true;
+		 }
+		 
+ 		if(cadena[i] == ','){
+ 			
+ 			if(comasSaltadas == numSaltos){
+ 				
+ 				if(variosGeneros){	
+ 					*(strchr((cadena+i+1), '\"')) = '\0';
+				}else{
+					*(strchr((cadena+i+1), ',')) = '\0';
+				}
+ 			
+		 		return (cadena+i+1);
+		 		
+			}else{
+				numSaltos++;
+			}
+		}
+		 i++;
+	}
+	 
+ }
+ 
 void populateList(CSV *csv){
     ssize_t read; size_t length = 0; char *line = NULL;
 
