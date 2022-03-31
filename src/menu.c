@@ -7,6 +7,7 @@ void mostrarMenu(List* lista, int repetida){
     strcpy(buf, "");
 
     printf("Reproductor de Musica\n");
+
     printf("'i' : Ingresar cancion\n");
     printf("'n' : Buscar cancion\n");
     printf("'m' : Mostrar lista\n");
@@ -14,6 +15,18 @@ void mostrarMenu(List* lista, int repetida){
     printf("'q' : Salir\n");
 
 
+}
+
+void mostrarMenuBuscar(){
+    system("clear");
+    printf("%s", buf);
+    strcpy(buf, "");
+
+    printf("Menu de busqueda\n");
+    printf("i: Por Nombre\n");
+    printf("n: Por Artista\n");
+    printf("m: Por Genero\n");
+    printf("q: Salir\n");
 
 }
 

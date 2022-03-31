@@ -53,7 +53,7 @@ int searchArtist(char *artist);
  * al género indicado. De no existir el
  * género, debe mostrar un mensaje por pantalla. 
  */
-int searchGenre(char *genre);
+int searchGenre(List *list);
 
 /* Eliminar cancion (char* Nombre, char* artista, int año):
  * El usuario ingresa el nombre de una canción y la
@@ -94,7 +94,17 @@ int main(){
                 addSong(csv.list);
                 break;
             case 'n':
-                searchSong(csv.list);
+                mostrarMenuBuscar();
+                scanf("%c", &in);
+                getchar();
+                switch(in){
+                    case'i':
+                        searchSong(csv.list);
+                        break;
+                    case 'm':
+                        searchGenre(csv.list);
+                        break;
+                }
                 break;
             case 'm':
                 mostrarLista(csv.list, 0);
@@ -186,3 +196,24 @@ int searchSong(List *list){
     return EXIT_SUCCESS;
 }
 
+int searchGenre(List *list){
+    char busqueda[30];
+    int found = 0;
+    printf("Introduce el genero que desea buscar:\n");
+    scanf("%[^\n]*s", busqueda);
+    getchar();
+    for (Node *node = list->head; node != NULL; node=node->next){
+        if(strcmp(voidToSong(node->data)->genres, busqueda) == 0){
+            if (found = 0){
+                strcat(buf, "Resultado busqueda: \n");
+            }
+            mostrarCancion(voidToSong(node->data));
+            found = 1;
+
+        }
+    }
+    if (!found) {
+        strcat(buf, "\033[0;31mError: Ninguna cancion con ese genero en la lista \033[0m \n");
+    }
+    return EXIT_SUCCESS;
+}
