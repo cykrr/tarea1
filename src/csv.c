@@ -20,29 +20,34 @@
 	bool variosGeneros = false;
  	int comasSaltadas = 0;
  	
- 	while(cadena[i]!='\0'){
+ 	if(numSaltos != 0){
+ 		while(cadena[i]!='\0'){
  		
- 		if(cadena[i] == '\"'){
- 			variosGeneros = true;
-		 }
+ 			if(cadena[i] == '\"'){
+ 				variosGeneros = true;
+		 	}
 		 
- 		if(cadena[i] == ','){
+ 			if(cadena[i] == ','){
  			
- 			if(comasSaltadas == numSaltos){
+ 				if(comasSaltadas == numSaltos){
  				
- 				if(variosGeneros){	
- 					*(strchr((cadena+i+1), '\"')) = '\0';
-				}else{
-					*(strchr((cadena+i+1), ',')) = '\0';
-				}
+ 					if(variosGeneros){	
+ 						*(strchr((cadena+i+1), '\"')) = '\0';
+					}else{
+						*(strchr((cadena+i+1), ',')) = '\0';
+					}
  			
-		 		return (cadena+i+1);
+		 			return (cadena+i+1);
 		 		
-			}else{
-				numSaltos++;
+				}else{
+					numSaltos++;
+				}
 			}
-		}
-		 i++;
+		 	i++;
+	}
+	}else{
+		*(strchr((cadena+i+1), ',')) = '\0';
+		return (cadena);
 	}
 	 
  }
