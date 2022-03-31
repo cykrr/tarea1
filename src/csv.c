@@ -49,6 +49,8 @@
 		*(strchr((cadena+i+1), ',')) = '\0';
 		return (cadena);
 	}
+
+        return NULL;
 	 
  }
  
@@ -58,9 +60,9 @@ void populateList(CSV *csv){
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
         
-        char* nombres;
+        char nombres[30];
 
-        nombres = saltarComas(line, 0);
+        strcpy(nombres,saltarComas(line, 1));
 
         strcat(buf, nombres);
         strcat(buf, "\n");
