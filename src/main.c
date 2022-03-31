@@ -24,7 +24,7 @@
  * validarse que la canción no exista
  * previamente en la lista de reproducción. 
  * */
-int addSong();
+int addSong();//YA
 
 /* Buscar cancion por nombre (char* nombre):
  * El usuario ingresa el nombre de una canción
@@ -168,3 +168,20 @@ int searchSong(List *list){
     return EXIT_SUCCESS;
 }
 
+int deleteSong(char *song, char * artist, int year, List *list){
+	char busqueda[30];
+    int found = 0;
+    printf("Introduce el nombre de la canción a buscar:\n");
+    scanf("%[^\n]*s", busqueda);
+    getchar();
+    for (Node *node = list->head; node != NULL; node=node->next){
+        if(strcmp(voidToSong(node->data)->name, busqueda) == 0){
+            popCurrent(list);
+            found = 1;
+        }
+    }
+    if (!found) {
+        strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
+    }
+    return EXIT_SUCCESS;
+}
