@@ -20,29 +20,34 @@
 	bool variosGeneros = false;
  	int comasSaltadas = 0;
  	
- 	while(cadena[i]!='\0'){
+ 	if(numSaltos != 0){
+ 		while(cadena[i]!='\0'){
  		
- 		if(cadena[i] == '\"'){
- 			variosGeneros = true;
-		 }
+ 			if(cadena[i] == '\"'){
+ 				variosGeneros = true;
+		 	}
 		 
- 		if(cadena[i] == ','){
+ 			if(cadena[i] == ','){
  			
- 			if(comasSaltadas == numSaltos){
+ 				if(comasSaltadas == numSaltos){
  				
- 				if(variosGeneros){	
- 					*(strchr((cadena+i+1), '\"')) = '\0';
-				}else{
-					*(strchr((cadena+i+1), ',')) = '\0';
-				}
+ 					if(variosGeneros){	
+ 						*(strchr((cadena+i+1), '\"')) = '\0';
+					}else{
+						*(strchr((cadena+i+1), ',')) = '\0';
+					}
  			
-		 		return (cadena+i+1);
+		 			return (cadena+i+1);
 		 		
-			}else{
-				numSaltos++;
+				}else{
+					numSaltos++;
+				}
 			}
-		}
-		 i++;
+		 	i++;
+	}
+	}else{
+		*(strchr((cadena+i+1), ',')) = '\0';
+		return (cadena);
 	}
 	 
  }
@@ -52,60 +57,14 @@ void populateList(CSV *csv){
 
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
-        /* struct song para guardar la linea */
-        Song song;
-        /* string para guardar letra x letra */
-        char linecpy[100];
-        /* contador para recorrer letra x letra */
-        int i = 0;
-        /* borrar la string */
-        strcpy(linecpy, "");
+        
+        char* nombres;
 
-        while( line[i] != ','){
-            linecpy[i] = line[i];
-            i++;
-        }
-        putchar('\n');
+        nombres = saltarComas(line, 0);
 
-        linecpy[i] = '\0';
-        strcpy(song.name, linecpy);
+        strcat(buf, nombres);
+        strcat(buf, "\n");
 
-        printf("Name: %s\n", song.name);
-
-
-        strcpy(linecpy, "");
-
-        int j = 0;
-        i++;
-        while( line[i] != ','){
-            linecpy[j] = line[i];
-            j++;
-            i++;
-        }
-        putchar('\n');
-        linecpy[j] = '\0';
-
-        strcpy(song.artist, linecpy);
-
-        i++;
-
-        j = 0;
-        if ( line [i] == '\"') {
-            i++;
-            while (line[i] != '\"'){
-                linecpy[j] =  line[i];
-                if (line[i] == ','){
-
-                }
-                i++; j++;
-            }
-        }
-
-
-        printf("Artist: %s\n", song.artist);
-
-
-        printf("Full: %s\n", line);
     }
 }
 
