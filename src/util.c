@@ -1,6 +1,6 @@
 #include "util.h"
 
-char buf[1024];
+char buf[5000];
 
 // castea un puntero (void *) a (Song *)
 Song *voidToSong(void *ptr){
