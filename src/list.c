@@ -37,3 +37,26 @@ void *listNext(List *list){
     else return NULL;
 
 }
+
+void * popCurrent(List * list) {
+  Node *nodo = list->current; 
+  void *data = nodo->data;
+  if(nodo == list -> head){
+    list -> head = nodo -> next;
+  }
+  if(list -> current -> next != NULL){
+    list -> current = list -> current -> next;
+  }else{
+    list -> current = list -> current -> prev;
+    list -> tail = nodo -> prev;
+  }
+  if(nodo -> prev != NULL){
+    nodo-> prev -> next = nodo -> next;
+  }
+  if(nodo -> next != NULL){
+    nodo -> next -> prev = nodo -> prev;
+  }
+  free(nodo);
+
+return data;
+}
