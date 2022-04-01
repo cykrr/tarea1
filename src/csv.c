@@ -64,13 +64,31 @@ void populateList(CSV *csv){
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
         
-        char nombres[30];
+        Song* song = createSong();
 
-        strcpy(nombres,saltarComas(line, 1));
+        strcpy(song->name, get_csv_field(line, 0));
 
-        strcat(buf, nombres);
+        strcpy(song->artist, get_csv_field(line, 1));
+        strcpy(song->year, get_csv_field(line, 3));
+        strcpy(song->playlist, get_csv_field(line, 4));
+
+        int i = 1;
+        List *genres = genresToList(get_csv_field(line, 2));
+
+
+
+        strcat(buf, "Name: "); strcat(buf, song->name); strcat(buf, "\n");
+        strcat(buf, "Artist: "); strcat(buf, song->artist); strcat(buf, "\n");
+        strcat(buf, "Genres: \n");
+        for(char* data = (char*)listHead(genres); data != NULL; data=(char*)listNext(genres)) {
+            strcat(buf, "  ");
+            strcat(buf, data);
+            strcat(buf, "\n");
+        }
+        strcat(buf, "Year: "); strcat(buf, song->year); strcat(buf, "\n");
+        strcat(buf, "Playlist: "); strcat(buf, song->playlist); strcat(buf, "\n");
+
         strcat(buf, "\n");
-
     }
 }
 
