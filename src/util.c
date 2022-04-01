@@ -11,8 +11,12 @@ List *genresToList(const char *genre){
     List *list = listCreate();
     char *token = strtok(genresCopy, ",");
 
+    int flag = 0;
     while(token != NULL){
-        listPushBack(list, token);
+        if (flag) listPushBack(list, token+1);
+        else listPushBack(list, token);
+        flag = 1;
+
         token = strtok(NULL, ",");
     }
         
