@@ -190,13 +190,11 @@ int searchSong(List *list){
     scanf("%[^\n]*s", busqueda);
     getchar();
 
-    for (Node *node = list->head; node != NULL; node=node->next){
+    for (Song *song = listHead(list); song != NULL; song = listNext(list)){
 
-        if(strcmp(voidToSong(node->data)->name, busqueda) == 0){
-
+        if(strcmp(song->name, busqueda) == 0){
             strcat(buf, "Resultado busqueda: \n");
-            mostrarCancion(voidToSong(node->data));
-
+            mostrarCancion(song);
             found = 1;
 
         }
@@ -213,15 +211,13 @@ int searchGenre(List *list){
     printf("Introduce el genero que desea buscar:\n");
     scanf("%[^\n]*s", busqueda);
     getchar();
-    for (Node *node = list->head; node != NULL; node=node->next){
-        if(strcmp(voidToSong(node->data)->genres, busqueda) == 0){
-            if (found == 0){
-                strcat(buf, "Resultado busqueda: \n");
+    for(Song *song = listHead(list); song != NULL;song = listNext(list)) {
+        for(char* name = listHead(song->genres); name != NULL; name = listNext(list)) {
+            if (strcmp(busqueda, name) == 0) {
+                mostrarCancion(song);
             }
-            mostrarCancion(voidToSong(node->data));
-            found = 1;
-
         }
+
     }
     if (!found) {
         strcat(buf, "\033[0;31mError: Ninguna cancion con ese genero en la lista \033[0m \n");
