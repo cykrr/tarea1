@@ -14,45 +14,49 @@
  *
  *
  */
- 
- char *saltarComas(char *cadena, int numSaltos){
- 	int i=0;
-	bool variosGeneros = false;
- 	int comasSaltadas = 0;
- 	
- 	if(numSaltos != 0){
- 		while(cadena[i]!='\0'){
- 		
- 			if(cadena[i] == '\"'){
- 				variosGeneros = true;
-		 	}
-		 
- 			if(cadena[i] == ','){
- 			
- 				if(comasSaltadas == numSaltos){
- 				
- 					if(variosGeneros){	
- 						*(strchr((cadena+i+1), '\"')) = '\0';
-					}else{
-						*(strchr((cadena+i+1), ',')) = '\0';
-					}
- 			
-		 			return (cadena+i+1);
-		 		
-				}else{
-					numSaltos++;
-				}
-			}
-		 	i++;
-	}
-	}else{
-		*(strchr((cadena+i+1), ',')) = '\0';
-		return (cadena);
-	}
 
-        return NULL;
-	 
- }
+
+const char *get_csv_field (char * tmp, int k) {
+    int open_mark = 0;
+    char* ret=(char*) malloc (100*sizeof(char));
+    int ini_i=0, i=0;
+    int j=0;
+    while(tmp[i+1]!='\0'){
+
+        if(tmp[i]== '\"'){
+            open_mark = 1-open_mark;
+            if(open_mark) ini_i = i+1;
+            i++;
+            continue;
+        }
+
+        if(open_mark || tmp[i]!= ','){
+            if(k==j) ret[i-ini_i] = tmp[i];
+            i++;
+            continue;
+        }
+
+        if(tmp[i]== ','){
+            if(k==j) {
+               ret[i-ini_i] = 0;
+               return ret;
+            }
+            j++; ini_i = i+1;
+        }
+
+        i++;
+    }
+
+    if(k==j) {
+       ret[i-ini_i] = 0;
+       return ret;
+    }
+
+
+    return NULL;
+}
+
+
  
 void populateList(CSV *csv){
     ssize_t read; size_t length = 0; char *line = NULL;
