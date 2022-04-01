@@ -11,7 +11,10 @@ void mostrarMenu(List* lista, int repetida){
     printf("'i' : Ingresar cancion\n");
     printf("'n' : Buscar cancion\n");
     printf("'m' : Mostrar lista\n");
+
     printf("'y' : Importar archivo\n");
+    printf("'e' : Exportar archivo\n");
+
     printf("'q' : Salir\n");
 
 
