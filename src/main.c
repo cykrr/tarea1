@@ -108,8 +108,10 @@ int main(){
                 break;
             case 'm':
                 mostrarLista(csv.list, 0);
+                break;
             case 'y':
                 CSVimport(&csv, "Canciones.csv");
+                break;
         }
 
         mostrarMenu(csv.list, repetida);
