@@ -77,20 +77,10 @@ void populateList(CSV *csv){
 
 
 
-        strcat(buf, "Name: "); strcat(buf, song->name); strcat(buf, "\n");
-        strcat(buf, "Artist: "); strcat(buf, song->artist); strcat(buf, "\n");
-        strcat(buf, "Genres: \n");
         for(char* data = (char*)listHead(song->genres);
                 data != NULL; 
                 data=(char*)listNext(song->genres)) {
-            strcat(buf, "  ");
-            strcat(buf, data);
-            strcat(buf, "\n");
         }
-        strcat(buf, "Year: "); strcat(buf, song->year); strcat(buf, "\n");
-        strcat(buf, "Playlist: "); strcat(buf, song->playlist); strcat(buf, "\n");
-
-        strcat(buf, "\n");
         listPushBack(csv->list, song);
     }
 }
@@ -109,6 +99,7 @@ void CSVimport(CSV *csv, char *name){
 }
 
 void CSVexport(CSV *csv, char *name){
+    remove(name);
     FILE* file = fopen(name, "w");
     if (!file) {
         printf("Error creando el archivo %s\n", name);
@@ -118,8 +109,12 @@ void CSVexport(CSV *csv, char *name){
         fprintf(file, "%s,", song->artist);
         if(song->genres->length != 1) fprintf(file, "\"");
 
-        for(char *genre = listHead(song->genres); genre != NULL; genre = listNext(song->genres)){
-            fprintf(file, "%s, ", genre);
+        int i = 0;
+        for(char *genre = listHead(song->genres); genre != NULL; genre = listNext(song->genres), i++){
+            fprintf(file, "%s", genre);
+            
+            if(song->genres->length != i+1)
+                fprintf(file, ", ");
         }
 
         fprintf( file, (song->genres->length != 1) ? "\","  : "," );
