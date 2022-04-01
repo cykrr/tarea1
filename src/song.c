@@ -4,8 +4,8 @@ Song *createSong(List *list){
         strcpy(song->name, "");
         strcpy(song->artist, "");
         strcpy(song->playlist, "");
-        strcpy(song->genres, "");
         strcpy(song->year, "");
+        song->genres = NULL;
 	return song;
 }
 
