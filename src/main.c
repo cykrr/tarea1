@@ -112,6 +112,15 @@ int main(){
             case 'y':
                 CSVimport(&csv, "Canciones.csv");
                 break;
+            case 'e':{
+                char archivo[20];
+                printf("Nombre archivo: ");
+                scanf("%s", archivo);
+                CSVexport(&csv, archivo);
+                break;
+            }
+
+
         }
 
         mostrarMenu(csv.list, repetida);
