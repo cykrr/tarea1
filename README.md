@@ -6,17 +6,18 @@
 (3) aspectos positivos y a mejorar por cada uno de los integrantes (coevaluación);
 (4) puntos de premio/castigo a cada integrante dependiendo del trabajo realizado.*/
 
+
 # Como compilar y ejecutar la tarea:
     ___________
 
 # Opciones que funcionan y las que no:
     La opción de ingresar funciona bien, además de contar con margen de error en caso de que ingresen caracteres extras.
 
-    La función de busqueda cuenta con 3 opciones adicionales, donde se elige si buscar por nombre, por artista, por genero (No me ha funcionado ultimamente, aunque creo que puede ser por archivos internos de mi pc) //Matias :D
+    La función de busqueda cuenta con 3 opciones adicionales, donde se elige si buscar por nombre, por artista, por genero 
 
     Mostrar lista no presenta problema, y muestra las canciones con su respectiva información adicional
 
-    No hay problemas al importar el archivo, la información se guarda correctamente en donde se asigno. (El gdb no me deja usar esta opción)//Matias :D
+    No hay problemas al importar el archivo, la información se guarda correctamente en donde se asigno.
 
     ############ FALTAN ###################
         Exportar archivo
