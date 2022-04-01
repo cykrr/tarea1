@@ -73,7 +73,7 @@ void populateList(CSV *csv){
         strcpy(song->playlist, get_csv_field(line, 4));
 
         int i = 1;
-        List *genres = genresToList(get_csv_field(line, 2));
+        song->genres = genresToList(get_csv_field(line, 2));
 
 
 
