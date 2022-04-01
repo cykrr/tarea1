@@ -91,6 +91,7 @@ void populateList(CSV *csv){
         strcat(buf, "Playlist: "); strcat(buf, song->playlist); strcat(buf, "\n");
 
         strcat(buf, "\n");
+        listPushBack(csv->list, song);
     }
 }
 
