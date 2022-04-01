@@ -9,6 +9,8 @@ Song *voidToSong(void *ptr){
 
 List *genresToList(const char *genre){
     List *list = listCreate();
+
+    char *genresCopy = strdup(genre);
     char *token = strtok(genresCopy, ",");
 
     int flag = 0;
