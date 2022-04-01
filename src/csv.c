@@ -109,7 +109,28 @@ void CSVimport(CSV *csv, char *name){
 }
 
 void CSVexport(CSV *csv, char *name){
-    
+    FILE* file = fopen(name, "w");
+    if (!file) {
+        printf("Error creando el archivo %s\n", name);
+    }
+    for(Song *song = listHead(csv->list); song != NULL; song=listNext(csv->list)) {
+        fprintf(file, "%s,", song->name);
+        fprintf(file, "%s,", song->artist);
+        if(song->genres->length != 1) fprintf(file, "\"");
+
+        for(char *genre = listHead(song->genres); genre != NULL; genre = listNext(song->genres)){
+            fprintf(file, "%s, ", genre);
+        }
+
+        fprintf( file, (song->genres->length != 1) ? "\","  : "," );
+
+        fprintf(file, "%s,", song->year);
+        fprintf(file, "%s", song->playlist);
+
+        fprintf(file, "\n");
+
+    }
+    fclose(file);
 }
 
 void CSVcreate(CSV *csv){
