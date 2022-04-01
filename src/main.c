@@ -204,7 +204,7 @@ int searchGenre(List *list){
     getchar();
     for (Node *node = list->head; node != NULL; node=node->next){
         if(strcmp(voidToSong(node->data)->genres, busqueda) == 0){
-            if (found = 0){
+            if (found == 0){
                 strcat(buf, "Resultado busqueda: \n");
             }
             mostrarCancion(voidToSong(node->data));
