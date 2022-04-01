@@ -80,7 +80,9 @@ void populateList(CSV *csv){
         strcat(buf, "Name: "); strcat(buf, song->name); strcat(buf, "\n");
         strcat(buf, "Artist: "); strcat(buf, song->artist); strcat(buf, "\n");
         strcat(buf, "Genres: \n");
-        for(char* data = (char*)listHead(genres); data != NULL; data=(char*)listNext(genres)) {
+        for(char* data = (char*)listHead(song->genres);
+                data != NULL; 
+                data=(char*)listNext(song->genres)) {
             strcat(buf, "  ");
             strcat(buf, data);
             strcat(buf, "\n");
