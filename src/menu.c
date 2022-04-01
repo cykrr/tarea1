@@ -34,11 +34,11 @@ void mostrarMenuBuscar(){
 }
 
 void mostrarLista(List *lista, int repetida){
-    strcat(buf, "Canciones añadidas:\n");
 
-    if(lista->head){
-        for(Node *node = lista->head; node != NULL; node = node->next){
-            mostrarCancion(voidToSong(node->data));
+    if(lista->length){
+        strcat(buf, "Canciones añadidas:\n");
+        for(Song *song = listHead(lista); song != NULL; song = listNext(lista)){
+            mostrarCancion(song);
         }
         strcat(buf, "\n");
     } else {

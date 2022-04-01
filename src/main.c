@@ -86,7 +86,7 @@ int main(){
     while(in != 'q' ){
 
         scanf("%c", &in);
-        getchar();
+        fflush(stdin);
 
         switch(in) {
             
@@ -104,6 +104,10 @@ int main(){
                     case 'm':
                         searchGenre(csv.list);
                         break;
+                    case 'q': {
+                        exit(1);
+                        break;
+                    }
                 }
                 break;
             case 'm':
