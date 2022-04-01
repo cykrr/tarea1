@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 typedef struct {
-    char name[30];
+    char name[60];
     char artist[30];
     char playlist[10];
     char genres[30];
