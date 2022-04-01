@@ -11,6 +11,7 @@ typedef struct LinkedList {
     Node *head;
     Node *tail;
     Node *current;
+    size_t length;
 }List;
 
 Node *nodeCreate(void * data);

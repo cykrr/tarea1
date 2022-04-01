@@ -12,6 +12,7 @@ List *listCreate(){
 	list -> head = NULL;
 	list -> tail = NULL;
 	list -> current = NULL;
+        list -> length = 0;
 	return list;
 }
 
@@ -23,6 +24,7 @@ void listPushBack(List * list, void * data) {
       list -> tail -> next = nodo;
     }
     list -> tail = nodo;
+    (list -> length )++;
 }
 
 void *listHead(List *list){
