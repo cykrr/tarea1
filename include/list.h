@@ -21,5 +21,6 @@ void listPushBack(List * list, void * data);
 
 void *listHead(List *list);
 void *listNext(List *list);
+void *listCurrent(List *list);
 
 #endif

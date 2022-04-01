@@ -36,3 +36,10 @@ void * listNext(List * list) {
     list->current = list->current->next;
     return (void *)list->current->data;
 }
+
+void *listCurrent(List *list) {
+    if(list->current) {
+        return list->current->data;
+    }
+    return NULL;
+}
