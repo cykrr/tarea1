@@ -51,9 +51,18 @@ void mostrarCancion(Song *song){
     strcat(buf, song->name);
     strcat(buf, "\n  Artista: " );
     strcat(buf, song->artist);
-    strcat(buf, "\n  Género(s): " );
-    strcat(buf, song->genres);
-    strcat(buf, "\n  Año: " );
+    strcat(buf, "\n  Género(s):\n" );
+    for(char* data = (char*)listHead(song->genres);
+            data != NULL; 
+            data=(char*)listNext(song->genres)) {
+        strcat(buf, "    ");
+        strcat(buf, data);
+        strcat(buf, "\n");
+    }
+
+    strcat(buf, "  Año: " );
     strcat(buf, song->year );
+    strcat(buf, "\n  Lista: " );
+    strcat(buf, song->playlist);
     strcat(buf, "\n\n");
 }
