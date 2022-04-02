@@ -19,11 +19,15 @@
 
     No hay problemas al importar el archivo, la información se guarda correctamente en donde se asigno.
 
-    ############ FALTAN ###################
-        Exportar archivo
-        Eliminar canción
-        Y detalles finales de buscar
+    Función exportar archivo funciona sin problemas, junto con las modificaciones que se hayan hecho previamente
 
+    Eliminar canción, borra completamente los datos que corresponda, a excepción del genero o playlist que haya sido guardado
+
+
+
+
+    ############ FALTAN ###################
+    Mostrar canciones dentro de una playlist, mostrar las playlist
 # Aspectos positivos y a mejorar de cada integrante:
     _________
 
