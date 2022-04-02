@@ -1,4 +1,7 @@
 #include "search.h"
+#include "list.h"
+#include "song.h"
+
 int searchSong(List *list){
 
     char busqueda[30];

@@ -9,6 +9,7 @@
 #include "util.h"
 #include "search.h"
 #include "song.h"
+#include "playlist.h"
 /* main function */
 int main(){
 
@@ -69,7 +70,20 @@ int main(){
                 CSVexport(&csv, archivo);
                 break;
             }
+            case 'l':{
+                Playlist *playlist1 = playlistCreate();
+                strcpy( playlist1 -> name, "lista1Prueba");
+                playlist1 -> length = 12;
+                Playlist *playlist2 = playlistCreate();
+                strcpy( playlist2 -> name, "lista2Prueba");
+                playlist1 -> length = 5;
+                List *ListaDePlaylist = listCreate();
+                addPlaylist(ListaDePlaylist,playlist1);
+                addPlaylist(ListaDePlaylist,playlist2);
+                showPlaylists(ListaDePlaylist);
 
+                break;
+            }
 
         }
 
