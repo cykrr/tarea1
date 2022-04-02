@@ -5,7 +5,7 @@
  * de todas las listas de reproducción y la
  * cantidad de canciones que tiene cada lista.
  */
-int showPlaylists();
+void showPlaylists();
 
 /*  Mostrar una lista de reproducción (char* Lista_reproduccion):
  *  El usuario ingresa el nombre de una lista de reproducción y
@@ -15,4 +15,11 @@ int showPlaylists();
  *  un mensaje por pantalla. 
  */
 int showPlaylist(char *playlist);
+
+typedef struct{
+	char name[10];
+	int size;
+}playl;
+
+//addPlaylist(List *list, playl playlist);
 #endif

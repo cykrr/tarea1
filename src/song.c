@@ -58,6 +58,10 @@ int addSong(List *list){
     //Si no existia otro agrega la nueva canción a la lista
     if(!existe){
         listPushBack(list, song);
+        playl playlist;
+        playlist.name = song -> name;
+        playlist.size ++;
+    	listPushBack(playlist.listPlaylist, playlist);
     } else {
         strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n"); //Si existia otro no lo guarda y muestra este mensaje
     }
