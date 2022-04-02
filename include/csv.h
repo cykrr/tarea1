@@ -9,7 +9,7 @@
 
 
 typedef struct {
-    char *name;
+    char name[20];
     FILE *fd;
     List *list;
 }CSV;
