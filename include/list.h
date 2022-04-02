@@ -14,6 +14,7 @@ typedef struct Node Node;
 typedef struct List List;
 
 struct List {
+    char name[20];
     Node * head;
     Node * tail;
     Node * current;
