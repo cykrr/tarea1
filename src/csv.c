@@ -113,7 +113,7 @@ void CSVexport(CSV *csv, char *name){
     if (!file) {
         printf("Error creando el archivo %s\n", name);
     }
-    for(Song *song = listHead(csv->list); song != NULL; song=listNext(csv->list)) {
+    for(Song *song = listFirst(csv->list); song != NULL; song=listNext(csv->list)) {
         fprintf(file, "%s,", song->name);
         fprintf(file, "%s,", song->artist);
         if(song->genres->length != 1) fprintf(file, "\"");
