@@ -1,40 +1,34 @@
 #include "list.h"
 #include "assert.h"
+#include "song.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include "list.h"
 
-Node *nodeCreate(void * data){
-	Node *n = (Node*) calloc(1, sizeof(Node));
-  	n -> data = data;
-  	n -> next = NULL;
- 	return n;
+
+
+Node * nodeCreate(void * data) {
+    Node * new = (Node *)malloc(sizeof(Node));
+    assert(new != NULL);
+    new->data = data;
+    new->prev = NULL;
+    new->next = NULL;
+    return new;
 }
 
-List *listCreate(){
-	List *list = (List *) calloc(1,sizeof(List));
-	list -> head = NULL;
-	list -> tail = NULL;
-	list -> current = NULL;
-        list -> length = 0;
-	return list;
+List * listCreate() {
+     List * new = (List *)malloc(sizeof(List));
+     assert(new != NULL);
+     new->head = new->tail = new->current = NULL;
+     new->length = 0;
+     return new;
 }
 
-void listPushBack(List * list, void * data) {
-    Node *nodo = nodeCreate(data);
-    if(list -> head == NULL){
-      list -> head = nodo;
-    }else{
-      list -> tail -> next = nodo;
-    }
-    list -> tail = nodo;
-    (list -> length )++;
-}
-
-void *listHead(List *list){
-    if(list && list->head){
-        list->current = list->head;
-        return list->head->data;
-    }
-
-    else return NULL;
+void * listFirst(List * list) {
+    if (list == NULL || list->head == NULL) return NULL;
+    list->current = list->head;
+    return (void *)list->current->data;
 }
 
 void * listNext(List * list) {
@@ -43,11 +37,66 @@ void * listNext(List * list) {
     return (void *)list->current->data;
 }
 
-void *listCurrent(List *list) {
-    if(list->current) {
-        return list->current->data;
+void * listLast(List * list) {
+    if (list == NULL || list->head == NULL) return NULL;
+    list->current = list->tail;
+    return (void *)list->current->data;
+}
+
+void * listPrev(List * list) {
+    if (list == NULL || list->head == NULL || list->current == NULL || list->current->prev == NULL) return NULL;
+    list->current = list->current->prev;
+    return (void *)list->current->data;
+}
+
+void listPushFront(List * list, void * data) {
+    assert(list != NULL);
+    
+    Node * new = nodeCreate(data);
+    
+    if (list->head == NULL) {
+        list->tail = new;
+    } else {
+        new->next = list->head;
+        list->head->prev = new;
     }
-    return NULL;
+    
+    list->head = new;
+    list->length++;
+}
+
+void listPushBack(List * list, void * data) {
+    list->current = list->tail;
+    if(list->current==NULL) listPushFront(list,data);
+    else listPushCurrent(list,data);
+}
+
+void listPushCurrent(List * list, void * data) {
+    assert(list != NULL && list->current !=NULL);
+    Node * new = nodeCreate(data);
+
+    if(list->current->next)
+        new->next = list->current->next;
+    new->prev = list->current;
+
+    if(list->current->next)
+        list->current->next->prev = new;
+    list->current->next = new;
+
+    if(list->current==list->tail)
+        list->tail=new;
+
+    list->length++;
+}
+
+void * listPopFront(List * list) {
+    list->current = list->head;
+    return listPopCurrent(list);
+}
+
+void * listPopBack(List * list) {
+    list->current = list->tail;
+    return listPopCurrent(list);
 }
 
 void * listPopCurrent(List * list) {
@@ -79,31 +128,23 @@ void * listPopCurrent(List * list) {
 
     
     free(aux);
+
+    list->length--;
     
     return data;
 }
 
- 
-void * listPop(List * list) {
-  Node *nodo = list->current; 
-  void *data = nodo->data;
-  if(nodo == list -> head){
-    list -> head = nodo -> next;
-  }
+void listClean(List * list) {
+    assert(list != NULL);
+    
+    while (list->head != NULL) {
+        listPopFront(list);
+    }
+    list->length = 0;
+}
 
-  if(list -> current -> next != NULL){
-    list -> current = list -> current -> next;
-  }else{
-    list -> current = list -> current -> prev;
-    list -> tail = nodo -> prev;
-  }
-  if(nodo -> prev != NULL){
-    nodo-> prev -> next = nodo -> next;
-  }
-  if(nodo -> next != NULL){
-    nodo -> next -> prev = nodo -> prev;
-  }
-  free(nodo);
-
-return data;
+void *listHead(List *list) {
+    assert(list != NULL);
+    if (list->current) return list->head->data;
+    else return NULL;
 }
