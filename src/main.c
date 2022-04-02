@@ -162,7 +162,6 @@ int addSong(List *list){
     generos = genresToList(generosString);
     song->genres = generos;
     getchar();
-
     }
 
     printf("\nPlaylist: ");
@@ -178,13 +177,13 @@ int addSong(List *list){
 
     int existe = 0;
     Song *songAux = voidToSong(listHead(list));
-    while (songAux != NULL){ 
+    for(Song* song = listHead(list); song != NULL; song = listNext(list)){
         if(strcmp(songAux->name, song->name) == 0){
                 existe = 1;
                 break;
         }
-        songAux = voidToSong(listNext(list));
     }
+
     if(!existe){
         listPushBack(list, song);
     } else {
@@ -239,7 +238,7 @@ int searchGenre(List *list){
 }
 
 int deleteSong(List *list){
-	char busqueda[60];
+    char busqueda[60];
     int found = 0;
 
     printf("Introduce el nombre de la cancion a borrar:\n");
