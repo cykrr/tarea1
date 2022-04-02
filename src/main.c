@@ -71,26 +71,6 @@ int main(){
 
 
     }
-
-
-    /* importamos las canciones en CSV */
-    //importCSV(&csv, "Canciones.csv");
-
-    //exportCSV(&csv, "Canciones.csv");
-
     return 0;
 }
-
-
-
-
-
-// Tarea 1:
-/* 
-  1.- Declaración de funciones
-
-*/
-
-
-int showAllSongs();
 
