@@ -38,7 +38,7 @@ void mostrarLista(List *lista, int repetida){
 
     if(lista->length){
         strcat(buf, "Canciones añadidas:\n");
-        for(Song *song = listHead(lista); song != NULL; song = listNext(lista)){
+        for(Song *song = listFirst(lista); song != NULL; song = listNext(lista)){
             mostrarCancion(song);
         }
         strcat(buf, "\n");

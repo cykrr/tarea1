@@ -46,7 +46,7 @@ int addSong(List *list){
     putchar('\n');
 
     int existe = 0;
-    for(Song* songAux = listHead(list); songAux != NULL; songAux = listNext(list)){
+    for(Song* songAux = listFirst(list); songAux != NULL; songAux = listNext(list)){
         if(strcmp(songAux->name, song->name) == 0){
                 existe = 1;
                 break;

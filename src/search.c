@@ -8,7 +8,7 @@ int searchSong(List *list){
     scanf("%[^\n]*s", busqueda);
     getchar();
 
-    for (Song *song = listHead(list); song != NULL; song = listNext(list)){
+    for (Song *song = listFirst(list); song != NULL; song = listNext(list)){
 
         if(strcmp(song->name, busqueda) == 0){
             strcat(buf, "Resultado busqueda: \n");
@@ -29,7 +29,7 @@ int searchGenre(List *list){
     printf("Introduce el genero que desea buscar:\n");
     scanf("%[^\n]*s", busqueda);
     getchar();
-    for(Song *song = listHead(list); song != NULL;song = listNext(list)) {
+    for(Song *song = listFirst(list); song != NULL;song = listNext(list)) {
         for(char* name = listHead(song->genres); name != NULL; name = listNext(list)) {
             if (strcmp(busqueda, name) == 0) {
                 mostrarCancion(song);
