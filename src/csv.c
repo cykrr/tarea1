@@ -77,11 +77,9 @@ void populateList(CSV *csv){
 
 
 
-        for(char* data = (char*)listHead(song->genres);
-                data != NULL; 
-                data=(char*)listNext(song->genres)) {
+        for(char* data = listHead(song->genres); data != NULL; data=listNext(song->genres)) {
+            listPushBack(csv->list, song);
         }
-        listPushBack(csv->list, song);
     }
 }
 
