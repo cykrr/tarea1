@@ -253,10 +253,12 @@ int deleteSong(List *list){
             listPop(list);
             found = 1;
             break;
-		}
+        }
     }
+
     if (!found) {
         strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
     }
+
     return EXIT_SUCCESS;
 }
