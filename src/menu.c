@@ -16,6 +16,9 @@ void mostrarMenu(List* lista, int repetida){
     printf("'y' : Importar archivo\n");
     printf("'e' : Exportar archivo\n");
 
+    printf("'p' : Playlists\n");
+
+
     printf("'c' : Eliminar todas las canciones\n");
 
 
@@ -33,6 +36,20 @@ void mostrarMenuBuscar(){
     printf("n: Por Nombre\n");
     printf("a: Por Artista\n");
     printf("g: Por Genero\n");
+    printf("q: Salir\n");
+
+}
+
+void mostrarMenuPlaylists(){
+    system("clear");
+    printf("%s", buf);
+    strcpy(buf, "");
+
+    printf("Playlists\n");
+    printf("'n': Nueva playlist\n");
+    printf("'x': Borrar playlist\n");
+    printf("'m': Mostrar playlist\n");
+    printf("'M': Mostrar las playlists\n");
     printf("q: Salir\n");
 
 }

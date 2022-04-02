@@ -9,6 +9,7 @@
 #include "util.h"
 #include "search.h"
 #include "song.h"
+#include "playlist.h"
 /* main function */
 int main(){
 
@@ -69,6 +70,44 @@ int main(){
                 CSVexport(&csv, archivo);
                 break;
             }
+            case 'p': {
+                char opcion = 0;
+                while( opcion != 'q') {
+                    mostrarMenuPlaylists();
+                    scanf("%c", &opcion);
+                    getchar();
+                    switch(opcion) {
+                        case 'n': {
+                            printf("Nombre de la nueva playlist: ");
+                            char nombre[30];
+                            scanf("%s", nombre);
+                            getchar();
+                            List *playlist = listCreate();
+                            strcpy(playlist->name, nombre);
+                            listPushBack(csv.playlists, playlist);
+                            break;
+                        }
+                        case 'm': {
+                            printf("Nombre de la playlist: ");
+                            char nombre[30];
+                            scanf("%s", nombre);
+                            getchar();
+                            showPlaylist(nombre, csv.playlists);
+
+                            break;
+                        }
+                        case 'M': {
+                            for(List* list = listFirst(csv.playlists);
+                                list != NULL;
+                                list = listNext(csv.playlists)) {
+
+                                mostrarLista(list, 0);
+                            }
+                        }
+                    }
+                }
+            }
+
             case 'c': {
                 listClean(csv.list);
                 break;
