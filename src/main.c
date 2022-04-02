@@ -61,7 +61,7 @@ int searchGenre(List *list);
  * las listas de reproducción correspondientes. De no 
  * existir la canción se debe mostrar un aviso por pantalla.
  */
-int deleteSong(char *song, char * artist, int year);
+int deleteSong(List *list);
 
 
 /* Mostrar todas las canciones ():
@@ -93,6 +93,9 @@ int main(){
             case 'i':
                 addSong(csv.list);
                 break;
+            case 'x':
+            	deleteSong(csv.list);
+            	break;
             case 'n':
                 mostrarMenuBuscar();
                 scanf("%c", &in);
@@ -160,7 +163,6 @@ int addSong(List *list){
     generos = genresToList(generosString);
     song->genres = generos;
     getchar();
-
     }
 
     printf("\nPlaylist: ");
@@ -176,13 +178,13 @@ int addSong(List *list){
 
     int existe = 0;
     Song *songAux = voidToSong(listHead(list));
-    while (songAux != NULL){ 
+    for(Song* song = listHead(list); song != NULL; song = listNext(list)){
         if(strcmp(songAux->name, song->name) == 0){
                 existe = 1;
                 break;
         }
-        songAux = voidToSong(listNext(list));
     }
+
     if(!existe){
         listPushBack(list, song);
     } else {
@@ -233,5 +235,30 @@ int searchGenre(List *list){
     if (!found) {
         strcat(buf, "\033[0;31mError: Ninguna cancion con ese genero en la lista \033[0m \n");
     }
+    return EXIT_SUCCESS;
+}
+
+int deleteSong(List *list){
+    char busqueda[60];
+    int found = 0;
+
+    printf("Introduce el nombre de la cancion a borrar:\n");
+    scanf("%[^\n]*s", busqueda);
+    getchar();
+    
+    for(Song *song = listHead(list); song != NULL; song = listNext(list)){
+
+        if(strcmp(song -> name, busqueda) == 0){
+            strcat(buf, "Cancion eliminada: \n");
+            listPop(list);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
+    }
+
     return EXIT_SUCCESS;
 }
