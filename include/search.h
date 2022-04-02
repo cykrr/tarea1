@@ -21,7 +21,7 @@ int searchSong(List *list);
  *  indicado. De no existir el artista,
  *  debe mostrar un mensaje por pantalla. 
  */
-int searchArtist(char *artist);
+int searchArtist(List *list);
 
 /* Buscar cancion por género (char* género):
  * El usuario ingresa el nombre de un género
@@ -39,4 +39,6 @@ int searchGenre(List *list);
  * sin importar a qué lista de
  * reproducción pertenezca. 
  */
+
+int searchPlaylist(List *list);
 #endif

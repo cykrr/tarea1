@@ -35,16 +35,19 @@ int main(){
             case 'x':
             	deleteSong(csv.list);
             	break;
-            case 'n':
+            case 'b':
                 mostrarMenuBuscar();
                 scanf("%c", &in);
                 getchar();
                 switch(in){
-                    case'i':
+                    case'n':
                         searchSong(csv.list);
                         break;
-                    case 'm':
+                    case 'g':
                         searchGenre(csv.list);
+                        break;
+                    case 'a':
+                        searchArtist(csv.list);
                         break;
                     case 'q': {
                         exit(1);
@@ -62,6 +65,7 @@ int main(){
                 char archivo[20];
                 printf("Nombre archivo: ");
                 scanf("%s", archivo);
+                getchar();
                 CSVexport(&csv, archivo);
                 break;
             }
@@ -71,26 +75,6 @@ int main(){
 
 
     }
-
-
-    /* importamos las canciones en CSV */
-    //importCSV(&csv, "Canciones.csv");
-
-    //exportCSV(&csv, "Canciones.csv");
-
     return 0;
 }
-
-
-
-
-
-// Tarea 1:
-/* 
-  1.- Declaración de funciones
-
-*/
-
-
-int showAllSongs();
 

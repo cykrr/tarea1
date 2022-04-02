@@ -77,7 +77,7 @@ void populateList(CSV *csv){
 
         int existe = 0;
 
-        for(Song* songAux = listHead(csv->list); songAux != NULL; songAux = listNext(csv->list)){
+        for(Song* songAux = listFirst(csv->list); songAux != NULL; songAux = listNext(csv->list)){
             if(strcmp(songAux->name, song->name) == 0){
                     existe = 1;
                     break;
@@ -113,13 +113,13 @@ void CSVexport(CSV *csv, char *name){
     if (!file) {
         printf("Error creando el archivo %s\n", name);
     }
-    for(Song *song = listHead(csv->list); song != NULL; song=listNext(csv->list)) {
+    for(Song *song = listFirst(csv->list); song != NULL; song=listNext(csv->list)) {
         fprintf(file, "%s,", song->name);
         fprintf(file, "%s,", song->artist);
         if(song->genres->length != 1) fprintf(file, "\"");
 
         int i = 0;
-        for(char *genre = listHead(song->genres); genre != NULL; genre = listNext(song->genres), i++){
+        for(char *genre = listFirst(song->genres); genre != NULL; genre = listNext(song->genres), i++){
             fprintf(file, "%s", genre);
             
             if(song->genres->length != i+1)

@@ -46,7 +46,7 @@ int addSong(List *list){
     putchar('\n');
 
     int existe = 0;
-    for(Song* songAux = listHead(list); songAux != NULL; songAux = listNext(list)){
+    for(Song* songAux = listFirst(list); songAux != NULL; songAux = listNext(list)){
         if(strcmp(songAux->name, song->name) == 0){
                 existe = 1;
                 break;
@@ -71,7 +71,7 @@ int deleteSong(List *list){
     scanf("%[^\n]*s", busqueda);
     getchar();
     
-    for(Song *song = listHead(list); song != NULL; song = listNext(list)){
+    for(Song *song = listFirst(list); song != NULL; song = listNext(list)){
 
         if(strcmp(song -> name, busqueda) == 0){
             strcat(buf, "Cancion eliminada: \n");

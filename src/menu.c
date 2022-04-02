@@ -10,7 +10,7 @@ void mostrarMenu(List* lista, int repetida){
 
     printf("'i' : Ingresar cancion\n");
     printf("'x' : Eliminar cancion\n");
-    printf("'n' : Buscar cancion\n");
+    printf("'b' : Buscar cancion\n");
     printf("'m' : Mostrar lista\n");
 
     printf("'y' : Importar archivo\n");
@@ -27,9 +27,9 @@ void mostrarMenuBuscar(){
     strcpy(buf, "");
 
     printf("Menu de busqueda\n");
-    printf("i: Por Nombre\n");
-    printf("n: Por Artista\n");
-    printf("m: Por Genero\n");
+    printf("n: Por Nombre\n");
+    printf("a: Por Artista\n");
+    printf("g: Por Genero\n");
     printf("q: Salir\n");
 
 }
@@ -38,7 +38,7 @@ void mostrarLista(List *lista, int repetida){
 
     if(lista->length){
         strcat(buf, "Canciones añadidas:\n");
-        for(Song *song = listHead(lista); song != NULL; song = listNext(lista)){
+        for(Song *song = listFirst(lista); song != NULL; song = listNext(lista)){
             mostrarCancion(song);
         }
         strcat(buf, "\n");
@@ -53,7 +53,7 @@ void mostrarCancion(Song *song){
     strcat(buf, "\n  Artista: " );
     strcat(buf, song->artist);
     strcat(buf, "\n  Género(s):\n" );
-    for(char* data = listHead(song->genres); data != NULL; data=listNext(song->genres)) {
+    for(char* data = listFirst(song->genres); data != NULL; data=listNext(song->genres)) {
         strcat(buf, "    ");
         strcat(buf, data);
         strcat(buf, "\n");
