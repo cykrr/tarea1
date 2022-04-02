@@ -69,6 +69,10 @@ int main(){
                 CSVexport(&csv, archivo);
                 break;
             }
+            case 'c': {
+                listClean(csv.list);
+                break;
+          }
 
 
         }
