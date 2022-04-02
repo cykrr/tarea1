@@ -60,7 +60,7 @@ int main(){
                 mostrarLista(csv.list, 0);
                 break;
             case 'p':
-            	showPlaylists();
+            	showPlaylists(listPLaylist);
             	break;
             case 'y':
                 CSVimport(&csv, "Canciones.csv");
