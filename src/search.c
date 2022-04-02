@@ -18,7 +18,9 @@ int searchSong(List *list){
         }
     }
     if (!found) {
-        strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
+        strcat(buf, "\033[0;31mError: Cancion no encontrada (");
+        strcat(buf, busqueda);
+        strcat(buf, ")\033[0m\n");
     }
     return EXIT_SUCCESS;
 }

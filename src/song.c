@@ -71,7 +71,7 @@ int deleteSong(List *list){
     scanf("%[^\n]*s", busqueda);
     getchar();
     
-    for(Song *song = listHead(list); song != NULL; song = listNext(list)){
+    for(Song *song = listFirst(list); song != NULL; song = listNext(list)){
 
         if(strcmp(song -> name, busqueda) == 0){
             strcat(buf, "Cancion eliminada: \n");
