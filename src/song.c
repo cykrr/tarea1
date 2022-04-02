@@ -1,4 +1,5 @@
 #include "song.h"
+#include "playlist.h"
 Song *createSong(){
 	Song *song = (Song *)malloc(sizeof(Song));
         strcpy(song->name, "");
@@ -11,7 +12,7 @@ Song *createSong(){
 
 
 
-int addSong(List *list){
+int addSong(List *list, List *listPlaylist){
 
     Song *song = createSong();
 
@@ -55,10 +56,12 @@ int addSong(List *list){
 
     if(!existe){
         listPushBack(list, song);
-        playl playlist;
-        playlist.name = song -> name;
-        playlist.size ++;
-    	listPushBack(playlist.listPlaylist, playlist);
+        //
+        playl *play;
+        strcpy(play -> name, song -> name);
+        play->size ++;
+    	listPushBack(listPlaylist, play);
+    	//
     } else {
         strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n");
     }

@@ -12,12 +12,12 @@
 #include "playlist.h"
 /* main function */
 int main(){
-
+	
     char in = '\0';
     CSV csv;
 
     CSVcreate(&csv);
-
+    List *listPLaylist = listCreate();
     mostrarMenu(csv.list, 0);
 
     int repetida = 0;
