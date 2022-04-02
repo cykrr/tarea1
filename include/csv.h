@@ -12,6 +12,7 @@ typedef struct {
     char name[20];
     FILE *fd;
     List *list;
+    List *playlists;
 }CSV;
 
 /*  Importar canciones desde un 
