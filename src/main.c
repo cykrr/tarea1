@@ -85,8 +85,9 @@ int main(){
 
     while(in != 'q' ){
 
-        scanf("%c", &in);
         fflush(stdin);
+        scanf("%c", &in);
+        getchar();
         mostrarMenu(csv.list, repetida);
 
         switch(in) {
