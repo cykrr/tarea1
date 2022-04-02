@@ -25,5 +25,6 @@ void *listNext(List *list);
 void *listCurrent(List *list);
 
 void *listPop(List *list);
+void *listPopCurrent(List *list);
 
 #endif

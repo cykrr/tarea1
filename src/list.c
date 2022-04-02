@@ -1,4 +1,5 @@
 #include "list.h"
+#include "assert.h"
 
 Node *nodeCreate(void * data){
 	Node *n = (Node*) calloc(1, sizeof(Node));
@@ -49,12 +50,47 @@ void *listCurrent(List *list) {
     return NULL;
 }
 
+void * listPopCurrent(List * list) {
+    assert(list != NULL || list->head != NULL);
+    
+    if (list->current == NULL) return NULL;
+    
+    Node * aux = list->current;
+    
+    if (aux->next != NULL) 
+        aux->next->prev = aux->prev;
+    
+    
+    if (aux->prev != NULL) 
+        aux->prev->next = aux->next;
+    
+    
+    void * data = (void *)aux->data;
+    
+    if(list->current == list->tail)
+        list->tail = list->current->prev;
+
+    if(list->current == list->head)
+        list->head = list->current->next;
+        
+    list->current = aux->prev;
+
+
+
+    
+    free(aux);
+    
+    return data;
+}
+
+ 
 void * listPop(List * list) {
   Node *nodo = list->current; 
   void *data = nodo->data;
   if(nodo == list -> head){
     list -> head = nodo -> next;
   }
+
   if(list -> current -> next != NULL){
     list -> current = list -> current -> next;
   }else{
