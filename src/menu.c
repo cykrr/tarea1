@@ -9,6 +9,7 @@ void mostrarMenu(List* lista, int repetida){
     printf("Reproductor de Musica\n");
 
     printf("'i' : Ingresar cancion\n");
+    printf("'x' : Eliminar cancion\n");
     printf("'n' : Buscar cancion\n");
     printf("'m' : Mostrar lista\n");
 
