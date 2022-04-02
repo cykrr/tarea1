@@ -154,9 +154,16 @@ int addSong(List *list){
     scanf("%[^\n]*s", song->artist);
     getchar();
 
+    {
     printf("\nGeneros: (separados por comas. Ejemplo: Rock, Pop)\n");
-    scanf("%[^\n]*s", song->genres);
+    List* generos;
+    char generosString[30];
+    scanf("%[^\n]*s", generosString);
+    generos = genresToList(generosString);
+    song->genres = generos;
     getchar();
+
+    }
 
     printf("\nPlaylist: ");
     scanf("%[^\n]*s", song->playlist);

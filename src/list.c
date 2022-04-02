@@ -28,7 +28,7 @@ void listPushBack(List * list, void * data) {
 }
 
 void *listHead(List *list){
-    if(list->head){
+    if(list && list->head){
         list->current = list->head;
         return list->head->data;
     }
