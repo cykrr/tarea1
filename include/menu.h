@@ -13,4 +13,6 @@ void mostrarLista(List *lista, int repetida);
 void mostrarCancion(Song *song);
 
 void mostrarMenuBuscar();
+
+void mostrarMenuPlaylists();
 #endif
