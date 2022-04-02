@@ -86,7 +86,7 @@ int main(){
     while(in != 'q' ){
 
         scanf("%c", &in);
-        getchar();
+        fflush(stdin);
 
         switch(in) {
             
@@ -104,6 +104,10 @@ int main(){
                     case 'm':
                         searchGenre(csv.list);
                         break;
+                    case 'q': {
+                        exit(1);
+                        break;
+                    }
                 }
                 break;
             case 'm':
@@ -148,9 +152,16 @@ int addSong(List *list){
     scanf("%[^\n]*s", song->artist);
     getchar();
 
+    {
     printf("\nGeneros: (separados por comas. Ejemplo: Rock, Pop)\n");
-    scanf("%[^\n]*s", song->genres);
+    List* generos;
+    char generosString[30];
+    scanf("%[^\n]*s", generosString);
+    generos = genresToList(generosString);
+    song->genres = generos;
     getchar();
+
+    }
 
     printf("\nPlaylist: ");
     scanf("%[^\n]*s", song->playlist);
