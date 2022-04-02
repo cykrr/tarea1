@@ -17,5 +17,5 @@ int showPlaylists();
  *  Si la lista de reproducción no existe se debe mostrar
  *  un mensaje por pantalla. 
  */
-int showPlaylist(char *playlist);
+int showPlaylist(char *playlist, List *lists);
 #endif
