@@ -74,14 +74,9 @@ void populateList(CSV *csv){
 
         int i = 1;
         song->genres = genresToList(get_csv_field(line, 2));
-
-
-
-        for(char* data = (char*)listHead(song->genres);
-                data != NULL; 
-                data=(char*)listNext(song->genres)) {
+        for(char* data = listHead(song->genres); data != NULL; data=listNext(song->genres)) {
+            listPushBack(song->genres, data);
         }
-        listPushBack(csv->list, song);
     }
 }
 
