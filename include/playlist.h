@@ -1,5 +1,8 @@
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
+#include "list.h"
+#include "menu.h"
+#include <string.h>
 /* Mostrar nombres de las listas de reproducción ():
  * La aplicación muestra por pantalla los nombres
  * de todas las listas de reproducción y la
