@@ -7,6 +7,7 @@ Song *voidToSong(void *ptr){
     return (Song*)ptr;
 }
 
+//Crea la lista de generos y guarda los mismos al detectarlos
 List *genresToList(const char *genre){
     List *list = listCreate();
 

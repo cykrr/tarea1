@@ -1,5 +1,6 @@
 #include "song.h"
 #include "playlist.h"
+
 Song *createSong(){
 	Song *song = (Song *)malloc(sizeof(Song));
         strcpy(song->name, "");
@@ -29,7 +30,7 @@ int addSong(List *list, List *listPlaylist){
     printf("\nGeneros: (separados por comas. Ejemplo: Rock, Pop)\n");
     List* generos;
     char generosString[30];
-    scanf("%[^\n]*s", generosString);
+    scanf("%[^\n]*s", generosString); //Lee como un string completo a los generos, estos se separan en la función sig.
     generos = genresToList(generosString);
     song->genres = generos;
     getchar();
@@ -48,12 +49,13 @@ int addSong(List *list, List *listPlaylist){
 
     int existe = 0;
     for(Song* songAux = listFirst(list); songAux != NULL; songAux = listNext(list)){
-        if(strcmp(songAux->name, song->name) == 0){
-                existe = 1;
+        if(strcmp(songAux->name, song->name) == 0){ //Comprueba si el elemento aux, es igual a uno ya existente
+                existe = 1; //Si es así cambia este valor
                 break;
         }
     }
-
+    
+    //Si no existia otro agrega la nueva canción a la lista
     if(!existe){
         listPushBack(list, song);
         //
@@ -63,7 +65,7 @@ int addSong(List *list, List *listPlaylist){
     	listPushBack(listPlaylist, play);
     	//
     } else {
-        strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n");
+        strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n"); //Si existia otro no lo guarda y muestra este mensaje
     }
 
     return existe;
@@ -80,16 +82,16 @@ int deleteSong(List *list){
     
     for(Song *song = listFirst(list); song != NULL; song = listNext(list)){
 
-        if(strcmp(song -> name, busqueda) == 0){
+        if(strcmp(song -> name, busqueda) == 0){ //Comprueba si hay alguna coincidencia 
             strcat(buf, "Cancion eliminada: \n");
-            listPopCurrent(list);
+            listPopCurrent(list); //Elimina si hay coincidencia
             found = 1;
             return EXIT_SUCCESS;
         }
     }
 
     if (!found) {
-        strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
+        strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n"); //En caso de no encontrar la canción
         return EXIT_FAILURE;
     }
 
