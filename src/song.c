@@ -75,15 +75,16 @@ int deleteSong(List *list){
 
         if(strcmp(song -> name, busqueda) == 0){
             strcat(buf, "Cancion eliminada: \n");
-            listPop(list);
+            listPopCurrent(list);
             found = 1;
-            break;
+            return EXIT_SUCCESS;
         }
     }
 
     if (!found) {
         strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
+        return EXIT_FAILURE;
     }
 
-    return EXIT_SUCCESS;
+    return EXIT_FAILURE;
 }
