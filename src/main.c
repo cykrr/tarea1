@@ -87,20 +87,22 @@ int main(){
 
         scanf("%c", &in);
         fflush(stdin);
+        mostrarMenu(csv.list, repetida);
 
         switch(in) {
-            
-            case 'i':
+            case 'i': { 
                 addSong(csv.list);
                 break;
-            case 'n':
+            }
+            case 'n': {
                 mostrarMenuBuscar();
                 scanf("%c", &in);
                 getchar();
-                switch(in){
-                    case'i':
+                switch(in) {
+                    case'i': {
                         searchSong(csv.list);
                         break;
+                    }
                     case 'm':
                         searchGenre(csv.list);
                         break;
@@ -110,12 +112,15 @@ int main(){
                     }
                 }
                 break;
-            case 'm':
+            }
+            case 'm': {
                 mostrarLista(csv.list, 0);
                 break;
-            case 'y':
+            }
+            case 'y': {
                 CSVimport(&csv, "Canciones.csv");
                 break;
+            }
             case 'e':{
                 char archivo[20];
                 printf("Nombre archivo: ");
@@ -127,7 +132,6 @@ int main(){
 
         }
 
-        mostrarMenu(csv.list, repetida);
 
     }
 
