@@ -95,6 +95,7 @@ int main(){
                 break;
             case 'x':
             	deleteSong(csv.list);
+            	break;
             case 'n':
                 mostrarMenuBuscar();
                 scanf("%c", &in);
