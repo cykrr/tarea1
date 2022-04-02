@@ -22,6 +22,7 @@ List * listCreate() {
      assert(new != NULL);
      new->head = new->tail = new->current = NULL;
      new->length = 0;
+     strcpy(new->name, "");
      return new;
 }
 
