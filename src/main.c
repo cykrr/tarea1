@@ -22,11 +22,10 @@ int main(){
     int repetida = 0;
 
     while(in != 'q' ){
-
+        mostrarMenu(csv.list, repetida);
         fflush(stdin);
         scanf("%c", &in);
         getchar();
-        mostrarMenu(csv.list, repetida);
 
         switch(in) {
             
