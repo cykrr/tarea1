@@ -87,6 +87,7 @@ int main(){
 
         scanf("%c", &in);
         fflush(stdin);
+        mostrarMenu(csv.list, repetida);
 
         switch(in) {
             
@@ -130,7 +131,6 @@ int main(){
 
         }
 
-        mostrarMenu(csv.list, repetida);
 
     }
 
@@ -147,6 +147,7 @@ int addSong(List *list){
 
     Song *song = createSong();
 
+    fflush(stdin);
     printf("Nombre cancion: ");
     scanf("%[^\n]*s", song->name);
     getchar();
