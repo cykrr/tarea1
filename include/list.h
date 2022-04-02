@@ -26,7 +26,6 @@ List * listCreate();
 
 void * listFirst(List * list);
 void * listNext(List * list);
-void * listHead(List *list);
 void * listLast(List * list);
 void * listPrev(List * list);
 

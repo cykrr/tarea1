@@ -143,8 +143,3 @@ void listClean(List * list) {
     list->length = 0;
 }
 
-void *listHead(List *list) {
-    assert(list != NULL);
-    if (list->current) return list->head->data;
-    else return NULL;
-}
