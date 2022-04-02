@@ -55,6 +55,10 @@ int addSong(List *list){
 
     if(!existe){
         listPushBack(list, song);
+        playl playlist;
+        playlist.name = song -> name;
+        playlist.size ++;
+    	listPushBack(playlist.listPlaylist, playlist);
     } else {
         strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n");
     }

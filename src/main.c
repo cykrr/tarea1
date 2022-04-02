@@ -9,6 +9,7 @@
 #include "util.h"
 #include "search.h"
 #include "song.h"
+#include "playlist.h"
 /* main function */
 int main(){
 
@@ -58,6 +59,9 @@ int main(){
             case 'm':
                 mostrarLista(csv.list, 0);
                 break;
+            case 'p':
+            	showPlaylists();
+            	break;
             case 'y':
                 CSVimport(&csv, "Canciones.csv");
                 break;
