@@ -140,7 +140,7 @@ void CSVexport(CSV *csv, char *name){
 void CSVcreate(CSV *csv){
     strcpy(csv->name, "Archivo CSV");
     csv->fd = NULL;
-    csv->list = listCreate();
-    csv->name = NULL;
+    csv->list = listCreate(); // Almacena Song*
+    csv->playlists = listCreate(); // Almacena List*
 }
 
