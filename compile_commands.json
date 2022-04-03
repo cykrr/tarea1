@@ -1,9 +1,10 @@
 [
   {
     "arguments": [
-      "/usr/bin/cc",
+      "/usr/bin/gcc",
       "-c",
       "-Iinclude",
+      "-g",
       "-o",
       "out/csv.o",
       "src/csv.c"
@@ -14,9 +15,24 @@
   },
   {
     "arguments": [
-      "/usr/bin/cc",
+      "/usr/bin/gcc",
       "-c",
       "-Iinclude",
+      "-g",
+      "-o",
+      "out/list.o",
+      "src/list.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/list.c",
+    "output": "/home/krr/tarea1/out/list.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
       "-o",
       "out/main.o",
       "src/main.c"
@@ -27,9 +43,24 @@
   },
   {
     "arguments": [
-      "/usr/bin/cc",
+      "/usr/bin/gcc",
       "-c",
       "-Iinclude",
+      "-g",
+      "-o",
+      "out/menu.o",
+      "src/menu.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/menu.c",
+    "output": "/home/krr/tarea1/out/menu.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
       "-o",
       "out/playlist.o",
       "src/playlist.c"
@@ -37,5 +68,47 @@
     "directory": "/home/krr/tarea1",
     "file": "/home/krr/tarea1/src/playlist.c",
     "output": "/home/krr/tarea1/out/playlist.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
+      "-o",
+      "out/search.o",
+      "src/search.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/search.c",
+    "output": "/home/krr/tarea1/out/search.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
+      "-o",
+      "out/song.o",
+      "src/song.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/song.c",
+    "output": "/home/krr/tarea1/out/song.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
+      "-o",
+      "out/util.o",
+      "src/util.c"
+    ],
+    "directory": "/home/krr/tarea1",
+    "file": "/home/krr/tarea1/src/util.c",
+    "output": "/home/krr/tarea1/out/util.o"
   }
 ]
