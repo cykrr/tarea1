@@ -12,7 +12,8 @@
 #include "playlist.h"
 /* main function */
 int main(){
-    List *listaCanciones = listCreate();
+    const List *l = listCreate();
+    List * listaCanciones = l;
     strcpy(listaCanciones->name, "Lista principal");
     List *listaPlaylists = listCreate();
     listPushBack(listaPlaylists, listaCanciones);
@@ -151,17 +152,19 @@ int main(){
                         }
                     }
                 }
-            }
+                break;
+            } // while ? 
 
             case 'c': {
                 listClean(listaCanciones);
                 break;
-          }
+          } 
 
 
-        }
+        }  // switch in;
 
-    }
+    } // while (in != q)
+    printf("Bye bye\n");
     return 0;
 }
 
