@@ -1,4 +1,6 @@
 #include "csv.h"
+#include "util.h"
+#include "menu.h"
 
 /* Lee el archivo csv linea por linea 
  * y crea un struct Song por linea, 
@@ -61,6 +63,7 @@ const char *get_csv_field (char * tmp, int k) {
 void populateList(CSV *csv){
     ssize_t read; size_t length = 0; char *line = NULL;
 
+
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
         
@@ -94,17 +97,28 @@ void populateList(CSV *csv){
     }
 }
 
-void CSVimport(CSV *csv, char *name){
+List *CSVimport(char *name){
+    CSV *import = CSVnew();
 
-    
-    csv->fd = fopen(name, "rw");
-    if(!csv->fd){
-        printf("Error abriendo archivo %s\n", name);
+    char *namecpy = strdup(name);
+    if(strchr(namecpy, '.')) *(strchr(namecpy, '.')) = '\0'; 
+
+    strcpy(import->list->name, namecpy);
+
+
+    import->fd = fopen(name, "rw");
+    if(!import->fd){
+        strcat(buf, COLOR_RED "Error abriendo archivo ");
+        strcat(buf, name);
+        strcat(buf, "\n"COLOR_RESET);
+        mostrarMenuPlaylists();
+        fclose(import->fd);
+        exit(1);
     }
 
-
-    populateList(csv);
-    
+    populateList(import);
+    fclose(import->fd);
+    return import->list;
 }
 
 void CSVexport(CSV *csv, char *name){
