@@ -10,7 +10,6 @@ Song *createSong(){
 }
 
 
-
 int addSong(List *list){
 
     Song *song = createSong();
@@ -65,26 +64,29 @@ int addSong(List *list){
 
 int deleteSong(List *list){
     char busqueda[60];
-    int found = 0;
 
     printf("Introduce el nombre de la cancion a borrar:\n");
     scanf("%[^\n]*s", busqueda);
     getchar();
     
-    for(Song *song = listFirst(list); song != NULL; song = listNext(list)){
-
-        if(strcmp(song -> name, busqueda) == 0){
-            strcat(buf, "Cancion eliminada: \n");
+    Song *cancion = findSong(list, busqueda);
+    if(cancion) { 
             listPopCurrent(list);
-            found = 1;
             return EXIT_SUCCESS;
-        }
-    }
-
-    if (!found) {
+    } else {
         strcat(buf, "\033[0;31mError: Cancion no encontrada \033[0m \n");
         return EXIT_FAILURE;
     }
 
     return EXIT_FAILURE;
+}
+
+Song *findSong(List *playlist, char *name) {
+    int existe = 0;
+    for(Song* songAux = listFirst(playlist); songAux != NULL; songAux = listNext(playlist)){
+        if(strcmp(songAux->name, name) == 0){
+            return songAux;
+        }
+    }
+    return NULL;
 }
