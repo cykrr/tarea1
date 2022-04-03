@@ -112,7 +112,7 @@ int main(){
                         case 'm': {
                             printf("Nombre de la playlist: ");
                             char nombre[30];
-                            scanf("%s", nombre);
+                            scanf("%[^\n]*s", nombre);
                             getchar();
                             showPlaylist(nombre, listaPlaylists);
 
