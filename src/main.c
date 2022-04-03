@@ -12,8 +12,7 @@
 #include "playlist.h"
 /* main function */
 int main(){
-    const List *l = listCreate();
-    List * listaCanciones = l;
+    List * listaCanciones = listCreate();
     strcpy(listaCanciones->name, "Lista principal");
     List *listaPlaylists = listCreate();
     listPushBack(listaPlaylists, listaCanciones);
