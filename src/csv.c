@@ -121,13 +121,13 @@ List *CSVimport(char *name){
     return import->list;
 }
 
-void CSVexport(CSV *csv, char *name){
+void CSVexport(List *list, char *name){
     remove(name);
     FILE* file = fopen(name, "w");
     if (!file) {
         printf("Error creando el archivo %s\n", name);
     }
-    for(Song *song = listFirst(csv->list); song != NULL; song=listNext(csv->list)) {
+    for(Song *song = listFirst(list); song != NULL; song=listNext(list)) {
         fprintf(file, "%s,", song->name);
         fprintf(file, "%s,", song->artist);
         if(song->genres->length != 1) fprintf(file, "\"");
@@ -152,9 +152,17 @@ void CSVexport(CSV *csv, char *name){
 }
 
 void CSVcreate(CSV *csv){
-    strcpy(csv->name, "Archivo CSV");
     csv->fd = NULL;
     csv->list = listCreate(); // Almacena Song*
-    csv->playlists = listCreate(); // Almacena List*
+}
+
+CSV *CSVnew() {
+    CSV* csv = (CSV*)malloc(sizeof(CSV));
+    if(!csv) { 
+        strcpy(buf, "Error creando CSV\n");
+        exit(1);
+    }
+    CSVcreate(csv);
+    return csv;
 }
 
