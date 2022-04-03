@@ -1,18 +1,20 @@
 #include "playlist.h"
 #include "song.h"
 
+
 int showPlaylist(char* name, List* lists) {
+
     int found = 0;
-    for(List *list = listFirst(lists); list != NULL;
-            list = listNext(lists)) {
+    List* find = findPlaylist(lists, name);
 
-        if( strcmp(name, list->name) == 0) {
-            mostrarLista(list, 0);
-            found ++;
-        }
+    if(find) { 
+        mostrarLista(find, 0);
+    } else {
+        strcat(buf, COLOR_RED "Error: no se encontro la playlist (");
+        strcat(buf, name); 
+        strcat(buf, ")\n"COLOR_RESET); 
 
-    }
-    if (!found) strcat(buf, COLOR_RED "Error: no se encontro la playlist\n" COLOR_RESET);
+    } 
     return EXIT_SUCCESS;
 }
 
