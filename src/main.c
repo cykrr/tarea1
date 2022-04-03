@@ -32,7 +32,7 @@ int main(){
         switch(in) {
             
             case 'i':
-                addSong(listaCanciones);
+                addSong(listaPlaylists, listaCanciones);
                 break;
             case 'x':
             	deleteSong(listaCanciones);
@@ -160,7 +160,6 @@ int main(){
 
 
         }
-
 
     }
     return 0;
