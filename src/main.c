@@ -98,9 +98,15 @@ int main(){
                             char nombre[30];
                             scanf("%[^\n]*s", nombre);
                             getchar();
-                            List *playlist = listCreate();
-                            strcpy(playlist->name, nombre);
-                            listPushBack(listaPlaylists, playlist);
+                            if(!findPlaylist(listaPlaylists, nombre)) { 
+                                List *playlist = listCreate();
+                                strcpy(playlist->name, nombre);
+                                listPushBack(listaPlaylists, playlist);
+                                strcat(buf, "playlist anadida. \n\n");
+                            } else  {
+                                strcat(buf, "playlist ya existe. \n\n");
+
+                            }
                             break;
                         }
                         case 'm': {
