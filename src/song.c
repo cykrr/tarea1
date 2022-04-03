@@ -59,12 +59,10 @@ int addSong(List *list, List *listPlaylist){
     if(!existe){
         listPushBack(list, song);
         //
-        playl *play = malloc(sizeof(playl));
-        strcpy(play -> name, song -> name);
+        playl *play = (playl *) malloc(sizeof(playl));
+        strcpy(play -> name, song -> playlist);
         play->size ++;
-        Node * new = (Node *)malloc(sizeof(Node));
-        new -> data = play; 
-        listPushBack(listPlaylist, new);
+        listPushBack(listPlaylist, play);
     	
     	//
     } else {
