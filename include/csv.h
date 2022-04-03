@@ -29,7 +29,7 @@ void CSVimport(CSV *csv, char *fileName);
  *  y sus datos a un archivo csv indicado
  *  por el usuario.
  */
-void CSVexport(CSV *csv, char *fileName);
+void CSVexport(List *list, char *fileName);
 
 void CSVcreate(CSV *csv);
 #endif
