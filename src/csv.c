@@ -23,7 +23,7 @@ const char *get_csv_field (char * tmp, int k) {
     char* ret=(char*) malloc (100*sizeof(char));
     int ini_i=0, i=0;
     int j=0;
-    while(tmp[i+1] !='\0' && tmp[i+1] != '\n'){
+    while(tmp[i] !='\0' && tmp[i] != '\n'){
 
         if(tmp[i]== '\"'){
             open_mark = 1-open_mark;
