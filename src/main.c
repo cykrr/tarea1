@@ -66,9 +66,15 @@ int main(){
                 scanf("%s", archivo);
                 getchar();
                 List *list = CSVimport(archivo);
-                playlistImport(listaPlaylists,
-                        listaCanciones, 
-                        list);
+                if (!list) { 
+                    strcat(buf, COLOR_RED "Error: "
+                            "no se pudo leer el archivo\n"
+                            COLOR_RESET);
+                } else  {
+                    playlistImport(listaPlaylists,
+                            listaCanciones, 
+                            list);
+                }
                 break;
             }
             case 'e':{
