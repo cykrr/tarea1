@@ -56,6 +56,9 @@ void mostrarMenuPlaylists(){
 
 void mostrarLista(List *lista, int repetida){
 
+    strcat(buf, "Mostrando playlist ");
+    strcat(buf, lista->name);
+    strcat(buf, "\n");
     if(lista->length){
         strcat(buf, "Canciones añadidas:\n");
         for(Song *song = listFirst(lista); song != NULL; song = listNext(lista)){
@@ -63,7 +66,7 @@ void mostrarLista(List *lista, int repetida){
         }
         strcat(buf, "\n");
     } else {
-        strcat(buf, "\033[0;31mError:  No hay canciones\n\n\033[0m");
+        strcat(buf, COLOR_RED "Error:  No hay canciones\n\n" COLOR_RESET);
     }
 }
 
