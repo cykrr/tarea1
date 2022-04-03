@@ -63,6 +63,7 @@ int addSong(List *playlists, List *principal){
 
     } else { 
         addSongPtr(principal, song);
+        addSongPtr(busquedaPlaylist ,song);
     }
 
 
