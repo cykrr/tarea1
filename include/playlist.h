@@ -18,4 +18,13 @@ int showPlaylists();
  *  un mensaje por pantalla. 
  */
 int showPlaylist(char *playlist, List *lists);
+
+int deletePlaylist(List *playlists, char *name);
+
+int playlistImport(List *playlists, List *canciones, List* add);
+
+List *findPlaylist(List* playlists, char *name);
+
+int addSongPtr(List* playlist, Song* cancion);
+
 #endif
