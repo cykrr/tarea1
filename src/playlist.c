@@ -49,10 +49,18 @@ int playlistImport(
     if(!findPlaylist(playlists, add->name)) { 
         // Recorremos las canciones de la nueva playlist.
         for(Song *i = listFirst(add); i != NULL; i = listNext(add)) {
-            // si no existe la cancion en la playlist, la anadimos
-            if(findPlaylist(playlists, i->playlist) != NULL) {
-                addSongPtr(findPlaylist(playlists, i->playlist), i);
+            // si no existe la playlist:
+            List *playlistBusqueda = findPlaylist(playlists, i->playlist);
+            if(!playlistBusqueda) { 
+                List *list = listCreate(); // la creamos
+                strcpy(list->name, i->playlist);
+                addSongPtr(list, i); //le anadimos la cancion
+                listPushBack(playlists, list); // la anadimos a las playlists
+            } else { // si existe la playlist
+                addSongPtr(playlistBusqueda, i);
             }
+            addSongPtr(canciones, i);
+
         }
         listPushBack(playlists, add);
     }
@@ -72,6 +80,11 @@ List *findPlaylist(List *playlists, char *name) {
 int addSongPtr(List *playlist, Song *cancion) { 
     if(!findSong(playlist, cancion->name)) {
         listPushBack(playlist, cancion);
+    } else {
+        strcat(buf, "la cancion ");
+        strcat(buf, cancion->name);
+        strcat(buf, " ya existe\n");
+
     }
     return EXIT_SUCCESS;
 }
