@@ -98,20 +98,16 @@ List *CSVimport(char *name){
 
     strcpy(import->list->name, namecpy);
 
-
-    import->fd = fopen(name, "rw");
-    if(!import->fd){
-        strcat(buf, COLOR_RED "Error abriendo archivo ");
-        strcat(buf, name);
-        strcat(buf, "\n"COLOR_RESET);
-        mostrarMenuPlaylists();
-        fclose(import->fd);
-        exit(1);
+    import->fd = fopen(name, "r");
+    if(!import->fd){ // nos vamos
+        free(import);
+        return NULL;
     }
 
     populateList(import);
     fclose(import->fd);
     return import->list;
+
 }
 
 void CSVexport(List *list, char *name){
