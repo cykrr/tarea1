@@ -36,4 +36,6 @@ int addSong();
  */
 int deleteSong(List *list);
 
+Song *findSong(List *playlist, char *nombre);
+
 #endif
