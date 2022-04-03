@@ -63,6 +63,10 @@ int main(){
                 printf("Nombre archivo: ");
                 scanf("%s", archivo);
                 getchar();
+                List *list = CSVimport(archivo);
+                playlistImport(listaPlaylists,
+                        listaCanciones, 
+                        list);
                 break;
             }
             case 'e':{
@@ -88,7 +92,7 @@ int main(){
                             getchar();
                             List *playlist = listCreate();
                             strcpy(playlist->name, nombre);
-                            listPushBack(csv.playlists, playlist);
+                            listPushBack(listaPlaylists, playlist);
                             break;
                         }
                         case 'm': {
@@ -96,17 +100,40 @@ int main(){
                             char nombre[30];
                             scanf("%s", nombre);
                             getchar();
-                            showPlaylist(nombre, csv.playlists);
+                            showPlaylist(nombre, listaPlaylists);
 
                             break;
                         }
                         case 'M': {
-                            for(List* list = listFirst(csv.playlists);
+                            if (listaPlaylists->length)
+                            for(List* list = listFirst(listaPlaylists);
                                 list != NULL;
-                                list = listNext(csv.playlists)) {
+                                list = listNext(listaPlaylists)) {
 
-                                mostrarLista(list, 0);
+                                strcat(buf, "Playlist: ");
+                                strcat(buf, list->name);
+                                strcat(buf, "\n");
+                                strcat(buf, 
+                                        "Cantidad de canciones: ");
+
+                                char str[4];
+                                sprintf(str, "%zd", list->length);
+                                strcat(buf, str);
+                                strcat(buf, "\n");
+                                strcat(buf, "\n");
                             }
+                            else {
+                                strcat(buf, COLOR_RED "Error: no hay playlists\n" COLOR_RESET);
+                            }
+                            break;
+                        }
+                        case 'x': {
+                            printf("Nombre de la playlist: ");
+                            char nombre[30];
+                            scanf("%s", nombre);
+                            getchar();
+                            deletePlaylist(listaPlaylists, nombre);
+                            break;
                         }
                     }
                 }
