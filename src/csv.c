@@ -78,21 +78,14 @@ void populateList(CSV *csv){
         song->genres = genresToList(get_csv_field(line, 2));
 
 
-        int existe = 0;
+        Song*  busqueda = findSong(csv->list, song->name);
 
-        for(Song* songAux = listFirst(csv->list); songAux != NULL; songAux = listNext(csv->list)){
-            if(strcmp(songAux->name, song->name) == 0){
-                    existe = 1;
-                    break;
-            }
-        }
-
-        if(!existe){
+        if(!busqueda){
             listPushBack(csv->list, song);
         } else {
             strcat(buf, "\x1b[31mError:  la cancion ");
-            strcat(buf, song->name);
-            strcat(buf, "ya existe\x1b[0m\n");
+            strcat(buf, busqueda->name);
+            strcat(buf, " ya existe\x1b[0m\n");
         }
     }
 }
