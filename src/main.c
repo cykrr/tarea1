@@ -96,7 +96,7 @@ int main(){
                         case 'n': {
                             printf("Nombre de la nueva playlist: ");
                             char nombre[30];
-                            scanf("%s", nombre);
+                            scanf("%[^\n]*s", nombre);
                             getchar();
                             List *playlist = listCreate();
                             strcpy(playlist->name, nombre);
