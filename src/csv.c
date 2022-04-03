@@ -23,7 +23,8 @@ const char *get_csv_field (char * tmp, int k) {
     char* ret=(char*) malloc (100*sizeof(char));
     int ini_i=0, i=0;
     int j=0;
-    while(tmp[i] !='\0' && tmp[i] != '\n'){
+    // en windows el getline devuelve \r\n al terminar el string.. 
+    while(tmp[i] != '\0' && tmp[i] != '\n' && tmp[i] != '\r'){
 
         if(tmp[i]== '\"'){
             open_mark = 1-open_mark;
