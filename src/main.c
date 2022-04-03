@@ -17,7 +17,7 @@ int main(){
     CSV csv;
 
     CSVcreate(&csv);
-    List *listPLaylist = listCreate();
+    List *listPlaylist = listCreate();
     mostrarMenu(csv.list, 0);
 
     int repetida = 0;
@@ -31,7 +31,7 @@ int main(){
         switch(in) {
             
             case 'i':
-                addSong(csv.list);
+                addSong(csv.list, listPlaylist);
                 break;
             case 'x':
             	deleteSong(csv.list);
@@ -60,7 +60,7 @@ int main(){
                 mostrarLista(csv.list, 0);
                 break;
             case 'p':
-            	showPlaylists(listPLaylist);
+            	showPlaylists(listPlaylist);
             	break;
             case 'y':
                 CSVimport(&csv, "Canciones.csv");

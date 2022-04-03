@@ -59,10 +59,13 @@ int addSong(List *list, List *listPlaylist){
     if(!existe){
         listPushBack(list, song);
         //
-        playl *play;
+        playl *play = malloc(sizeof(playl));
         strcpy(play -> name, song -> name);
         play->size ++;
-    	listPushBack(listPlaylist, play);
+        Node * new = (Node *)malloc(sizeof(Node));
+        new -> data = play; 
+        listPushBack(listPlaylist, new);
+    	
     	//
     } else {
         strcat(buf, "\x1b[31mError:  la cancion ya existe\x1b[0m\n"); //Si existia otro no lo guarda y muestra este mensaje
