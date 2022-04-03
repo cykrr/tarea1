@@ -45,24 +45,26 @@ int addSong(List *playlists, List *principal){
 
     putchar('\n');
 
+    List *busquedaPlaylist = findPlaylist(playlists, 
+            song->playlist);
 
-    addSongPtr(principal, song);
     // si la playlist no existe
-    if(!findPlaylist(playlists, song->playlist)) { 
+    if(!busquedaPlaylist) { 
         // se crea
         List *list = listCreate();
         strcpy(list->name, song->playlist);
 
+        // se añade la cancion
+        addSongPtr(list, song);
+        addSongPtr(principal, song);
+
         //se añade la playlist
         listPushBack(playlists, list);
 
-        // se añade la cancion
-        addSongPtr(list, song);
-
-    // si existe la playlist
     } else { 
-        addSongPtr(findPlaylist(playlists, song->playlist), song);
+        addSongPtr(principal, song);
     }
+
 
     return EXIT_SUCCESS;
 
