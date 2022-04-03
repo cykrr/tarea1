@@ -30,4 +30,6 @@ List *CSVimport(char *fileName);
 void CSVexport(List *list, char *fileName);
 
 void CSVcreate(CSV *csv);
+
+CSV *CSVnew();
 #endif
