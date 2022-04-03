@@ -66,7 +66,9 @@ void mostrarLista(List *lista, int repetida){
         }
         strcat(buf, "\n");
     } else {
-        strcat(buf, COLOR_RED "Error:  No hay canciones en la lista principal\n\n" COLOR_RESET);
+        strcat(buf, COLOR_RED "Error:  No hay canciones en la lista (");
+        strcat(buf, lista->name);
+        strcat(buf, ")\n"COLOR_RESET);
     }
 }
 
