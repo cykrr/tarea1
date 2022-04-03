@@ -14,7 +14,6 @@
 int main(){
     List *listaCanciones = listCreate();
     List *listaPlaylists = listCreate();
-    CSV import;
 
     char in = '\0';
 
@@ -60,12 +59,10 @@ int main(){
                 mostrarLista(listaCanciones, 0);
                 break;
             case 'y': {
-                CSVcreate(&import);
                 char archivo[20];
                 printf("Nombre archivo: ");
                 scanf("%s", archivo);
                 getchar();
-                CSVimport(&import, archivo);
                 break;
             }
             case 'e':{
