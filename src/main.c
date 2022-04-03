@@ -12,18 +12,18 @@
 #include "playlist.h"
 /* main function */
 int main(){
+    List *listaCanciones = listCreate();
+    List *listaPlaylists = listCreate();
+    CSV import;
 
     char in = '\0';
-    CSV csv;
 
-    CSVcreate(&csv);
-
-    mostrarMenu(csv.list, 0);
+    mostrarMenu(listaCanciones, 0);
 
     int repetida = 0;
 
     while(in != 'q' ){
-        mostrarMenu(csv.list, repetida);
+        mostrarMenu(listaCanciones, repetida);
         fflush(stdin);
         scanf("%c", &in);
         getchar();
@@ -31,10 +31,10 @@ int main(){
         switch(in) {
             
             case 'i':
-                addSong(csv.list);
+                addSong(listaCanciones);
                 break;
             case 'x':
-            	deleteSong(csv.list);
+            	deleteSong(listaCanciones);
             	break;
             case 'b':
                 mostrarMenuBuscar();
@@ -42,13 +42,13 @@ int main(){
                 getchar();
                 switch(in){
                     case'n':
-                        searchSong(csv.list);
+                        searchSong(listaCanciones);
                         break;
                     case 'g':
-                        searchGenre(csv.list);
+                        searchGenre(listaCanciones);
                         break;
                     case 'a':
-                        searchArtist(csv.list);
+                        searchArtist(listaCanciones);
                         break;
                     case 'q': {
                         exit(1);
@@ -57,17 +57,24 @@ int main(){
                 }
                 break;
             case 'm':
-                mostrarLista(csv.list, 0);
+                mostrarLista(listaCanciones, 0);
                 break;
-            case 'y':
-                CSVimport(&csv, "Canciones.csv");
+            case 'y': {
+                CSVcreate(&import);
+                char archivo[20];
+                printf("Nombre archivo: ");
+                scanf("%s", archivo);
+                getchar();
+                CSVimport(&import, archivo);
                 break;
+            }
             case 'e':{
                 char archivo[20];
                 printf("Nombre archivo: ");
                 scanf("%s", archivo);
                 getchar();
-                CSVexport(&csv, archivo);
+
+                CSVexport(listaCanciones, archivo);
                 break;
             }
             case 'p': {
@@ -109,7 +116,7 @@ int main(){
             }
 
             case 'c': {
-                listClean(csv.list);
+                listClean(listaCanciones);
                 break;
           }
 
