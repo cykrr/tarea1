@@ -8,7 +8,7 @@
 typedef struct {
     char name[60];
     char artist[30];
-    char playlist[10];
+    char playlist[20];
     List *genres;
     char year[10];
 }Song;
