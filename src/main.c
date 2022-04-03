@@ -13,7 +13,9 @@
 /* main function */
 int main(){
     List *listaCanciones = listCreate();
+    strcpy(listaCanciones->name, "Lista principal");
     List *listaPlaylists = listCreate();
+    listPushBack(listaPlaylists, listaCanciones);
 
     char in = '\0';
 
