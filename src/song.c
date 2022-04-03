@@ -11,7 +11,7 @@ Song *createSong(){
 
 
 
-int addSong(List *list){
+int addSong(List *list, List *listaPlaylist){
 
     Song *song = createSong();
 
@@ -44,6 +44,9 @@ int addSong(List *list){
     
 
     putchar('\n');
+    addSongToPlaylist(listaPlaylist,song);
+
+
 
     int existe = 0;
     for(Song* songAux = listFirst(list); songAux != NULL; songAux = listNext(list)){

@@ -25,7 +25,7 @@ Song *createSong();
  * validarse que la canción no exista
  * previamente en la lista de reproducción. 
  * */
-int addSong();
+int addSong(List *list, List *listaPlaylist);
 
 
 /* Eliminar cancion (char* Nombre, char* artista, int año):

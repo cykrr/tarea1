@@ -19,6 +19,7 @@ int main(){
     CSVcreate(&csv);
 
     mostrarMenu(csv.list, 0);
+    List *listaPlaylist = listCreate();
 
     int repetida = 0;
 
@@ -31,7 +32,7 @@ int main(){
         switch(in) {
             
             case 'i':
-                addSong(csv.list);
+                addSong(csv.list,listaPlaylist);
                 break;
             case 'x':
             	deleteSong(csv.list);
@@ -61,6 +62,7 @@ int main(){
                 break;
             case 'y':
                 CSVimport(&csv, "Canciones.csv");
+                csvToPlaylist(csv.list,listaPlaylist);
                 break;
             case 'e':{
                 char archivo[20];
@@ -70,19 +72,8 @@ int main(){
                 CSVexport(&csv, archivo);
                 break;
             }
-            case 'l':{
-                Playlist *playlist1 = playlistCreate();
-                strcpy( playlist1 -> name, "lista1Prueba");
-                playlist1 -> length = 12;
-                Playlist *playlist2 = playlistCreate();
-                strcpy( playlist2 -> name, "lista2Prueba");
-                playlist1 -> length = 5;
-                List *ListaDePlaylist = listCreate();
-                addPlaylist(ListaDePlaylist,playlist1);
-                addPlaylist(ListaDePlaylist,playlist2);
-                showPlaylists(ListaDePlaylist);
-
-                break;
+            case 'p':{
+                mostrarLargo(listaPlaylist);
             }
 
         }

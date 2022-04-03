@@ -7,6 +7,10 @@ Song *voidToSong(void *ptr){
     return (Song*)ptr;
 }
 
+List *voidToList(void *ptr){
+    return (List*)ptr;
+}
+
 List *genresToList(const char *genre){
     List *list = listCreate();
 

@@ -2,6 +2,7 @@
 #define PLAYLIST_H
 #include <stdlib.h>
 #include "list.h"
+#include "song.h"
 
 typedef struct {
     char name[60];
@@ -28,10 +29,13 @@ void mostrarPlaylist(Playlist *playlist);
 
 Playlist *playlistCreate();
 
-int addPlaylist();
+void addSongToPlaylist(List *ListPlaylist,Song *cancion);
 
+void csvToPlaylist(List *songList,List *ListPlaylist);
 
+void mostrarCancionesPlaylist(List *lista);
 
+void mostrarLargo(List *lista);
 
 
 #endif
