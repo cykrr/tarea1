@@ -7,5 +7,6 @@
 
 extern char buf[];
 List * genresToList(const char * genre);
+void clrscr();
 
 #endif
