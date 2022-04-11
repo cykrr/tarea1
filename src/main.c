@@ -8,21 +8,21 @@
 #include "menu.h"
 #include "util.h"
 #include "search.h"
-#include "song.h"
-#include "playlist.h"
+//#include "song.h"
+//#include "playlist.h"
+#include "carrito.h" 
+#include "producto.h" 
+
 /* main function */
 int main(){
-    List * listaCanciones = listCreate();
-    strcpy(listaCanciones->name, "Lista principal");
-    List *listaPlaylists = listCreate();
-    listPushBack(listaPlaylists, listaCanciones);
+    List  *listaCarritos = listCreate();
+    List  *listaProductos = listCreate();
 
     char in = '\0';
 
-    mostrarMenu(listaCanciones, 0);
-
     int repetida = 0;
 
+    clrscr();
     while(in != 'q' ){
         mostrarMenu(listaCanciones, repetida);
         fflush(stdin);
@@ -42,121 +42,39 @@ int main(){
                 scanf("%c", &in);
                 getchar();
                 switch(in){
-                    case'n':
-                        searchSong(listaCanciones);
+                    case ('i'): // Importar archivo por nombre
                         break;
-                    case 'g':
-                        searchGenre(listaCanciones);
+                    case('a'): // Agregar producto
                         break;
-                    case 'a':
-                        searchArtist(listaCanciones);
-                        break;
-                    case 'q': {
-                        exit(1);
-                        break;
-                    }
-                }
-                break;
-            case 'm':
-                mostrarLista(listaCanciones, 0);
-                break;
-            case 'y': {
-                char archivo[20];
-                printf("Nombre archivo: ");
-                scanf("%s", archivo);
-                getchar();
-                List *list = CSVimport(archivo);
-                if (!list) { 
-                    strcat(buf, COLOR_RED "Error: "
-                            "no se pudo leer el archivo\n"
-                            COLOR_RESET);
-                } else  {
-                    playlistImport(listaPlaylists,
-                            listaCanciones, 
-                            list);
-                }
-                break;
-            }
-            case 'e':{
-                char archivo[20];
-                printf("Nombre archivo: ");
-                scanf("%s", archivo);
-                getchar();
+                    case('x'): // Quitar producto
+                        break
+                    case('b'): // Buscar producto
+                        break
+                    // Mostrar todos los productos por tipo
+                    case('t'):
+                        break
+                    // Mostrar todos los productos por marca
+                    case('m'):
+                        break
+                    // Mostrar todos los productos por nombre
+                    case('n'):
+                        break
+                    case('M'): // Mostrar todos los productos
+                        break
+                    case('A'): // Añadir al carrito
+                        break
+                    case('X'): // Quitar del carrito
+                        break
+                    case('p'): // Concretar compra
+                        break
+                    case('C'): // Mostrar carritos
+                        break
 
-                CSVexport(listaCanciones, archivo);
-                break;
-            }
-            case 'p': {
-                char opcion = 0;
-                while( opcion != 'q') {
-                    mostrarMenuPlaylists();
-                    scanf("%c", &opcion);
-                    getchar();
-                    switch(opcion) {
-                        case 'n': {
-                            printf("Nombre de la nueva playlist: ");
-                            char nombre[30];
-                            scanf("%[^\n]*s", nombre);
-                            getchar();
-                            if(!findPlaylist(listaPlaylists, nombre)) { 
-                                List *playlist = listCreate();
-                                strcpy(playlist->name, nombre);
-                                listPushBack(listaPlaylists, playlist);
-                                strcat(buf, "playlist anadida. \n\n");
-                            } else  {
-                                strcat(buf, "playlist ya existe. \n\n");
 
-                            }
-                            break;
-                        }
-                        case 'm': {
-                            printf("Nombre de la playlist: ");
-                            char nombre[30];
-                            scanf("%[^\n]*s", nombre);
-                            getchar();
-                            showPlaylist(nombre, listaPlaylists);
 
-                            break;
-                        }
-                        case 'M': {
-                            if (listaPlaylists->length)
-                            for(List* list = listFirst(listaPlaylists);
-                                list != NULL;
-                                list = listNext(listaPlaylists)) {
 
-                                strcat(buf, "Playlist: ");
-                                strcat(buf, list->name);
-                                strcat(buf, "\n");
-                                strcat(buf, 
-                                        "Cantidad de canciones: ");
-
-                                char str[4];
-                                sprintf(str, "%zd", list->length);
-                                strcat(buf, str);
-                                strcat(buf, "\n");
-                                strcat(buf, "\n");
-                            }
-                            else {
-                                strcat(buf, COLOR_RED "Error: no hay playlists\n" COLOR_RESET);
-                            }
-                            break;
-                        }
-                        case 'x': {
-                            printf("Nombre de la playlist: ");
-                            char nombre[30];
-                            scanf("%s", nombre);
-                            getchar();
-                            deletePlaylist(listaPlaylists, nombre);
-                            break;
-                        }
-                    }
-                }
-                break;
-            } // while ? 
-
-            case 'c': {
-                listClean(listaCanciones);
-                break;
+                default:
+                    break;
           } 
 
 
