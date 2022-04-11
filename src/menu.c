@@ -6,25 +6,24 @@ void mostrarMenu(List* lista, int repetida){
     printf("%s", buf);
     strcpy(buf, "");
 
-    printf("Reproductor de Musica\n");
+    printf("Tienda\n");
 
-    printf("'i' : Ingresar cancion\n");
-    printf("'x' : Eliminar cancion\n");
-    printf("'b' : Buscar cancion\n");
-    printf("'m' : Mostrar lista\n");
+    printf("'i' : Importar archivo por nombre\n");
+    printf("'a' : Agregar producto\n");
+    printf("'x' : Quitar producto\n");
+    printf("'b' : Buscar producto\n");
+    printf("'t' : Buscar productos por tipo\n");
+    printf("'m' : Buscar productos por marca\n");
+    printf("'n' : Buscar productos por nombre\n");
+    printf("'M' : Mostrar todos los productos\n");
+    printf("'A' : Agregar al carrito\n");
+    printf("'X' : Quitar al carrito\n");
 
-    printf("'y' : Importar archivo\n");
-    printf("'e' : Exportar archivo\n");
-
-    printf("'p' : Playlists\n");
-
-
-    printf("'c' : Eliminar todas las canciones\n");
+    printf("'p' : Concretar compra\n");
+    printf("'C' : Mostrar carritos\n");
 
 
     printf("'q' : Salir\n");
-
-
 }
 
 void mostrarMenuBuscar(){
