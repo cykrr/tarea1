@@ -24,3 +24,11 @@ List *genresToList(const char *genre){
         
     return list;
 }
+
+void clrscr() {
+#if defined WINDOWS || defined _win32 || defined WIN32
+    system("cls");
+#else 
+    system("clear");
+#endif
+};
