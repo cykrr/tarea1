@@ -8,11 +8,12 @@ void mostrarMenu(List* lista, int repetida){
 
     printf("Reproductor de Musica\n");
 
-    printf("'i' : Ingresar cancion\n");
-    printf("'x' : Eliminar cancion\n");
-    printf("'b' : Buscar cancion\n");
-    printf("'m' : Mostrar lista\n");
-    printf("'p' : Mostrar Playlists\n");
+    printf("'i' : Ingresar Producto\n");
+    printf("'x' : Eliminar Producto\n");
+    printf("'b' : Buscar Producto\n");
+
+    printf("'m' : Mostrar todos los productos\n");
+    printf("'p' : Mostrar carritos de compras\n");
 
     printf("'y' : Importar archivo\n");
     printf("'e' : Exportar archivo\n");
@@ -29,8 +30,8 @@ void mostrarMenuBuscar(){
 
     printf("Menu de busqueda\n");
     printf("n: Por Nombre\n");
-    printf("a: Por Artista\n");
-    printf("g: Por Genero\n");
+    printf("a: Por Marca\n");
+    printf("g: Por Tipo\n");
     printf("q: Salir\n");
 
 }
