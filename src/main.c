@@ -12,6 +12,7 @@
 //#include "playlist.h"
 #include "carrito.h" 
 #include "producto.h" 
+#include "list.h" 
 
 /* main function */
 int main(){
@@ -24,61 +25,43 @@ int main(){
 
     clrscr();
     while(in != 'q' ){
-        mostrarMenu(listaCanciones, repetida);
+        mostrarMenu();
         fflush(stdin);
         scanf("%c", &in);
         getchar();
 
         switch(in) {
-            
-            case 'i':
-                addSong(listaPlaylists, listaCanciones);
+            case ('i'): // Importar archivo por nombre
+                List *lista = listaImportarArchivo();
                 break;
-            case 'x':
-            	deleteSong(listaCanciones);
-            	break;
-            case 'b':
-                mostrarMenuBuscar();
-                scanf("%c", &in);
-                getchar();
-                switch(in){
-                    case ('i'): // Importar archivo por nombre
-                        break;
-                    case('a'): // Agregar producto
-                        break;
-                    case('x'): // Quitar producto
-                        break
-                    case('b'): // Buscar producto
-                        break
-                    // Mostrar todos los productos por tipo
-                    case('t'):
-                        break
-                    // Mostrar todos los productos por marca
-                    case('m'):
-                        break
-                    // Mostrar todos los productos por nombre
-                    case('n'):
-                        break
-                    case('M'): // Mostrar todos los productos
-                        break
-                    case('A'): // Añadir al carrito
-                        break
-                    case('X'): // Quitar del carrito
-                        break
-                    case('p'): // Concretar compra
-                        break
-                    case('C'): // Mostrar carritos
-                        break
-
-
-
-
-                default:
-                    break;
+            case('a'): // Agregar producto
+                break;
+            case('x'): // Quitar producto
+                break;
+            case('b'): // Buscar producto
+                break;
+            // Mostrar todos los productos por tipo
+            case('t'):
+                break;
+            // Mostrar todos los productos por marca
+            case('m'):
+                break;
+            // Mostrar todos los productos por nombre
+            case('n'):
+                break;
+            case('M'): // Mostrar todos los productos
+                break;
+            case('A'): // Añadir al carrito
+                break;
+            case('X'): // Quitar del carrito
+                break;
+            case('p'): // Concretar compra
+                break;
+            case('C'): // Mostrar carritos
+                break;
+            default:
+                break;
           } 
-
-
-        }  // switch in;
 
     } // while (in != q)
     printf("Bye bye\n");
