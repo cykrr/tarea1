@@ -155,4 +155,13 @@ CSV *CSVnew() {
     CSVcreate(csv);
     return csv;
 }
+List *listaImportarArchivo() {
+    char archivo[30];
+    printf("Ingresa el nombre del archivo a importar: ");
+    fflush(stdin);
+    scanf("%[^\n]*s", archivo);
+    getchar();
+    List *list = CSVimport(archivo);
+    return list;
+}
 
