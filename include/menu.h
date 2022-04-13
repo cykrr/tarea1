@@ -6,7 +6,7 @@
 #include "song.h"
 #include "util.h"
 
-void mostrarMenu(List *lista, int repetida);
+void mostrarMenu();
 
 void mostrarLista(List *lista, int repetida);
 
