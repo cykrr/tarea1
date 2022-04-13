@@ -1,8 +1,8 @@
 #include "menu.h"
 #include "util.h"
 
-void mostrarMenu(List* lista, int repetida){
-    system("clear");
+void mostrarMenu(){
+    clrscr();
     printf("%s", buf);
     strcpy(buf, "");
 
