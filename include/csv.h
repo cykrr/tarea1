@@ -31,5 +31,8 @@ void CSVexport(List *list, char *fileName);
 
 void CSVcreate(CSV *csv);
 
+// Menú interactivo
+List *listaImportarArchivo();
+
 CSV *CSVnew();
 #endif
