@@ -1,11 +1,9 @@
 #include "util.h"
+#include "string.h"
 
 char buf[5000];
 
 // castea un puntero (void *) a (Song *)
-Song *voidToSong(void *ptr){
-    return (Song*)ptr;
-}
 
 List *genresToList(const char *genre){
     List *list = listCreate();

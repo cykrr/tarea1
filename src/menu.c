@@ -1,5 +1,6 @@
 #include "menu.h"
 #include "util.h"
+#include "string.h"
 
 void mostrarMenu(){
     clrscr();
@@ -60,9 +61,11 @@ void mostrarLista(List *lista, int repetida){
     strcat(buf, "\n");
     if(lista->length){
         strcat(buf, "Canciones añadidas:\n");
-        for(Song *song = listFirst(lista); song != NULL; song = listNext(lista)){
+        /*
+        for(Producto *producto = listFirst(lista); song != NULL; song = listNext(lista)){
             mostrarCancion(song);
         }
+        */
         strcat(buf, "\n");
     } else {
         strcat(buf, COLOR_RED "Error:  No hay canciones en la lista (");
@@ -71,21 +74,3 @@ void mostrarLista(List *lista, int repetida){
     }
 }
 
-void mostrarCancion(Song *song){
-    strcat(buf, "  Nombre: " );
-    strcat(buf, song->name);
-    strcat(buf, "\n  Artista: " );
-    strcat(buf, song->artist);
-    strcat(buf, "\n  Género(s):\n" );
-    for(char* data = listFirst(song->genres); data != NULL; data=listNext(song->genres)) {
-        strcat(buf, "    ");
-        strcat(buf, data);
-        strcat(buf, "\n");
-    }
-
-    strcat(buf, "  Año: " );
-    strcat(buf, song->year );
-    strcat(buf, "\n  Lista: " );
-    strcat(buf, song->playlist);
-    strcat(buf, "\n\n");
-}

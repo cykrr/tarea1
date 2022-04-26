@@ -1,5 +1,4 @@
 #include "playlist.h"
-#include "song.h"
 
 
 int showPlaylist(char* name, List* lists) {
@@ -40,32 +39,6 @@ int deletePlaylist(List *playlists, char *name) {
     return EXIT_SUCCESS;
 }
 
-int playlistImport(
-        List *playlists,
-        List *canciones, 
-        List *add) {
-
-    // si la playlist no existe;
-    if(!findPlaylist(playlists, add->name)) { 
-        // Recorremos las canciones de la nueva playlist.
-        for(Song *i = listFirst(add); i != NULL; i = listNext(add)) {
-            // si no existe la playlist:
-            List *playlistBusqueda = findPlaylist(playlists, i->playlist);
-            if(!playlistBusqueda) { 
-                List *list = listCreate(); // la creamos
-                strcpy(list->name, i->playlist);
-                addSongPtr(list, i); //le anadimos la cancion
-                listPushBack(playlists, list); // la anadimos a las playlists
-            } else { // si existe la playlist
-                addSongPtr(playlistBusqueda, i);
-            }
-            addSongPtr(canciones, i);
-
-        }
-        listPushBack(playlists, add);
-    }
-    return  EXIT_SUCCESS;
-}
 
 List *findPlaylist(List *playlists, char *name) {
     int existe = 0;
@@ -75,16 +48,4 @@ List *findPlaylist(List *playlists, char *name) {
         }
     }
     return NULL;
-}
-
-int addSongPtr(List *playlist, Song *cancion) { 
-    if(!findSong(playlist, cancion->name)) {
-        listPushBack(playlist, cancion);
-    } else {
-        strcat(buf, "la cancion ");
-        strcat(buf, cancion->name);
-        strcat(buf, " ya existe\n");
-
-    }
-    return EXIT_SUCCESS;
 }
