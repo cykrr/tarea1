@@ -6,5 +6,8 @@ typedef struct Carrito {
     char *nombre;
     // Necesitamos implementar una pila en vez de una lista
     List *lista;
-} Carrito;
+} Cart;
+
+int deleteItem(Cart *cart);
+
 #endif
