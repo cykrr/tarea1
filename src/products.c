@@ -11,6 +11,7 @@ void addProduct(char *nombre,char *marca,char *tipo,int stock, long precio, Tree
     if(searchTreeMap(treeNombre,nombre) != NULL){
         searchTreeMap(treeMarca,marca);
         searchTreeMap(treeTipo,tipo);
+        //no se que este error
         treeNombre -> current -> pair -> value -> stock += stock;
         treeMarca -> current -> pair -> value -> stock += stock;
         treeTipo -> current -> pair -> value -> stock += stock;
