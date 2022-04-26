@@ -1,19 +1,20 @@
-#ifndef SONG_H
-#define SONG_H
+#ifndef ITEM_H
+#define ITEM_H
 #include "list.h"
 #include "util.h"
+#include "map.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 typedef struct {
     char name[60];
-    char artist[30];
-    char playlist[20];
-    List *genres;
-    char year[10];
-}Song;
+    char brand[30];
+    char type[20];
+    int stock;
+    int price;
+}Item;
 
-Song *createSong();
+Item *createItem();
 
 
 /* Agregar canción (char* nombre, char*
@@ -25,7 +26,7 @@ Song *createSong();
  * validarse que la canción no exista
  * previamente en la lista de reproducción. 
  * */
-int addSong(List* listas, List * lista);
+int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands);
 
 
 /* Eliminar cancion (char* Nombre, char* artista, int año):
