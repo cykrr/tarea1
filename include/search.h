@@ -1,7 +1,6 @@
 #ifndef SEARCH_H
 #define SEARCH_H
 #include "list.h"
-#include "song.h"
 #include "util.h"
 #include "menu.h"
 /* Buscar cancion por nombre (char* nombre):

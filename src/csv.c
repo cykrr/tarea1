@@ -67,27 +67,7 @@ void populateList(CSV *csv){
 
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
-        
-        Song* song = createSong();
-
-        strcpy(song->name, get_csv_field(line, 0));
-
-        strcpy(song->artist, get_csv_field(line, 1));
-        strcpy(song->year, get_csv_field(line, 3));
-        strcpy(song->playlist, get_csv_field(line, 4));
-
-        song->genres = genresToList(get_csv_field(line, 2));
-
-
-        Song*  busqueda = findSong(csv->list, song->name);
-
-        if(!busqueda){
-            listPushBack(csv->list, song);
-        } else {
-            strcat(buf, "\x1b[31mError:  la cancion ");
-            strcat(buf, busqueda->name);
-            strcat(buf, " ya existe\x1b[0m\n");
-        }
+        // Implementar    
     }
 }
 
@@ -117,6 +97,7 @@ void CSVexport(List *list, char *name){
     if (!file) {
         printf("Error creando el archivo %s\n", name);
     }
+    /*
     for(Song *song = listFirst(list); song != NULL; song=listNext(list)) {
         fprintf(file, "%s,", song->name);
         fprintf(file, "%s,", song->artist);
@@ -138,6 +119,7 @@ void CSVexport(List *list, char *name){
         fprintf(file, "\n");
 
     }
+    */
     fclose(file);
 }
 

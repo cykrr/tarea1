@@ -11,7 +11,7 @@
 //#include "song.h"
 //#include "playlist.h"
 #include "carrito.h" 
-#include "producto.h" 
+//#include "producto.h" 
 #include "list.h" 
 
 /* main function */
@@ -32,7 +32,7 @@ int main(){
 
         switch(in) {
             case ('i'): // Importar archivo por nombre
-                List *lista = listaImportarArchivo();
+//                List *lista = listaImportarArchivo();
                 break;
             case('a'): // Agregar producto
                 break;
