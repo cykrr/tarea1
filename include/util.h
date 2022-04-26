@@ -1,7 +1,7 @@
 #ifndef UTIL_H
 #define UTIL_H
-#include "song.h"
 
+#include "list.h"
 #define COLOR_RESET   "\033[0m"
 #define COLOR_RED "\033[31m"      /* Red */
 

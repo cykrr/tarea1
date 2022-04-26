@@ -1,8 +1,7 @@
 #include "item.h"
-#include "playlist.h"
 
 Item *createItem(){
-	Item *item = (item *)malloc(sizeof(item));
+	Item *item = (Item *)malloc(sizeof(Item));
         strcpy(item->name, "");
         strcpy(item->brand, "");
         strcpy(item->type, "");
@@ -30,11 +29,11 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     getchar();
 
     printf("\nCantidad: ");
-    scanf("%[^\n]*i", item->stock);
+    scanf("%[^\n]*s", item->stock);
     getchar();
 
     printf("\nPrecio: ");
-    scanf("%[^\n]*i", item->price);
+    scanf("%[^\n]*s", item->price);
     getchar();
     
 
