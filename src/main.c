@@ -1,70 +1,49 @@
-/* Entrada y salida estándar */
 #include <stdio.h>
-
-/* manipulación de Strings */
+#include <stdlib.h>
 #include <string.h>
+#include "treemap.h"
 
-#include "csv.h"
-#include "menu.h"
-#include "util.h"
-#include "search.h"
-//#include "song.h"
-//#include "playlist.h"
-#include "carrito.h" 
-#include "producto.h" 
-#include "list.h" 
-
-/* main function */
-int main(){
-    List  *listaCarritos = listCreate();
-    List  *listaProductos = listCreate();
-
-    char in = '\0';
-
-    int repetida = 0;
-
-    clrscr();
-    while(in != 'q' ){
-        mostrarMenu();
-        fflush(stdin);
-        scanf("%c", &in);
-        getchar();
-
-        switch(in) {
-            case ('i'): // Importar archivo por nombre
-                List *lista = listaImportarArchivo();
-                break;
-            case('a'): // Agregar producto
-                break;
-            case('x'): // Quitar producto
-                break;
-            case('b'): // Buscar producto
-                break;
-            // Mostrar todos los productos por tipo
-            case('t'):
-                break;
-            // Mostrar todos los productos por marca
-            case('m'):
-                break;
-            // Mostrar todos los productos por nombre
-            case('n'):
-                break;
-            case('M'): // Mostrar todos los productos
-                break;
-            case('A'): // Añadir al carrito
-                break;
-            case('X'): // Quitar del carrito
-                break;
-            case('p'): // Concretar compra
-                break;
-            case('C'): // Mostrar carritos
-                break;
-            default:
-                break;
-          } 
-
-    } // while (in != q)
-    printf("Bye bye\n");
+/*
+  función para comparar claves de tipo string
+  retorna 1 si son iguales
+*/
+int is_equal_string(void * key1, void * key2) {
+    if(strcmp((char*)key1, (char*)key2)==0) return 1;
     return 0;
 }
+
+/*
+  función para comparar claves de tipo string
+  retorna 1 si son key1<key2
+*/
+int lower_than_string(void * key1, void * key2) {
+    if(strcmp((char*)key1, (char*)key2) < 0) return 1;
+    return 0;
+}
+
+/*
+  función para comparar claves de tipo int
+  retorna 1 si son iguales
+*/
+int is_equal_int(void * key1, void * key2) {
+    if(*(int*)key1 == *(int*)key2) return 1;
+    return 0;
+}
+
+/*
+  función para comparar claves de tipo int
+  retorna 1 si son key1<key2
+*/
+int lower_than_int(void * key1, void * key2) {
+    if(*(int*)key1 < *(int*)key2) return 1;
+    return 0;
+}
+
+int main() {
+
+    
+
+    return 0;
+}
+
 
