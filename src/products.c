@@ -9,8 +9,8 @@ typedef struct TreeMap TreeMap;
 void addProduct(char *nombre,char *marca,char *tipo,int stock, long precio, TreeMap *treeNombre, TreeMap *treeMarca, TreeMap *treeTipo){
     
     if(searchTreeMap(treeNombre,nombre) != NULL){
-        searchTreeMap(treeMarca,marca);
-        searchTreeMap(treeTipo,tipo);
+        Pair * aux = searchTreeMap(treeMarca,marca);
+        Pair * aux = searchTreeMap(treeTipo,tipo);
         //no se que este error
         treeNombre -> current -> pair -> value -> stock += stock;
         treeMarca -> current -> pair -> value -> stock += stock;
