@@ -5,10 +5,7 @@
 typedef struct Node Node;
 
 struct Node {
-    void * key;
-    /*! Puntero al dato */
-    void * data;
-
+    Pair* pair;
     /*! Puntero al siguiente nodo */
     Node * next;
 
@@ -21,8 +18,8 @@ Node* _createNode(void * key, void * data) {
 
     assert(new != NULL);
 
-    new->key = key;
-    new->data = data;
+    new->pair->key = key;
+    new->pair->data = data;
     new->prev = NULL;
     new->next = NULL;
     return new;
@@ -57,14 +54,14 @@ void setSortFunction(Map* map, int (*lower_than)(void* key1, void* key2)){
     map->lower_than = lower_than;
 }
 
-void * firstMap(Map * list) {
+Pair * firstMap(Map * list) {
     assert(list != NULL); // list no puede ser NULL.
 
     if (list->head == NULL) return NULL;
 
     list->current = list->head;
 
-    return (void *)list->current->data;
+    return list->current->pair->data;
 }
 
 void * nextMap(Map * list) {
@@ -74,7 +71,7 @@ void * nextMap(Map * list) {
 
     list->current = list->current->next;
 
-    return (void *)list->current->data;
+    return list->current->pair->data;
 }
 
 void _pushFront(Map * list, void * key, void * value) {
@@ -101,7 +98,7 @@ void insertMap(Map * list, void * key, void * value){
 
     //se revisa si el elemento existe
     while(aux){
-        if(list->is_equal(aux->key,key)) return;
+        if(list->is_equal(aux->pair->key,key)) return;
         aux=aux->next;
     }
 
@@ -112,13 +109,13 @@ void insertMap(Map * list, void * key, void * value){
 
     aux= list->head;
     //the minimum element
-    if (!aux || list->lower_than(key,aux->key)==1) {      
+    if (!aux || list->lower_than(key,aux->pair->key)==1) {      
         _pushFront (list, key, value);
         return;
     }
 
 
-    while(aux->next && list->lower_than(aux->next->key,key)==1)
+    while(aux->next && list->lower_than(aux->next->pair->key,key)==1)
         aux=aux->next;
     
     list->current = aux;
@@ -140,14 +137,14 @@ void insertMap(Map * list, void * key, void * value){
 
 }
 
-void * _popFront(Map * list) {
+Pair * _popFront(Map * list) {
     assert(list != NULL); // list no puede ser NULL.
 
     if (list->head == NULL) return NULL;
 
     Node * aux = list->head;
 
-    void * data = (void *)aux->data;
+    Pair * data = aux->pair->data;
 
     if (list->head == list->tail) {
         list->tail = list->head = NULL;
@@ -162,14 +159,14 @@ void * _popFront(Map * list) {
     return data;
 }
 
-void * _popBack(Map * list) {
+Pair * _popBack(Map * list) {
     assert(list != NULL); // list no puede ser NULL.
 
     if (list->head == NULL) return NULL;
 
     Node * aux = list->tail;
 
-    void * data = (void *)aux->data;
+    Pair * data = aux->pair->data;
 
     if (list->tail == list->head) {
         list->tail = list->head = NULL;
@@ -185,24 +182,24 @@ void * _popBack(Map * list) {
 }
 
 
-void* searchMap(Map * list, void * key) {
+Pair* searchMap(Map * list, void * key) {
     assert(list != NULL); // list no puede ser NULL.
 
     Node* aux= list->head;
     //the minimum element
-    while (aux && list->is_equal(key,aux->key)==0) aux=aux->next;
+    while (aux && list->is_equal(key,aux->pair->key)==0) aux=aux->next;
 
     list->current=aux;
     if (list->head == NULL || list->current == NULL) return NULL;
 
-    return (void *) aux->data;
+    return aux->pair->data;
 }
 
 void * eraseMap(Map * list, void * key) {
     assert(list != NULL); // list no puede ser NULL.
 
     Node* aux= list->head;
-    while (aux && list->is_equal(key,aux->key)==0) aux=aux->next;
+    while (aux && list->is_equal(key,aux->pair->key)==0) aux=aux->next;
 
     list->current=aux;
     if (list->head == NULL || list->current == NULL) return NULL;
@@ -221,7 +218,7 @@ void * eraseMap(Map * list, void * key) {
         }
     }
 
-    void * data = (void *)aux->data;
+    Pair * data = aux->pair->data;
 
     list->current = aux->next;
 

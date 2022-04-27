@@ -35,13 +35,23 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     printf("\nPrecio: ");
     scanf("%[^\n]*s", item->price);
     getchar();
+
+    if(searchMap(mapNames,item -> name) == NULL){
+        insertMap(mapNames, item->name, item);
+        insertMap(mapTypes, item->type, item);
+        insertMap(mapBrands, item->brand, item);
+    }else{
+        Pair *aux = searchMap(mapNames,item -> name);
+        aux -> data -> stock += item -> stock;
+        Pair *aux = searchMap(mapTypes,item->type);
+        aux -> data -> stock += item -> stock;
+        Pair *aux = searchMap(mapBrands,item->brand);
+        aux -> data -> stock += item -> stock;
+
+    }
     
 
     putchar('\n');
-
-    insertMap(mapNames, item->name, item);
-    insertMap(mapTypes, item->type, item);
-    insertMap(mapBrands, item->brand, item);
 
     return EXIT_SUCCESS;
 

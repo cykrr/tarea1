@@ -142,4 +142,3 @@ void listClean(List * list) {
     }
     list->length = 0;
 }
-
