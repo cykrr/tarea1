@@ -34,7 +34,7 @@ int main(){
     while(in != 'q' ){
         mostrarMenu();
         fflush(stdin);
-        scanf("%c", &in);
+        in = getchar();
         getchar();
 
         switch(in) {
