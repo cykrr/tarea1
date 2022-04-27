@@ -26,15 +26,16 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     scanf("%[^\n]*s", item->brand);
     getchar();
 
-    printf("\nTipo de producto: "); scanf("%[^\n]*s", item->type);
+    printf("\nTipo de producto: ");
+    scanf("%[^\n]*s", item->type);
     getchar();
 
-    printf("\nCantidadaaa: ");
-    scanf("%d",&item->stock);
+    printf("\nCantidad: ");
+    scanf("%[^\n]*d", &item->stock);
     getchar();
 
     printf("\nPrecio: ");
-    scanf("%d",&item->price);
+    scanf("%[^\n]*d", &item->price);
     getchar();
     int found = 0;
 
@@ -54,9 +55,6 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
     putchar('\n');
 
-    insertMap(mapNames, item->name, item);
-    insertMap(mapTypes, item->type, item);
-    insertMap(mapBrands, item->brand, item);
 
     return EXIT_SUCCESS;
 
