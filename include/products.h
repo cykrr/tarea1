@@ -10,7 +10,7 @@ typedef struct{
     long precio;
 } Product;
 
-void addProduct(char *nombre,char *marca,char *tipo,int stock, long precio, TreeMap *treeNombre, TreeMap *treeMarca, TreeMap *treeTipo);
+void addProduct(TreeMap *treeNombre, TreeMap *treeMarca, TreeMap *treeTipo);
 
 
 #endif /* PRODUCTS_h */

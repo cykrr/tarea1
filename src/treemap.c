@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "treemap.h"
+#include "util.h"
 
 typedef struct TreeNode TreeNode;
 
@@ -13,12 +14,12 @@ struct TreeNode {
     TreeNode * parent;
 };
 
-struct TreeMap {
+typedef struct{
     TreeNode * root;
     TreeNode * current;
     int (*lower_than) (void* key1, void* key2);
     int (*is_equal) (void* key1, void* key2);
-};
+}TreeMap;
 
 
 TreeNode * createTreeNode(void* key, void * value) {
@@ -191,3 +192,66 @@ Pair * nextTreeMap(TreeMap * tree) {
 }
 
 
+int searchMarca(TreeMap *tree,void *key ) {
+    char busqueda[30];
+    int found = 0;
+
+    printf("Introduce la marca a buscar:\n");
+    scanf("%[^\n]*s", busqueda);
+    getchar();
+
+    if(tree -> root == NULL) return 0;
+    TreeNode * aux = tree -> root;
+    while (aux != NULL){
+        if(tree -> is_equal(key,aux -> pair -> key)){
+            tree -> current = aux;
+            ShowProduct(tree -> current -> pair);
+            found++;
+        }
+        if (tree -> lower_than(key,aux -> pair -> key) == 1){
+            aux = aux -> left;
+        }else{
+            aux = aux -> right;
+        }
+    }
+
+
+    if (!found) {
+        strcat(buf, "\033[0;31mError: Marca no encontrada (");
+        strcat(buf, busqueda);
+        strcat(buf, ")\033[0m\n");
+    }
+    return EXIT_SUCCESS;
+}
+
+int searchTipo(TreeMap *tree,void *key ) {
+    char busqueda[30];
+    int found = 0;
+
+    printf("Introduce la tipo a buscar:\n");
+    scanf("%[^\n]*s", busqueda);
+    getchar();
+
+    if(tree -> root == NULL) return 0;
+    TreeNode * aux = tree -> root;
+    while (aux != NULL){
+        if(tree -> is_equal(key,aux -> pair -> key)){
+            tree -> current = aux;
+            ShowProduct(tree -> current -> pair);
+            found++;
+        }
+        if (tree -> lower_than(key,aux -> pair -> key) == 1){
+            aux = aux -> left;
+        }else{
+            aux = aux -> right;
+        }
+    }
+
+
+    if (!found) {
+        strcat(buf, "\033[0;31mError: Marca no encontrada (");
+        strcat(buf, busqueda);
+        strcat(buf, ")\033[0m\n");
+    }
+    return EXIT_SUCCESS;
+}

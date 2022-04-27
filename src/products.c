@@ -4,25 +4,44 @@
 #include "products.h"
 #include "treemap.h"
 
-typedef struct TreeMap TreeMap;
+typedef struct TreeMap TreeNode;
 
-void addProduct(char *nombre,char *marca,char *tipo,int stock, long precio, TreeMap *treeNombre, TreeMap *treeMarca, TreeMap *treeTipo){
+
+void addProduct(TreeMap *treeNombre, TreeMap *treeMarca, TreeMap *treeTipo){
+
+
+    fflush(stdin);
+    Product * new;
+    printf("Nombre producto: ");
+    scanf("%[^\n]*s", new->nombre);
+    getchar();
+
+    printf("\nMarca: ");
+    scanf("%[^\n]*s",new->marca);
+    getchar();
+
+    printf("\nTipo: ");
+    scanf("%[^\n]*s",new->tipo);
+    getchar();
+
+    printf("\nStock: ");
+    scanf("%[^\n]*s",new->tipo);
+    getchar();
+
+    printf("\nPrecio: ");
+    scanf("%[^\n]*s",new->tipo);
+    getchar();
+
     
-    if(searchTreeMap(treeNombre,nombre) != NULL){
-        Pair * aux = searchTreeMap(treeMarca,marca);
-        Pair * aux = searchTreeMap(treeTipo,tipo);
+    if(searchTreeMap(treeNombre,new -> nombre) != NULL){
+        Pair * aux = searchTreeMap(treeMarca,new -> marca);
+        Pair * aux2 = searchTreeMap(treeTipo,new -> tipo);
         //no se que este error
-        treeNombre -> current -> pair -> value -> stock += stock;
-        treeMarca -> current -> pair -> value -> stock += stock;
-        treeTipo -> current -> pair -> value -> stock += stock;
+        treeNombre -> current -> pair -> value -> stock += new -> stock;
+        treeMarca -> current -> pair -> value -> stock += new -> stock;
+        treeTipo -> current -> pair -> value -> stock += new -> stock;
 
     }else{
-        Product * new;
-        strcpy(new->nombre,nombre);
-        strcpy(new->marca,marca);
-        strcpy(new->tipo,tipo);
-        new -> stock = stock;
-        new -> precio= precio;
 
         insertTreeMap(treeNombre,new -> nombre,new);
         insertTreeMap(treeMarca,new -> marca,new);
@@ -31,3 +50,4 @@ void addProduct(char *nombre,char *marca,char *tipo,int stock, long precio, Tree
     
     return;
 }
+

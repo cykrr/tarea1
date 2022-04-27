@@ -3,6 +3,7 @@
 #include <string.h>
 #include "treemap.h"
 #include "products.h"
+#include "menu.h"
 
 
 /*
@@ -23,72 +24,51 @@ int lower_than_string(void * key1, void * key2) {
     return 0;
 }
 
-/*
-  función para comparar claves de tipo int
-  retorna 1 si son iguales
-*/
-int is_equal_int(void * key1, void * key2) {
-    if(*(int*)key1 == *(int*)key2) return 1;
-    return 0;
-}
 
-/*
-  función para comparar claves de tipo int
-  retorna 1 si son key1<key2
-*/
-int lower_than_int(void * key1, void * key2) {
-    if(*(int*)key1 < *(int*)key2) return 1;
-    return 0;
-}
 
 int main() {
+
+  TreeMap * treeNombre = createTreeMap(lower_than_string,is_equal_string);
+  TreeMap * treeMarca = createTreeMap(lower_than_string,is_equal_string);
+  TreeMap * treeTipo = createTreeMap(lower_than_string,is_equal_string);
 
     char in = '\0';
 
     while(in != 'q' ){
         mostrarMenu();
+        fflush(stdin);
         scanf("%c", &in);
         getchar();
 
         switch(in) {
-            case ('i'): // Importar archivo por nombre
+          case ('a'): // Agregar Producto
+            addProduct(treeNombre,treeMarca,treeTipo);
+            break;
+          case('b'): // Menu de busqueda
+            mostrarMenuBuscar();
+            scanf("%c", &in);
+            getchar();
+            switch(in){
+              case'n':// Buscar por nombre
                 break;
-            case('a'): // Agregar producto
-                addProduct(nombre,marca,tipo,stock,precio);
+              case 't':// Buscar por tipo
                 break;
-            case('x'): // Quitar producto
+              case 'm':// Buscar por marca
                 break;
-            case('b'): // Buscar producto por nombre
-                Pair *buscado = searchTreeMap(treeNombre,nombre);
-                if(buscado != NULL){
-                  showProduct();
-                }else{
-                  printf("no encontrado");
-                }
+              case 'q': {
+                exit(1);
                 break;
-            case('t'): // Buscar producto por marca
-                Pair *buscado = searchTreeMap(treeMarca,marca);
-                if(buscado != NULL){
-                  showProduct();
-                }else{
-                  printf("no encontrado");
-                }
+                    }
+            }
+            case('m'): // Mostrar Productos
                 break;
-            case('m'): // Buscar producto por tipo
-                Pair *buscado = searchTreeMap(treeTipo,tipo);
-                if(buscado != NULL){
-                  showProduct();
-                }else{
-                  printf("no encontrado");
-                }
+            case('c'): // Agregar al carrito
                 break;
-            case('n'): // Agregar al carrito
+            case('d'): // Eliminar del carrito
                 break;
-            case('M'): // Elimnar del carrito
+            case('v'): // Concretar compra
                 break;
-            case('A'): // Concretar compra
-                break;
-            case('X'): // Mostrar carritos
+            case('w'): // Mostrar carritos
                 break;
             default:
                 break;
