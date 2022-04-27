@@ -20,6 +20,6 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands);
 
 void findItem(Map* map, void * key);
 
-void showItem(Pair *item);
+void showItem(Item *item);
 
 #endif

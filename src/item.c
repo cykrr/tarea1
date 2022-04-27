@@ -26,16 +26,15 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     scanf("%[^\n]*s", item->brand);
     getchar();
 
-    printf("\nTipo de producto: ");
-    scanf("%[^\n]*s", item->type);
+    printf("\nTipo de producto: "); scanf("%[^\n]*s", item->type);
     getchar();
 
     printf("\nCantidadaaa: ");
-    scanf("%d",stock);
+    scanf("%d",&item->stock);
     getchar();
 
     printf("\nPrecio: ");
-    scanf("%d",price);
+    scanf("%d",&item->price);
     getchar();
     int found = 0;
 
@@ -44,19 +43,22 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
         insertMap(mapTypes, item->type, item);
         insertMap(mapBrands, item->brand, item);
     }else{
-        Pair *aux = searchMap(mapNames,item -> name);
-        ((Item*)(aux->data))->stock += item->stock;
-        Pair *aux1 = searchMap(mapTypes,item->type);
-        ((Item*)(aux1->data))->stock += item->stock;
-        Pair *aux2 = searchMap(mapBrands,item->brand);
-        ((Item*)(aux2->data))->stock += item->stock;
+        Item *aux = searchMap(mapNames,item -> name);
+        aux->stock += item->stock;
+        Item *aux1 = searchMap(mapTypes,item->type);
+        aux1->stock += item->stock;
+        Item *aux2 = searchMap(mapBrands,item->brand);
+        aux2->stock += item->stock;
         found++;
     }
-    
 
     putchar('\n');
 
-    return found;
+    insertMap(mapNames, item->name, item);
+    insertMap(mapTypes, item->type, item);
+    insertMap(mapBrands, item->brand, item);
+
+    return EXIT_SUCCESS;
 
 }
 
@@ -69,25 +71,23 @@ void findItem(Map* map, void * key) {
     scanf("%[^\n]*s",name);
     getchar();
 
-    Pair *buscado = searchMap(map,name);
+    Item *buscado = searchMap(map,name);
     if(buscado == NULL){
         printf("Producto no encontrado");
     }else{
         showItem(buscado);
     }
-
-
     return;
 }
 
-void showItem(Pair *item){
+void showItem(Item *item){
     strcat(buf, "  Nombre: " );
-    strcat(buf,((Item*)(item->data))->name);
+    strcat(buf,item->name);
     strcat(buf, "  Brand: " );
-    strcat(buf,((Item*)(item->data))->brand);
+    strcat(buf,item->brand);
     strcat(buf, "  Type: " );
-    strcat(buf,((Item*)(item->data))->type);
-    printf("Stock %d",((Item*)(item->data))->stock);
-    printf("Price %d",((Item*)(item->data))->price);
+    strcat(buf,item->type);
+    printf("Stock %d",item->stock);
+    printf("Price %d",item->price);
     strcat(buf, "\n\n");
 }
