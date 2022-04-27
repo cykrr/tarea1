@@ -36,6 +36,10 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     scanf("%[^\n]*s", item->price);
     getchar();
 
+    //Si el producto no esta en la list lo agrega
+    //Si ya esta deberia subir el stock pero no me funca
+    //Uso el pair como en lab, se me hace mas simple y no sabia como hacerlo sin esto
+
     if(searchMap(mapNames,item -> name) == NULL){
         insertMap(mapNames, item->name, item);
         insertMap(mapTypes, item->type, item);
