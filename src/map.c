@@ -64,14 +64,14 @@ Pair * firstMap(Map * list) {
     return list->current->pair->data;
 }
 
-void * nextMap(Map * list) {
+Pair * nextMap(Map * list) {
     assert(list != NULL); // list no puede ser NULL.
 
     if (list->head == NULL || list->current == NULL || list->current->next == NULL) return NULL;
 
     list->current = list->current->next;
 
-    return list->current->pair->data;
+    return list->current->pair;
 }
 
 void _pushFront(Map * list, void * key, void * value) {

@@ -14,6 +14,8 @@ Item *createItem(){
 int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
     Item *item = createItem();
+    int stock;
+    int price;
 
     fflush(stdin);
     printf("Nombre del producto: ");
@@ -28,17 +30,14 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     scanf("%[^\n]*s", item->type);
     getchar();
 
-    printf("\nCantidad: ");
-    scanf("%[^\n]*s", item->stock);
+    printf("\nCantidadaaa: ");
+    scanf("%d",stock);
     getchar();
 
     printf("\nPrecio: ");
-    scanf("%[^\n]*s", item->price);
+    scanf("%d",price);
     getchar();
-
-    //Si el producto no esta en la list lo agrega
-    //Si ya esta deberia subir el stock pero no me funca
-    //Uso el pair como en lab, se me hace mas simple y no sabia como hacerlo sin esto
+    int found = 0;
 
     if(searchMap(mapNames,item -> name) == NULL){
         insertMap(mapNames, item->name, item);
@@ -46,20 +45,49 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
         insertMap(mapBrands, item->brand, item);
     }else{
         Pair *aux = searchMap(mapNames,item -> name);
-        aux -> data -> stock += item -> stock;
-        Pair *aux = searchMap(mapTypes,item->type);
-        aux -> data -> stock += item -> stock;
-        Pair *aux = searchMap(mapBrands,item->brand);
-        aux -> data -> stock += item -> stock;
-
+        ((Item*)(aux->data))->stock += item->stock;
+        Pair *aux1 = searchMap(mapTypes,item->type);
+        ((Item*)(aux1->data))->stock += item->stock;
+        Pair *aux2 = searchMap(mapBrands,item->brand);
+        ((Item*)(aux2->data))->stock += item->stock;
+        found++;
     }
     
 
     putchar('\n');
 
-    return EXIT_SUCCESS;
+    return found;
 
 }
 
 
 
+void findItem(Map* map, void * key) {
+
+    char name[60];
+    printf("Nombre del producto: ");
+    scanf("%[^\n]*s",name);
+    getchar();
+
+    Pair *buscado = searchMap(map,name);
+    if(buscado == NULL){
+        printf("Producto no encontrado");
+    }else{
+        showItem(buscado);
+    }
+
+
+    return;
+}
+
+void showItem(Pair *item){
+    strcat(buf, "  Nombre: " );
+    strcat(buf,((Item*)(item->data))->name);
+    strcat(buf, "  Brand: " );
+    strcat(buf,((Item*)(item->data))->brand);
+    strcat(buf, "  Type: " );
+    strcat(buf,((Item*)(item->data))->type);
+    printf("Stock %d",((Item*)(item->data))->stock);
+    printf("Price %d",((Item*)(item->data))->price);
+    strcat(buf, "\n\n");
+}

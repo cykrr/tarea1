@@ -18,4 +18,8 @@ Item *createItem();
 
 int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands);
 
+void findItem(Map* map, void * key);
+
+void showItem(Pair *item);
+
 #endif
