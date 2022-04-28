@@ -53,6 +53,13 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
 }
 
+void insertMapList(Map * map,char *key,Item * item){
+    List *aux = searchMap(map,key);
+    if(aux == NULL){
+        aux = listCreate();
+    }
+    listPushBack(aux,item);
+}
 
 
 void findItem(Map* map, void * key) {

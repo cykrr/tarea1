@@ -22,4 +22,5 @@ void findItem(Map* map, void * key);
 
 void showItem(Item *item);
 
+void insertMapList(Map * map,char *key,Item * item);
 #endif
