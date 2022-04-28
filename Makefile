@@ -25,6 +25,9 @@ clean:
 	rm $(NAME) $(OBJS)
 
 
-tests/testList: tests/listTest.c out/list.o
+tests/list: tests/listTest.c out/list.o
 	$(CC) -o tests/testList $^ $(INCLUDES) 
+
+tests/map: tests/mapTest.c out/map.o out/item.o
+	$(CC) -o tests/testMap $^ -Iinclude
 
