@@ -4,3 +4,6 @@ out
 tarea1
 *.exe
 tests/test*
+
+tests/list
+tests/map
