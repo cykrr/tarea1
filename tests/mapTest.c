@@ -16,9 +16,12 @@ int main() {
     Map* mapaDePrueba = createMap(isEqualString);
     Item *item = createItem();
     /* Insertamos un item */
-    strcpy(item->name, "Leche");
+    strcpy(item->name, "Leche 200ml");
     strcpy(item->brand, "colun");
     strcpy(item->type, "lacteo");
+    item->stock = 2;
+    item->price = 500;
+
     insertMap(mapaDePrueba, item->name, item);
 
     listItems(mapaDePrueba);
