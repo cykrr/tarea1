@@ -4,19 +4,7 @@
 
 
 
-typedef struct Node Node;
 
-struct Node {
-    void * key;
-    /*! Puntero al dato */
-    void * data;
-
-    /*! Puntero al siguiente nodo */
-    Node * next;
-
-    /*! Puntero al anterior nodo */
-    Node * prev;
-};
 
 Node* _createNode(void * key, void * data) {
     Node  * new = (Node *)malloc(sizeof(Node));
@@ -30,20 +18,7 @@ Node* _createNode(void * key, void * data) {
     return new;
 }
 
-struct Map {
-    /*! Puntero al incio (cabeza) de la lista */
-    Node * head;
 
-    /*! Puntero al final (cola) de la lista */
-    Node * tail;
-
-    /*! Punteor para poder recorrer la lista */
-    Node * current;
-
-    int (*is_equal)(void* key1, void* key2);
-    int (*lower_than)(void* key1, void* key2);
-
-};
 
 
 Map * createMap(int (*is_equal)(void* key1, void* key2)) {

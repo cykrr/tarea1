@@ -8,8 +8,8 @@
 
 
 
-Node * nodeCreate(void * data) {
-    Node * new = (Node *)malloc(sizeof(Node));
+ListNode * nodeCreate(void * data) {
+    ListNode * new = (ListNode *)malloc(sizeof(ListNode));
     assert(new != NULL);
     new->data = data;
     new->prev = NULL;
@@ -53,7 +53,7 @@ void * listPrev(List * list) {
 void listPushFront(List * list, void * data) {
     assert(list != NULL);
     
-    Node * new = nodeCreate(data);
+    ListNode * new = nodeCreate(data);
     
     if (list->head == NULL) {
         list->tail = new;
@@ -74,7 +74,7 @@ void listPushBack(List * list, void * data) {
 
 void listPushCurrent(List * list, void * data) {
     assert(list != NULL && list->current !=NULL);
-    Node * new = nodeCreate(data);
+    ListNode * new = nodeCreate(data);
 
     if(list->current->next)
         new->next = list->current->next;
@@ -105,7 +105,7 @@ void * listPopCurrent(List * list) {
     
     if (list->current == NULL) return NULL;
     
-    Node * aux = list->current;
+    ListNode * aux = list->current;
     
     if (aux->next != NULL) 
         aux->next->prev = aux->prev;

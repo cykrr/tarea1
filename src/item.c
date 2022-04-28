@@ -30,11 +30,11 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     getchar();
 
     printf("\nCantidad: ");
-    scanf("%[^\n]*d", &item->stock);
+    scanf("%d", &item->stock);
     getchar();
 
     printf("\nPrecio: ");
-    scanf("%[^\n]*d", &item->price);
+    scanf("%d", &item->price);
     getchar();
     int found = 0;
 
@@ -80,8 +80,13 @@ void showItem(Item *item){
     strcat(buf,item->brand);
     strcat(buf, "  Type: " );
     strcat(buf,item->type);
-    printf("Stock %d",item->stock);
-    printf("Price %d",item->price);
+    char numero[10];
+    sprintf(numero, "%d",item->stock);
+    strcat(buf, "  Stock: " );
+    strcat(buf, numero);
+    strcat(buf, "  Precio: " );
+    sprintf(numero, "%d",item->price);
+    strcat(buf, numero);
     strcat(buf, "\n\n");
 }
 
