@@ -6,3 +6,5 @@ tarea1
 tests/test*
 
 .cache/clangd/index
+tests/list
+tests/map
