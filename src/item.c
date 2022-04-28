@@ -38,9 +38,11 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     getchar();
     int found = 0;
 
-    if(searchMap(mapNames,item -> name) == NULL){
+    if(searchMap(mapNames,item -> name) == NULL){ 
         insertMap(mapNames, item->name, item);
-    }else{
+        insertMapList(mapTypes,item -> type,item);
+        insertMapList(mapBrands,item -> brand,item);
+    }else{ //comprobar que el producto sea 100% igual(nombre,marca,brand)
         Item *aux = searchMap(mapNames,item -> name);
         aux->stock += item->stock;
         found++;
