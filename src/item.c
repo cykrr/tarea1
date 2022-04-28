@@ -54,6 +54,64 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 }
 
 
+void showList(Map* mapTypes,Item* item, Map* list){ 
+
+    Node* aux= list->head;
+    char key[60];
+    printf("Nombre de la marca que busca: ");
+    scanf("%[^\n]*s",key);
+    getchar();
+    char in = '\0';
+    
+    
+    searchMap(mapTypes, key);
+
+    
+    while(in != 'q' ){
+        scanf("%c", &in);
+        getchar();
+
+        switch(in) {
+            
+            case('a'): // Buscar por marca
+                char name[60];
+                printf("Nombre de la marca que busca: ");
+                scanf("%[^\n]*s",name);
+                getchar();
+                while(aux != NULL){
+                    if (name == item->brand){
+                        showItem(item);
+                    }
+                    aux = aux->next;
+                }
+                break;
+
+            case('x'): // buscar por tipo
+                char name[60];
+                printf("Nombre del tipo de producto que busca: ");
+                scanf("%[^\n]*s",name);
+                getchar();
+                while(aux != NULL){
+                    if (name == item->type){
+                        showItem(item);
+                    }
+                    aux = aux->next;
+                }
+                
+                break;
+
+            case('b'): // buscar por nombre
+                while(aux != NULL){
+                    showItem(item);
+                    
+                    aux = aux->next;
+                }
+                break;
+        }
+    }
+    
+}
+
 
 void findItem(Map* map, void * key) {
 
