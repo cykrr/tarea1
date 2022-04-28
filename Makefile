@@ -1,5 +1,5 @@
 CC=gcc
-NAME=tarea1
+NAME=tarea2
 SRC=$(wildcard src/*.c)
 INCLUDES=-Iinclude
 OBJS=$(patsubst src/%.c, out/%.o, $(SRC))
@@ -7,16 +7,16 @@ INCLUDE=$(wildcard include/*)
 TESTS=$(wildcard tests/*)
 TESTS=$(wildcard tests/*)
 
+all: tests prepare $(OBJS) $(NAME) tests/map tests/list
 
 
 
 $(NAME): $(OBJS) $(INCLUDE)
-	$(CC) $(INCLUDES) $(OBJS) -o $(NAME) -g
+	$(CC) $(INCLUDES) main.c $(OBJS) -o $(NAME) -g
 
 prepare:
-	mkdir -p src out include tests/testList
+	mkdir -p src out include tests
 
-all: tests prepare $(OBJS) link
 
 out/%.o: src/%.c
 	$(CC) -o $@ -c $^ $(INCLUDES) -g
@@ -26,8 +26,8 @@ clean:
 
 
 tests/list: tests/listTest.c out/list.o
-	$(CC) -o tests/testList $^ $(INCLUDES) 
+	$(CC) -o tests/list $^ $(INCLUDES) 
 
-tests/map: tests/mapTest.c out/map.o out/item.o
-	$(CC) -o tests/testMap $^ -Iinclude
+tests/map: tests/mapTest.c $(OBJS)
+	$(CC) $(INCLUDES) -o tests/map $^ 
 
