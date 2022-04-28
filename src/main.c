@@ -12,6 +12,7 @@
 #include "list.h" 
 #include "map.h"
 #include "item.h"
+#include "files.h"
 
 int is_equal_string(void * key1, void * key2) {
     if(strcmp((char*)key1, (char*)key2)==0) return 1;
@@ -39,7 +40,7 @@ int main(){
 
         switch(in) {
             case ('i'): // Importar archivo por nombre
-//                List *lista = listaImportarArchivo();
+                importFile(mapNames, mapTypes, mapBrands);
                 break;
             case('a'): // Agregar producto
                 if(addItem(mapNames,mapTypes,mapBrands) == 1 ){

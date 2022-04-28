@@ -33,5 +33,7 @@ void CSVcreate(CSV *csv);
 // Menú interactivo
 List *listaImportarArchivo();
 
+const char *get_csv_field(char *line, int field);
+
 CSV *CSVnew();
 #endif
