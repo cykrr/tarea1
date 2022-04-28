@@ -1,5 +1,6 @@
 #include "map.h"
 #include "item.h"
+#include <assert.h>
 #include <string.h>
 
 /* funcion podria ir en util.h */
@@ -13,18 +14,36 @@ void showItemNoBuf(Item *item);
 
 
 int main() {
-    Map* mapaDePrueba = createMap(isEqualString);
-    Item *item = createItem();
-    /* Insertamos un item */
-    strcpy(item->name, "Leche 200ml");
-    strcpy(item->brand, "colun");
-    strcpy(item->type, "lacteo");
-    item->stock = 2;
-    item->price = 500;
+    Map* mapaNombre = createMap(isEqualString);
+    Item lecheColun;
+    Item lecheCalo;
+    strcpy(lecheColun.name, "Leche 200ml");
+    strcpy(lecheCalo.name, "Leche 200ml");
+    strcpy(lecheColun.brand, "colun");
+    strcpy(lecheCalo.brand, "calo");
+    strcpy(lecheColun.type, "lacteo");
+    strcpy(lecheCalo.type, "lacteo");
+    lecheColun.stock = 2;
+    lecheCalo.stock = 3;
+    lecheColun.price = 350;
+    lecheCalo.price = 375;
 
-    insertMap(mapaDePrueba, item->name, item);
 
-    listItems(mapaDePrueba);
+    insertMap(mapaNombre, lecheColun.name, &lecheColun);
+    insertMap(mapaNombre, lecheCalo.name, &lecheCalo);
+
+    assert(lecheColun.stock == 2);
+
+    printf("Lista principal: \n--------------\n");
+    listItems(mapaNombre);
+
+    /* liberamos el mapa para crear otro. Ahora usamos la función addItem */
+    
+    for(Item *item = firstMap(mapaNombre); item != NULL; item = nextMap(mapaNombre)){
+        eraseMap(mapaNombre, item->name);
+    }
+    free(mapaNombre);
+
 }
 
 void listItems(Map* map) {
