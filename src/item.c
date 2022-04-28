@@ -1,5 +1,5 @@
 #include "item.h"
-
+#include "map.h"
 Item *createItem(){
 	Item *item = (Item *)malloc(sizeof(Item));
         strcpy(item->name, "");
@@ -14,8 +14,7 @@ Item *createItem(){
 int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
     Item *item = createItem();
-    int stock;
-    int price;
+
 
     fflush(stdin);
     printf("Nombre del producto: ");
@@ -41,15 +40,9 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
     if(searchMap(mapNames,item -> name) == NULL){
         insertMap(mapNames, item->name, item);
-        insertMap(mapTypes, item->type, item);
-        insertMap(mapBrands, item->brand, item);
     }else{
         Item *aux = searchMap(mapNames,item -> name);
         aux->stock += item->stock;
-        Item *aux1 = searchMap(mapTypes,item->type);
-        aux1->stock += item->stock;
-        Item *aux2 = searchMap(mapBrands,item->brand);
-        aux2->stock += item->stock;
         found++;
     }
 
@@ -78,6 +71,8 @@ void findItem(Map* map, void * key) {
     return;
 }
 
+
+
 void showItem(Item *item){
     strcat(buf, "  Nombre: " );
     strcat(buf,item->name);
@@ -89,3 +84,4 @@ void showItem(Item *item){
     printf("Price %d",item->price);
     strcat(buf, "\n\n");
 }
+

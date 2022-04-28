@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
+
+
 typedef struct Node Node;
 
 struct Node {
@@ -197,6 +199,8 @@ void* searchMap(Map * list, void * key) {
 
     return (void *) aux->data;
 }
+
+
 
 void * eraseMap(Map * list, void * key) {
     assert(list != NULL); // list no puede ser NULL.

@@ -49,6 +49,7 @@ int main(){
                     }
                 break;
             case('x'): // Quitar producto
+                showItem(mapNames -> head -> data);
                 break;
             case('b'): // Buscar producto
                 break;
