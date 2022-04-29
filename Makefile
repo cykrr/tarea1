@@ -31,3 +31,5 @@ tests/list: tests/listTest.c out/list.o
 tests/map: tests/mapTest.c $(OBJS)
 	$(CC) $(INCLUDES) -o tests/map $^ 
 
+tests/cart: tests/cartTest.c $(OBJS)
+	$(CC) $(INCLUDES) -o tests/cart $^
