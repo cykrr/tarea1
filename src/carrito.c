@@ -64,13 +64,13 @@ void addToCart(Map *mapCarts, Map* mapName) {
     CartItem * cartItem = searchCartItem(cart->list, productName);
     if(!cartItem) {
         cartItem = cartItemCreate(item, stock);
-    }
+        listPushBack(cart->list, cartItem);
+        cartItem->stock = stock;
+    } 
 
-    cartItem->stock = stock;
-    // añadir producto.
-    listPushBack(cart->list, cartItem);
+    cart->total += cartItem->item->price * cartItem->stock;
     cart->size += cartItem->stock;
-    cart->total += cartItem->item->price;
+
 }
 
 void showCarts(Map *mapCarts) {
