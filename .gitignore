@@ -4,3 +4,5 @@ out
 tarea1
 *.exe
 tests/test*
+
+.cache/clangd/index
