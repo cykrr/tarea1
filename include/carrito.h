@@ -29,8 +29,12 @@ Cart *cartCreate(char *cartName);
 
 void showCarts(Map *mapCarts);
 
+void showCart(Cart *cart);
+
 CartItem *cartItemCreate(Item* item, int stock);
 
 CartItem *searchCartItem(List *list, char *itemName);
+
+void cartCheckout(Map *mapCarts);
 
 #endif

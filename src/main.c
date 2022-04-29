@@ -70,6 +70,7 @@ int main(){
             case('X'): // Quitar del carrito
                 break;
             case('p'): // Concretar compra
+                cartCheckout(mapCarts);
                 break;
             case('C'): // Mostrar carritos
                 showCarts(mapCarts);
