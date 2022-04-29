@@ -4,8 +4,8 @@
 #include "item.h"
 
 int deleteItem(Cart *cart){
-    listPopFront( cart-> lista);
+    listPopFront(cart->list);
 
     return EXIT_FAILURE;
-}    cart->total = 0;
+}
 
