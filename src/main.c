@@ -65,7 +65,7 @@ int main(){
                 showItems(mapNames);
                 break;
             case('A'): // Añadir al carrito
-                addToCart(mapCarts);
+                addToCart(mapCarts, mapNames);
                 break;
             case('X'): // Quitar del carrito
                 break;
