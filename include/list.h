@@ -39,4 +39,8 @@ void * listPopBack(List * list);
 void * listPopCurrent(List * list);
 
 void listClean(List * list);
+
+void * listSearch(List *list);
+ 
+
 #endif
