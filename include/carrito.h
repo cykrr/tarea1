@@ -4,7 +4,7 @@
 #include "list.h"
 #include "map.h"
 typedef struct Cart {
-    char *name;
+    char name[30];
     // Necesitamos implementar una pila en vez de una lista
     List *list;
 
