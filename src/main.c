@@ -31,6 +31,8 @@ int main(){
 
     int repetida = 0;
 
+    char archivo[30];
+
     while(in != 'q' ){
         mostrarMenu();
         fflush(stdin);
@@ -39,8 +41,9 @@ int main(){
 
         switch(in) {
             case ('i'): // Importar archivo por nombre
-//                List *lista = listaImportarArchivo();
+                listaImportarArchivo(mapNames, mapTypes, mapBrands);
                 break;
+
             case('a'): // Agregar producto
                 if(addItem(mapNames,mapTypes,mapBrands) == 1 ){
                     strcat(buf, "Stock del producto actualizado\n");

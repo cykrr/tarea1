@@ -1,6 +1,7 @@
 #include "csv.h"
 #include "util.h"
 #include "menu.h"
+#include "item.h"
 
 /* Lee el archivo csv linea por linea 
  * y crea un struct Song por linea, 
@@ -61,17 +62,34 @@ const char *get_csv_field (char * tmp, int k) {
 
 
  
-void populateList(CSV *csv){
+void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
     ssize_t read; size_t length = 0; char *line = NULL;
 
 
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
         // Implementar    
+        Item* aux = createItem();
+
+        strcpy(aux->name, get_csv_field(line, 0));
+        strcpy(aux->brand, get_csv_field(line, 1));
+
+        strcpy(aux->type, get_csv_field(line, 2));
+        
+        aux->stock = atoi(get_csv_field(line, 3));
+        aux->price = atoi(get_csv_field(line, 4));
+
+        showItem(aux);
+
+        if(searchMap(mapNames,aux -> name) == NULL) { 
+        insertMap(mapNames, aux->name, aux);
+        insertMapList(mapTypes, aux -> type, aux);
+        insertMapList(mapBrands, aux -> brand, aux);
+        }
     }
 }
 
-List *CSVimport(char *name){
+List *CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
     CSV *import = CSVnew();
 
     char *namecpy = strdup(name);
@@ -85,7 +103,7 @@ List *CSVimport(char *name){
         return NULL;
     }
 
-    populateList(import);
+    populateList(import, mapNames, mapTypes, mapBrands);
     fclose(import->fd);
     return import->list;
 
@@ -137,13 +155,12 @@ CSV *CSVnew() {
     CSVcreate(csv);
     return csv;
 }
-List *listaImportarArchivo() {
+List *listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands) {
     char archivo[30];
     printf("Ingresa el nombre del archivo a importar: ");
     fflush(stdin);
     scanf("%[^\n]*s", archivo);
     getchar();
-    List *list = CSVimport(archivo);
+    List *list = CSVimport(archivo, mapNames, mapTypes, mapBrands);
     return list;
 }
-

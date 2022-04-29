@@ -40,19 +40,6 @@ void mostrarMenuBuscar(){
 
 }
 
-void mostrarMenuPlaylists(){
-    system("clear");
-    printf("%s", buf);
-    strcpy(buf, "");
-
-    printf("Playlists\n");
-    printf("'n': Nueva playlist\n");
-    printf("'x': Borrar playlist\n");
-    printf("'m': Mostrar playlist\n");
-    printf("'M': Mostrar las playlists\n");
-    printf("q: Salir\n");
-
-}
 
 void mostrarLista(List *lista, int repetida){
 
