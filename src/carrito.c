@@ -70,7 +70,7 @@ void showCarts(Map *mapCarts) {
     for(Cart *cart = firstMap(mapCarts); 
             cart != NULL; 
             cart = nextMap(mapCarts), 
-            count++) {
+            cartCount++) {
         strcat(buf, "Nombre carrito: ");
         strcat(buf, cart->name);
         strcat(buf, "\n");
@@ -90,7 +90,7 @@ void showCarts(Map *mapCarts) {
         strcat(buf, "\n");
 
     }
-    if (!count) {
+    if (!cartCount) {
         strcat(buf, COLOR_RED "No existen carritos\n" COLOR_RESET);
     }
 }
