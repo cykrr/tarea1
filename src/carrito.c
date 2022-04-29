@@ -58,9 +58,9 @@ void addToCart(Map *mapCarts, Map* mapName) {
         cartItem = cartItemCreate(item, stock);
     }
 
-    // nombre producto
-    // cuantos productos?
+    cartItem->stock = stock;
     // añadir producto.
+    listPushBack(cart->list, cartItem);
 }
 
 void showCarts(Map *mapCarts) {
