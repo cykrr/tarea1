@@ -38,7 +38,7 @@ void addToCart(Map *mapCarts, Map* mapName) {
     }
 
     fflush(stdin);
-    printf("Ingrese nombre del producto a agregar");
+    printf("Ingrese nombre del producto a agregar: ");
     scanf("%[^\n]*s", productName);
     getchar();
 
