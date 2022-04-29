@@ -102,6 +102,9 @@ void showItem(Item *item){
 
 void showItems(Map *nameMap) {
     int itemCount = 0;
+    if(firstMap(nameMap)) {
+        strcat(buf, "Lista de productos:\n");
+    }
     for(Item *item = firstMap(nameMap);
             item != NULL; 
             item = nextMap(nameMap), itemCount++) 
