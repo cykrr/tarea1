@@ -25,6 +25,7 @@ int main(){
     Map * mapNames = createMap(is_equal_string);
     Map * mapTypes = createMap(is_equal_string);
     Map * mapBrands = createMap(is_equal_string);
+    Map * mapCarts = createMap(is_equal_string);
 
     char in = '\0';
 
