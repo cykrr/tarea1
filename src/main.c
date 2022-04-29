@@ -54,17 +54,17 @@ int main(){
                 break;
             // Mostrar todos los productos por tipo
             case('t'):
+                showItemsByType(mapTypes);
                 break;
             // Mostrar todos los productos por marca
             case('m'):
-                break;
-            // Mostrar todos los productos por nombre
-            case('n'):
+                showItemsByBrand(mapBrands);
                 break;
             case('M'): // Mostrar todos los productos
                 showItems(mapNames);
                 break;
             case('A'): // Añadir al carrito
+                addToCart(mapCarts);
                 break;
             case('X'): // Quitar del carrito
                 break;
