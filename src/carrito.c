@@ -25,16 +25,23 @@ Cart *cartCreate(char *cartName) {
 void addToCart(Map *mapCarts, Map* mapName) {
     char cartName[60];
     char productName[100];
+    int stock;
+
+    fflush(stdin);
     printf("Ingrese el nombre del carrito: ");
     scanf("%[^\n]*s", cartName);
     getchar();
+
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart) {
         cart = cartCreate(cartName);
     }
 
+
+    fflush(stdin);
     printf("Ingrese nombre del producto a agregar");
     scanf("%[^\n]*s", productName);
+    getchar();
 
     Item *item = searchMap(mapName, productName);
     if(!item) {
@@ -43,9 +50,8 @@ void addToCart(Map *mapCarts, Map* mapName) {
         return;
     }
 
-
     printf("Cuantos productos desea añadir?: ");
-    int stock;
+    fflush(stdin);
     scanf("%d", &stock);
 
     CartItem * cartItem = listSearch(cart->list);
