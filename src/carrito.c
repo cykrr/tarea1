@@ -64,9 +64,11 @@ void addToCart(Map *mapCarts, Map* mapName) {
 }
 
 void showCarts(Map *mapCarts) {
+    int count =0;
     for(Cart *cart = firstMap(mapCarts); 
             cart != NULL; 
-            cart = nextMap(mapCarts)) {
+            cart = nextMap(mapCarts), 
+            count++) {
         strcat(buf, "Nombre carrito: ");
         strcat(buf, cart->name);
         strcat(buf, "\n");
@@ -85,6 +87,9 @@ void showCarts(Map *mapCarts) {
         }
         strcat(buf, "\n");
 
+    }
+    if (!count) {
+        strcat(buf, COLOR_RED "No existen carritos\n" COLOR_RESET);
     }
 }
 
