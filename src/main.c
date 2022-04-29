@@ -72,6 +72,7 @@ int main(){
             case('p'): // Concretar compra
                 break;
             case('C'): // Mostrar carritos
+                showCarts(mapCarts);
                 break;
             default:
                 break;
