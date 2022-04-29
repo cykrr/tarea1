@@ -57,6 +57,7 @@ int main(){
                 showItem(mapNames -> head -> data);
                 break;
             case('b'): // Buscar producto
+                searchItem(mapNames);
                 break;
             // Mostrar todos los productos por tipo
             case('t'):

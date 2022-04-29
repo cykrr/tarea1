@@ -166,3 +166,19 @@ void showList(List *list) {
         showItem(item);
     }
 }
+
+void searchItem(Map *map) {
+    char nombre[60];
+    printf("Ingrese nombre del producto: ");
+    fflush(stdin);
+    scanf("%[^\n]*s", nombre);
+    getchar();
+    Item *aux = searchMap(map, nombre);
+    if(!aux) {
+        strcat(buf, COLOR_RED "Error: No existe el producto\n"
+                COLOR_RESET);
+        return;
+    }
+    strcat(buf, "\n");
+    showItem(aux);
+}

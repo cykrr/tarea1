@@ -31,4 +31,6 @@ void insertMapList(Map * map,char *key,Item * item);
 
 void showList(List *list);
 
+void searchItem(Map *map);
+
 #endif
