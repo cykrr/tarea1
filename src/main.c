@@ -30,7 +30,6 @@ int main(){
 
     int repetida = 0;
 
-    clrscr();
     while(in != 'q' ){
         mostrarMenu();
         fflush(stdin);
@@ -43,7 +42,7 @@ int main(){
                 break;
             case('a'): // Agregar producto
                 if(addItem(mapNames,mapTypes,mapBrands) == 1 ){
-                    printf("Stock del prodcucto actuliazdo");
+                    printf("Stock del producto actuliazdo");
                 }else{
                     printf("Producto agregado");
                     }
