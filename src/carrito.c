@@ -4,4 +4,4 @@ int deleteItem(Cart *cart){
     listPopFront( cart-> lista);
 
     return EXIT_FAILURE;
-}
+}    cart->total = 0;
