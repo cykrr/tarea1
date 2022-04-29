@@ -24,6 +24,12 @@ void showItem(Item *item);
 
 void showItems(Map *nameMap);
 
+void showItemsByType(Map *typeMap);
+void showItemsByBrand(Map *brandMap);
+
 
 void insertMapList(Map * map,char *key,Item * item);
+
+void showList(List *list);
+
 #endif
