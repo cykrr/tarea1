@@ -5,3 +5,4 @@ int deleteItem(Cart *cart){
 
     return EXIT_FAILURE;
 }    cart->total = 0;
+

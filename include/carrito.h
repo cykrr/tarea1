@@ -14,8 +14,9 @@ typedef struct Cart {
 
 int deleteItem(Cart *cart);
 
-void addToCart(Map *mapCarts);
+void addToCart(Map *mapCarts, Map *mapName);
 
 Cart *cartCreate(char *cartName);
 
+void showCarts(Map *mapCarts);
 #endif
