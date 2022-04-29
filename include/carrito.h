@@ -31,4 +31,6 @@ void showCarts(Map *mapCarts);
 
 CartItem *cartItemCreate(Item* item, int stock);
 
+CartItem *searchCartItem(List *list, char *itemName);
+
 #endif
