@@ -105,6 +105,16 @@ void showCarts(Map *mapCarts) {
     }
 }
 
+void showCart(Cart *cart){
+    printf("Productos del carrito: \n");
+    for(CartItem *item = listFirst(cart -> list); item != NULL; item = listNext(cart -> list)){
+        //printf("%s\n", item -> item -> name);
+        strcat(buf, item -> item -> name);
+        strcat(buf, "\n");
+    }
+
+}
+
 CartItem *cartItemCreate(Item *item, int stock) {
     CartItem *new = malloc(sizeof(CartItem));
     new->stock = stock;
@@ -121,4 +131,27 @@ CartItem *searchCartItem(List *list, char *itemName) {
             return cartItem;
     }
     return NULL;
+}
+
+void cartCheckout(Map *mapCarts){
+    char cartName[60];
+
+    fflush(stdin);
+    printf("Ingrese el nombre del carrito: ");
+    scanf("%[^\n]*s", cartName);
+    getchar();
+
+    Cart *cart = searchMap(mapCarts, cartName);
+    if(!cart){
+        strcat(buf, "El carrito no existe\n");
+    }else{
+        strcat(buf, "Total a pagar: ");
+        char total[10];
+        sprintf(total, "%d", cart->total);
+        strcat(buf, total);
+        strcat(buf, "\n");
+        showCart(cart);
+        eraseMap(mapCarts, cartName);
+    }
+
 }
