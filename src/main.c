@@ -62,6 +62,7 @@ int main(){
             case('n'):
                 break;
             case('M'): // Mostrar todos los productos
+                showItems(mapNames);
                 break;
             case('A'): // Añadir al carrito
                 break;
