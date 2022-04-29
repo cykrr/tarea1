@@ -18,12 +18,20 @@ int is_equal_string(void * key1, void * key2) {
     return 0;
 }
 
+int lower_than_string(void* key1, void* key2){
+    char* k1=(char*) key1;
+    char* k2=(char*) key2;
+    if(strcmp(k1,k2)<0) return 1;
+    return 0;
+}
+
 /* main function */
 int main(){
     Map * mapNames = createMap(is_equal_string);
     Map * mapTypes = createMap(is_equal_string);
     Map * mapBrands = createMap(is_equal_string);
     Map * mapCarts = createMap(is_equal_string);
+    mapCarts->lower_than = &lower_than_string;
 
     char in = '\0';
 
