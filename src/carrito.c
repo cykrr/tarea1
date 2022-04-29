@@ -127,7 +127,7 @@ CartItem *searchCartItem(List *list, char *itemName) {
     return NULL;
 }
 
-void cartCheckout(Map *mapCarts){
+void cartCheckout(Map *mapCarts, Map *mapNames, Map *mapTypes, Map *mapBrands){
     char cartName[60];
 
     fflush(stdin);
@@ -146,6 +146,7 @@ void cartCheckout(Map *mapCarts){
         strcat(buf, "\n");
         showCart(cart);
         eraseMap(mapCarts, cartName);
+
     }
 
 }
