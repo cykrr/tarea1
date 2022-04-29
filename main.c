@@ -31,7 +31,6 @@ int main(){
     Map * mapTypes = createMap(is_equal_string);
     Map * mapBrands = createMap(is_equal_string);
     Map * mapCarts = createMap(is_equal_string);
-    mapCarts->lower_than = &lower_than_string;
 
     char in = '\0';
 
