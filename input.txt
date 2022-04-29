@@ -1,0 +1,15 @@
+a
+Leche
+colun
+lacteo
+23
+300
+a
+Queso
+colun
+lacteo
+25
+100
+t
+lacteo
+q
