@@ -1,6 +1,7 @@
 #include "map.h"
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 
 
@@ -16,6 +17,13 @@ Node* _createNode(void * key, void * data) {
     new->prev = NULL;
     new->next = NULL;
     return new;
+}
+
+int lower_than(void* key1, void* key2){
+    char* k1=(char*) key1;
+    char* k2=(char*) key2;
+    if(strcmp(k1,k2)<0) return 1;
+    return 0;
 }
 
 

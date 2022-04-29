@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include "list.h"
 #include "util.h"
+#include "map.h"
 
 
 typedef struct {
@@ -18,7 +19,7 @@ typedef struct {
  *  archivo y la aplicación carga 
  *  todas las canciones.
  */
-List *CSVimport(char *fileName);
+List *CSVimport(char *fileName, Map* mapNames, Map* mapTypes, Map* mapBrands);
 
 /*  Exportar canciones
  *  CSV(char* nombre_archivo):
@@ -31,7 +32,7 @@ void CSVexport(List *list, char *fileName);
 void CSVcreate(CSV *csv);
 
 // Menú interactivo
-List *listaImportarArchivo();
+List *listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands);
 
 CSV *CSVnew();
 #endif

@@ -63,7 +63,7 @@ const char *get_csv_field (char * tmp, int k) {
 
 
  
-void populateList(CSV *csv){
+void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
     ssize_t read; size_t length = 0; char *line = NULL;
 
 
@@ -80,7 +80,6 @@ void populateList(CSV *csv){
         aux->stock = atoi(get_csv_field(line, 3));
         aux->price = atoi(get_csv_field(line, 4));
 
-
         if(searchMap(mapNames,aux -> name) == NULL) { 
         insertMap(mapNames, aux->name, aux);
         insertMapList(mapTypes, aux -> type, aux);
@@ -89,7 +88,7 @@ void populateList(CSV *csv){
     }
 }
 
-List *CSVimport(char *name){
+List *CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
     CSV *import = CSVnew();
 
     char *namecpy = strdup(name);
@@ -103,7 +102,7 @@ List *CSVimport(char *name){
         return NULL;
     }
 
-    populateList(import);
+    populateList(import, mapNames, mapTypes, mapBrands);
     fclose(import->fd);
     return import->list;
 
@@ -155,12 +154,12 @@ CSV *CSVnew() {
     CSVcreate(csv);
     return csv;
 }
-List *listaImportarArchivo() {
+List *listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands) {
     char archivo[30];
     printf("Ingresa el nombre del archivo a importar: ");
     fflush(stdin);
     scanf("%[^\n]*s", archivo);
     getchar();
-    List *list = CSVimport(archivo);
+    List *list = CSVimport(archivo, mapNames, mapTypes, mapBrands);
     return list;
 }
