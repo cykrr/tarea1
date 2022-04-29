@@ -52,6 +52,7 @@ void addToCart(Map *mapCarts, Map* mapName) {
     printf("Cuantos productos desea añadir?: ");
     fflush(stdin);
     scanf("%d", &stock);
+    getchar();
 
     CartItem * cartItem = searchCartItem(cart->list, productName);
     if(!cartItem) {
