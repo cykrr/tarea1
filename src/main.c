@@ -20,8 +20,6 @@ int is_equal_string(void * key1, void * key2) {
 
 /* main function */
 int main(){
-    List  *listaCarritos = listCreate();
-    List  *listaProductos = listCreate();
     Map * mapNames = createMap(is_equal_string);
     Map * mapTypes = createMap(is_equal_string);
     Map * mapBrands = createMap(is_equal_string);
