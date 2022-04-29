@@ -13,7 +13,7 @@ typedef struct {
 } CartItem;
 
 typedef struct Cart {
-    char name[30];
+    char name[60];
     // Necesitamos implementar una pila en vez de una lista
     List *list;
 
