@@ -23,7 +23,7 @@ Cart *cartCreate(char *cartName) {
 }
 
 void addToCart(Map *mapCarts, Map* mapName) {
-    char cartName[60];
+    char *cartName = malloc(sizeof(char)*60);
     char productName[100];
     int stock;
 
@@ -48,8 +48,9 @@ void addToCart(Map *mapCarts, Map* mapName) {
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart) {
         cart = cartCreate(cartName);
-        insertMap(mapCarts, cartName, cart);
+        insertMap(mapCarts, cart->name, cart);
     }
+    free(cartName);
 
     printf("Cuantos productos desea añadir?: ");
     fflush(stdin);
