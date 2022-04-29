@@ -86,17 +86,34 @@ void findItem(Map* map, void * key) {
 void showItem(Item *item){
     strcat(buf, "  Nombre: " );
     strcat(buf,item->name);
-    strcat(buf, "  Brand: " );
+    strcat(buf, "\n    Brand: " );
     strcat(buf,item->brand);
-    strcat(buf, "  Type: " );
+    strcat(buf, "\n    Type: " );
     strcat(buf,item->type);
     char numero[10];
     sprintf(numero, "%d",item->stock);
-    strcat(buf, "  Stock: " );
+    strcat(buf, "\n    Stock: " );
     strcat(buf, numero);
-    strcat(buf, "  Precio: " );
+    strcat(buf, "\n    Precio: " );
     sprintf(numero, "%d",item->price);
     strcat(buf, numero);
     strcat(buf, "\n\n");
+}
+
+void showItems(Map *nameMap) {
+    int itemCount = 0;
+    for(Item *item = firstMap(nameMap);
+            item != NULL; 
+            item = nextMap(nameMap), itemCount++) 
+    {
+        showItem(item);
+    }
+
+    if(!itemCount) {
+        strcat(buf, COLOR_RED 
+                "Error!: No hay productos agregados\n"
+                COLOR_RESET);
+    }
+
 }
 
