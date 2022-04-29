@@ -35,6 +35,7 @@ void addToCart(Map *mapCarts, Map* mapName) {
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart) {
         cart = cartCreate(cartName);
+        insertMap(mapCarts, cartName, cart);
     }
 
     fflush(stdin);
