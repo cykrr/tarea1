@@ -9,6 +9,7 @@ typedef struct Cart {
     List *list;
 
     int size;
+    int total;
 } Cart;
 
 int deleteItem(Cart *cart);
