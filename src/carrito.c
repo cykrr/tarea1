@@ -92,5 +92,6 @@ CartItem *cartItemCreate(Item *item, int stock) {
     CartItem *new = malloc(sizeof(CartItem));
     new->stock = stock;
     new->item = item;
+    cart->total = 0;
     return new;
-}
+}    
