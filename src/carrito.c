@@ -53,7 +53,7 @@ void addToCart(Map *mapCarts, Map* mapName) {
     fflush(stdin);
     scanf("%d", &stock);
 
-    CartItem * cartItem = NULL;//listSearch(cart->list);
+    CartItem * cartItem = searchCartItem(cart->list, productName);
     if(!cartItem) {
         cartItem = cartItemCreate(item, stock);
     }
