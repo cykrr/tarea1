@@ -37,7 +37,6 @@ void addToCart(Map *mapCarts, Map* mapName) {
         cart = cartCreate(cartName);
     }
 
-
     fflush(stdin);
     printf("Ingrese nombre del producto a agregar");
     scanf("%[^\n]*s", productName);
@@ -59,6 +58,7 @@ void addToCart(Map *mapCarts, Map* mapName) {
         cartItem = cartItemCreate(item, stock);
     }
 
+    // nombre producto
     // cuantos productos?
     // añadir producto.
 }
@@ -94,4 +94,3 @@ CartItem *cartItemCreate(Item *item, int stock) {
     new->item = item;
     return new;
 }    
-
