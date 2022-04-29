@@ -42,10 +42,10 @@ int main(){
                 break;
             case('a'): // Agregar producto
                 if(addItem(mapNames,mapTypes,mapBrands) == 1 ){
-                    printf("Stock del producto actuliazdo");
-                }else{
-                    printf("Producto agregado");
-                    }
+                    strcat(buf, "Stock del producto actualizado\n");
+                } else{
+                    strcat(buf, "Producto agregado correctamente\n");
+                }
                 break;
             case('x'): // Quitar producto
                 showItem(mapNames -> head -> data);
