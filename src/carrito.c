@@ -102,7 +102,6 @@ void showCarts(Map *mapCarts) {
 void showCart(Cart *cart){
     printf("Productos del carrito: \n");
     for(CartItem *item = listFirst(cart -> list); item != NULL; item = listNext(cart -> list)){
-        //printf("%s\n", item -> item -> name);
         strcat(buf, item -> item -> name);
         strcat(buf, "\n");
     }
@@ -137,7 +136,9 @@ void cartCheckout(Map *mapCarts, Map *mapNames, Map *mapTypes, Map *mapBrands){
 
     Cart *cart = searchMap(mapCarts, cartName);
     if(!cart){
-        strcat(buf, "El carrito no existe\n");
+        strcat(buf, "El carrito \"");
+        strcat(buf, cartName);
+        strcat(buf, "\" no existe \n");
     }else{
         strcat(buf, "Total a pagar: ");
         char total[10];

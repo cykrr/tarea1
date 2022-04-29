@@ -1,8 +1,7 @@
 #include "map.h"
 #include <stdlib.h>
 #include <assert.h>
-
-
+#include <string.h>
 
 
 
@@ -17,9 +16,6 @@ Node* _createNode(void * key, void * data) {
     new->next = NULL;
     return new;
 }
-
-
-
 
 Map * createMap(int (*is_equal)(void* key1, void* key2)) {
     Map * new = (Map *)malloc(sizeof(Map));
