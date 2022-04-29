@@ -45,7 +45,7 @@ int main(){
                     printf("Stock del producto actuliazdo");
                 }else{
                     printf("Producto agregado");
-                    }
+                }
                 break;
             case('x'): // Quitar producto
                 showItem(mapNames -> head -> data);
