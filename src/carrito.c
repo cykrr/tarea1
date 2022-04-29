@@ -55,6 +55,12 @@ void addToCart(Map *mapCarts, Map* mapName) {
     scanf("%d", &stock);
     getchar();
 
+    if(stock > item->stock) {
+        strcat(buf, COLOR_RED "Error: No hay suficientes productos\n"
+                COLOR_RESET);
+        return;
+    }
+
     CartItem * cartItem = searchCartItem(cart->list, productName);
     if(!cartItem) {
         cartItem = cartItemCreate(item, stock);
