@@ -6,12 +6,40 @@
       "-Iinclude",
       "-g",
       "-o",
+      "out/carrito.o",
+      "src/carrito.c"
+    ],
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/carrito.c",
+    "output": "/home/krr/tarea2/out/carrito.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
+      "-o",
       "out/csv.o",
       "src/csv.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/csv.c",
-    "output": "/home/krr/tarea1/out/csv.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/csv.c",
+    "output": "/home/krr/tarea2/out/csv.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
+      "-o",
+      "out/item.o",
+      "src/item.c"
+    ],
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/item.c",
+    "output": "/home/krr/tarea2/out/item.o"
   },
   {
     "arguments": [
@@ -23,9 +51,9 @@
       "out/list.o",
       "src/list.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/list.c",
-    "output": "/home/krr/tarea1/out/list.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/list.c",
+    "output": "/home/krr/tarea2/out/list.o"
   },
   {
     "arguments": [
@@ -37,9 +65,23 @@
       "out/main.o",
       "src/main.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/main.c",
-    "output": "/home/krr/tarea1/out/main.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/main.c",
+    "output": "/home/krr/tarea2/out/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinclude",
+      "-g",
+      "-o",
+      "out/map.o",
+      "src/map.c"
+    ],
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/map.c",
+    "output": "/home/krr/tarea2/out/map.o"
   },
   {
     "arguments": [
@@ -51,9 +93,9 @@
       "out/menu.o",
       "src/menu.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/menu.c",
-    "output": "/home/krr/tarea1/out/menu.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/menu.c",
+    "output": "/home/krr/tarea2/out/menu.o"
   },
   {
     "arguments": [
@@ -65,9 +107,9 @@
       "out/playlist.o",
       "src/playlist.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/playlist.c",
-    "output": "/home/krr/tarea1/out/playlist.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/playlist.c",
+    "output": "/home/krr/tarea2/out/playlist.o"
   },
   {
     "arguments": [
@@ -79,23 +121,9 @@
       "out/search.o",
       "src/search.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/search.c",
-    "output": "/home/krr/tarea1/out/search.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/gcc",
-      "-c",
-      "-Iinclude",
-      "-g",
-      "-o",
-      "out/song.o",
-      "src/song.c"
-    ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/song.c",
-    "output": "/home/krr/tarea1/out/song.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/search.c",
+    "output": "/home/krr/tarea2/out/search.o"
   },
   {
     "arguments": [
@@ -107,8 +135,8 @@
       "out/util.o",
       "src/util.c"
     ],
-    "directory": "/home/krr/tarea1",
-    "file": "/home/krr/tarea1/src/util.c",
-    "output": "/home/krr/tarea1/out/util.o"
+    "directory": "/home/krr/tarea2",
+    "file": "/home/krr/tarea2/src/util.c",
+    "output": "/home/krr/tarea2/out/util.o"
   }
 ]
