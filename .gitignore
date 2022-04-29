@@ -9,3 +9,4 @@ tests/test*
 tests/list
 tests/map
 tarea2
+.cache/clangd/index
