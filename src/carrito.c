@@ -63,6 +63,8 @@ void addToCart(Map *mapCarts, Map* mapName) {
     cartItem->stock = stock;
     // añadir producto.
     listPushBack(cart->list, cartItem);
+    cart->size += cartItem->stock;
+    cart->total += cartItem->item->price;
 }
 
 void showCarts(Map *mapCarts) {
