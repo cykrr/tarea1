@@ -32,11 +32,6 @@ void addToCart(Map *mapCarts, Map* mapName) {
     scanf("%[^\n]*s", cartName);
     getchar();
 
-    Cart *cart = searchMap(mapCarts, cartName);
-    if (!cart) {
-        cart = cartCreate(cartName);
-        insertMap(mapCarts, cartName, cart);
-    }
 
     fflush(stdin);
     printf("Ingrese nombre del producto a agregar: ");
@@ -48,6 +43,12 @@ void addToCart(Map *mapCarts, Map* mapName) {
         strcat(buf, COLOR_RED "Error: No existe dicho producto\n" 
                 COLOR_RESET);
         return;
+    }
+
+    Cart *cart = searchMap(mapCarts, cartName);
+    if (!cart) {
+        cart = cartCreate(cartName);
+        insertMap(mapCarts, cartName, cart);
     }
 
     printf("Cuantos productos desea añadir?: ");
