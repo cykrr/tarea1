@@ -36,8 +36,22 @@ void addToCart(Map *mapCarts, Map* mapName) {
     scanf("%[^\n]*s", productName);
 
     Item *item = searchMap(mapName, productName);
+    if(!item) {
+        strcat(buf, COLOR_RED "Error: No existe dicho producto\n" 
+                COLOR_RESET);
+        return;
+    }
 
-    // nombre producto
+
+    printf("Cuantos productos desea añadir?: ");
+    int stock;
+    scanf("%d", &stock);
+
+    CartItem * cartItem = listSearch(cart->list);
+    if(!cartItem) {
+        cartItem = cartItemCreate(item, stock);
+    }
+
     // cuantos productos?
     // añadir producto.
 }
@@ -65,4 +79,11 @@ void showCarts(Map *mapCarts) {
         strcat(buf, "\n");
 
     }
+}
+
+CartItem *cartItemCreate(Item *item, int stock) {
+    CartItem *new = malloc(sizeof(CartItem));
+    new->stock = stock;
+    new->item = item;
+    return new;
 }
