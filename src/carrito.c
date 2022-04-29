@@ -101,3 +101,14 @@ CartItem *cartItemCreate(Item *item, int stock) {
     new->item = item;
     return new;
 }    
+
+CartItem *searchCartItem(List *list, char *itemName) {
+    CartItem *cartItem;
+    for(cartItem = listFirst(list);
+            cartItem != NULL;
+            cartItem = listNext(list)) {
+        if(strcmp(itemName, cartItem->item->name) == 0)
+            return cartItem;
+    }
+    return NULL;
+}
