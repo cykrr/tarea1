@@ -108,6 +108,10 @@ void showCarts(Map *mapCarts)
     }
 }
 
+void deleteStock(Map *mapNames, Map *mapBrands, Map *mapTypes, int amount, Item *item){
+
+}
+
 void showCart(Cart *cart)
 {
     printf("Productos del carrito: \n");
