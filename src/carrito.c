@@ -76,7 +76,6 @@ void addToCart(Map *mapCarts, Map *mapName)
 void showCarts(Map *mapCarts)
 {
     int cartCount = 0;
-    int itemCount = 0;
 
     for (Cart *cart = firstMap(mapCarts);
          cart != NULL;
