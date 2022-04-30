@@ -109,8 +109,14 @@ void showCarts(Map *mapCarts)
     }
 }
 
-void deleteStock(Map *mapNames, Map *mapBrands, Map *mapTypes, int amount, Item *item){
-
+void deleteStock(Map *mapNames, Cart *cart){
+    for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
+    {
+        Item *aux = searchMap(mapNames, item -> item -> name);
+        aux -> stock -= item -> stock;
+        eraseMap(mapNames, item -> item -> name);
+        insertMap(mapNames, item -> item -> name, aux);
+    }
 }
 
 void showCart(Cart *cart)
@@ -155,7 +161,7 @@ CartItem *searchCartItem(List *list, char *itemName)
     return NULL;
 }
 
-void cartCheckout(Map *mapCarts)
+void cartCheckout(Map *mapCarts, Map *mapNames)
 {
     char *cartName = malloc(sizeof(char) * 60);
 
@@ -181,6 +187,7 @@ void cartCheckout(Map *mapCarts)
         strcat(buf, "\n");
         eraseMap(mapCarts, cartName);
         strcat(buf, "\nCompra exitosa! \n\n");
+        deleteStock(mapNames, cart);
     }
 
     free(cartName);
