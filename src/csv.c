@@ -79,7 +79,6 @@ void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
         aux->stock = atoi(get_csv_field(line, 3));
         aux->price = atoi(get_csv_field(line, 4));
 
-        showItem(aux);
 
         if(searchMap(mapNames,aux -> name) == NULL) { 
         insertMap(mapNames, aux->name, aux);
