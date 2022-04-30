@@ -99,6 +99,7 @@ List *CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
     import->fd = fopen(name, "r");
     if(!import->fd){ // nos vamos
         free(import);
+        strcat(buf, "\x1b[31mError:  Archivo no existe\x1b[0m\n");
         return NULL;
     }
 
