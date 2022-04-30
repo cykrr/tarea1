@@ -38,9 +38,12 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     getchar();
     int found = 0;
 
-    if(searchMap(mapNames,item -> name) == NULL){
+    if(searchMap(mapNames,item -> name) == NULL) { 
         insertMap(mapNames, item->name, item);
-    }else{
+        insertMapList(mapTypes, item -> type, item);
+        insertMapList(mapBrands, item -> brand, item);
+    } else{ 
+        //comprobar que el producto sea 100% igual(nombre,marca,brand)
         Item *aux = searchMap(mapNames,item -> name);
         aux->stock += item->stock;
         found++;
@@ -53,6 +56,14 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
 }
 
+void insertMapList(Map * map, char *key, Item * item){
+    List *aux = searchMap(map,key);
+    if(aux == NULL){
+        aux = listCreate();
+        insertMap(map, key, aux);
+    }
+    listPushBack(aux,item);
+}
 
 
 void findItem(Map* map, void * key) {
@@ -76,17 +87,82 @@ void findItem(Map* map, void * key) {
 void showItem(Item *item){
     strcat(buf, "  Nombre: " );
     strcat(buf,item->name);
-    strcat(buf, "  Brand: " );
+    strcat(buf, "\n    Brand: " );
     strcat(buf,item->brand);
-    strcat(buf, "  Type: " );
+    strcat(buf, "\n    Type: " );
     strcat(buf,item->type);
     char numero[10];
     sprintf(numero, "%d",item->stock);
-    strcat(buf, "  Stock: " );
+    strcat(buf, "\n    Stock: " );
     strcat(buf, numero);
-    strcat(buf, "  Precio: " );
+    strcat(buf, "\n    Precio: " );
     sprintf(numero, "%d",item->price);
     strcat(buf, numero);
     strcat(buf, "\n\n");
 }
 
+void showItems(Map *nameMap) {
+    int itemCount = 0;
+    if(firstMap(nameMap)) {
+        strcat(buf, "Lista de productos:\n");
+    }
+    for(Item *item = firstMap(nameMap);
+            item != NULL; 
+            item = nextMap(nameMap), itemCount++) 
+    {
+        showItem(item);
+    }
+
+    if(!itemCount) {
+        strcat(buf, COLOR_RED 
+                "Error!: No hay productos agregados\n"
+                COLOR_RESET);
+    }
+
+}
+
+void showItemsByBrand(Map* mapBrands) {
+    char brand[30];
+    printf("Ingrese la marca a mostrar: ");
+    scanf("%[^\n]*s", brand);
+    getchar();
+    List *list = searchMap(mapBrands, brand);
+    if(!list) {
+        strcat(buf, COLOR_RED "Error: no existe la marca ");
+        strcat(buf, brand);
+        strcat(buf, COLOR_RESET);
+        strcat(buf, "\n");
+    } else if (list) {
+        strcat(buf, "Mostrando lista de productos de la marca ");
+        strcat(buf, brand);
+        strcat(buf, "\n");
+        showList(list);
+    }
+}
+
+void showItemsByType(Map* mapTypes) {
+    char type[30];
+    printf("Ingrese tipo de producto a mostrar: ");
+    scanf("%[^\n]*s", type);
+    getchar();
+    List *list = searchMap(mapTypes, type);
+    if(!list) {
+        strcat(buf, COLOR_RED "Error: no existe el tipo ");
+        strcat(buf, type);
+        strcat(buf, COLOR_RESET);
+        strcat(buf, "\n");
+    } else if (list) {
+        strcat(buf, "Mostrando lista de productos del tipo ");
+        strcat(buf, type);
+        strcat(buf, "\n");
+        showList(list);
+    }
+}
+
+void showList(List *list) {
+    for(Item *item = listFirst(list);
+            item != NULL; 
+            item = listNext(list) ){
+        showItem(item);
+    }
+}

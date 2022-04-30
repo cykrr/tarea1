@@ -18,19 +18,24 @@ int is_equal_string(void * key1, void * key2) {
     return 0;
 }
 
+int lower_than_string(void* key1, void* key2){
+    char* k1=(char*) key1;
+    char* k2=(char*) key2;
+    if(strcmp(k1,k2)<0) return 1;
+    return 0;
+}
+
 /* main function */
 int main(){
-    List  *listaCarritos = listCreate();
-    List  *listaProductos = listCreate();
     Map * mapNames = createMap(is_equal_string);
     Map * mapTypes = createMap(is_equal_string);
     Map * mapBrands = createMap(is_equal_string);
+    Map * mapCarts = createMap(is_equal_string);
 
     char in = '\0';
 
     int repetida = 0;
 
-    clrscr();
     while(in != 'q' ){
         mostrarMenu();
         fflush(stdin);
@@ -43,10 +48,10 @@ int main(){
                 break;
             case('a'): // Agregar producto
                 if(addItem(mapNames,mapTypes,mapBrands) == 1 ){
-                    printf("Stock del prodcucto actuliazdo");
-                }else{
-                    printf("Producto agregado");
-                    }
+                    strcat(buf, "Stock del producto actualizado\n");
+                } else{
+                    strcat(buf, "Producto agregado correctamente\n");
+                }
                 break;
             case('x'): // Quitar producto
                 showItem(mapNames -> head -> data);
@@ -55,22 +60,34 @@ int main(){
                 break;
             // Mostrar todos los productos por tipo
             case('t'):
+                showItemsByType(mapTypes);
                 break;
             // Mostrar todos los productos por marca
             case('m'):
-                break;
-            // Mostrar todos los productos por nombre
-            case('n'):
+                showItemsByBrand(mapBrands);
                 break;
             case('M'): // Mostrar todos los productos
+                showItems(mapNames);
                 break;
             case('A'): // Añadir al carrito
+                addToCart(mapCarts, mapNames);
                 break;
             case('X'): // Quitar del carrito
                 break;
             case('p'): // Concretar compra
+                cartCheckout(mapCarts);
                 break;
             case('C'): // Mostrar carritos
+                showCarts(mapCarts);
+                break;
+            case('c'):
+                printf("Ingrese el nombre del carrito: ");
+                char cartName[60];
+                fflush(stdin);
+                scanf("%[^\n]*s", cartName);
+                putchar('\n');
+                printf("Entrada: %s\n", cartName);
+                showCart(searchMap(mapCarts, cartName));
                 break;
             default:
                 break;
