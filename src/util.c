@@ -1,7 +1,7 @@
 #include "util.h"
 #include "string.h"
 
-char buf[5000];
+char buf[10000];
 
 // castea un puntero (void *) a (Song *)
 
