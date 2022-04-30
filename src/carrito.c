@@ -61,13 +61,9 @@ void addToCart(Map *mapCarts, Map *mapName)
     scanf("%d", &stock);
     getchar();
 
-    CartItem *cartItem = searchCartItem(cart->list, productName);
-    if (!cartItem)
-    {
-        cartItem = cartItemCreate(item, stock);
-        listPushBack(cart->list, cartItem);
-        cartItem->stock = stock;
-    }
+    CartItem *cartItem = cartItemCreate(item, stock);
+    listPushBack(cart->list, cartItem);
+    cartItem->stock = stock;
 
     cart->total += cartItem->item->price * cartItem->stock;
     cart->size += cartItem->stock;
