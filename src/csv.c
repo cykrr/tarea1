@@ -4,20 +4,7 @@
 #include "item.h"
 #include "map.h"
 
-/* Lee el archivo csv linea por linea 
- * y crea un struct Song por linea, 
- * guarda respectivamente el nombre,
- * el artista. 
- *
- * Para el género crea 
- * una lista enlazada en el heap de strings (char *).
- *
- * SE ASUME QUE:
- *
- * ningun campo es mayor de 99 chars.
- *
- *
- */
+
 
 
 const char *get_csv_field (char * tmp, int k) {
