@@ -67,6 +67,8 @@ void addToCart(Map *mapCarts, Map* mapName) {
     cart->total += cartItem->item->price * cartItem->stock;
     cart->size += cartItem->stock;
 
+    free(cartName);
+
 }
 
 void showCarts(Map *mapCarts) {
