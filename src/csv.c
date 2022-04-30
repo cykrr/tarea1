@@ -51,11 +51,11 @@ const char *get_csv_field (char * tmp, int k) {
 
  
 void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
-    ssize_t read; size_t length = 0; char *line = NULL;
+    char line[2048];
 
 
     /* leer linea a "read" hasta EOF */
-    while((read = getline(&line, &length, csv->fd) != EOF)){
+    while(fgets(line, 2047, csv->fd) != NULL) {
         // Implementar    
         Item* aux = createItem();
 
@@ -83,7 +83,7 @@ void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
 List *CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
     CSV *import = CSVnew();
 
-    char *namecpy = strdup(name);
+    char *namecpy = _strdup(name);
     if(strchr(namecpy, '.')) *(strchr(namecpy, '.')) = '\0'; 
 
     strcpy(import->list->name, namecpy);
