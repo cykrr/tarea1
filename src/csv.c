@@ -80,7 +80,7 @@ void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
     }
 }
 
-List *CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
+void CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
     CSV *import = CSVnew();
 
     char *namecpy = _strdup(name);
@@ -93,13 +93,11 @@ List *CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
         free(import);
         strcat(buf, COLOR_RED "Error:  Archivo no existe\n"
                 COLOR_RESET);
-        return NULL;
+        return;
     }
 
     populateList(import, mapNames, mapTypes, mapBrands);
     fclose(import->fd);
-    return import->list;
-
 }
 
 void CSVexport(List *list, char *name){
@@ -148,12 +146,12 @@ CSV *CSVnew() {
     CSVcreate(csv);
     return csv;
 }
-List *listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands) {
+void listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands) {
     char archivo[30];
     printf("Ingresa el nombre del archivo a importar: ");
     fflush(stdin);
     scanf("%[^\n]*s", archivo);
     getchar();
-    List *list = CSVimport(archivo, mapNames, mapTypes, mapBrands);
-    return list;
+    CSVimport(archivo, mapNames, mapTypes, mapBrands);
 }
+

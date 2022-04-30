@@ -19,7 +19,7 @@ typedef struct {
  *  archivo y la aplicación carga 
  *  todas la información.
  */
-List *CSVimport(char *fileName, Map* mapNames, Map* mapTypes, Map* mapBrands);
+void CSVimport(char *fileName, Map* mapNames, Map* mapTypes, Map* mapBrands);
 
 /*  Exportar información de productos
  *  CSV(char* nombre_archivo):
@@ -32,7 +32,9 @@ void CSVexport(List *list, char *fileName);
 void CSVcreate(CSV *csv);
 
 // Menú interactivo
-List *listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands);
+void listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands);
+
+void listaExportarArchivo(Map* mapNames);
 
 CSV *CSVnew();
 #endif
