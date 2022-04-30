@@ -105,8 +105,18 @@ void showCarts(Map *mapCarts) {
 void showCart(Cart *cart){
     printf("Productos del carrito: \n");
     for(CartItem *item = listFirst(cart -> list); item != NULL; item = listNext(cart -> list)){
-        //printf("%s\n", item -> item -> name);
-        strcat(buf, item -> item -> name);
+        char texto[100];
+        strcat(buf, "\n");
+        strcat(buf, item->item->name);
+        strcat(buf, " ");
+        sprintf(texto, "%d", item->stock);
+        strcat(buf, texto);
+        strcat(buf, " unidades x ");
+        sprintf(texto, "%d", item -> item -> price);
+        strcat(buf, texto);
+        strcat(buf, " $c/u Total: $");
+        sprintf(texto, "%d", item -> item -> price * item -> stock);
+        strcat(buf, texto);
         strcat(buf, "\n");
     }
 
@@ -149,6 +159,7 @@ void cartCheckout(Map *mapCarts){
         strcat(buf, "\n");
         showCart(cart);
         eraseMap(mapCarts, cartName);
+        strcat(buf, "\nCompra exitosa! \n\n");
     }
 
 }
