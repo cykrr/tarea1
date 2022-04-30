@@ -168,7 +168,7 @@ void popLastCart(Map* mapCarts, Map* mapNames){
     getchar();
     Cart* cartAux = searchMap(mapCarts, cartName);
     CartItem* item = listLast(cartAux->list);
-    
+
     if (!cartAux)
     {
         strcat(buf, "El carrito \"");
@@ -176,9 +176,9 @@ void popLastCart(Map* mapCarts, Map* mapNames){
         strcat(buf, "\" no existe\n");
     }else{
 
-        strcat(buf, "El producto: ");
+        strcat(buf, "El producto ");
         strcat(buf, item->item->name);
-        strcat(buf, " fue eliminado");
+        strcat(buf, " fue eliminado\n\n");
 
         listPopBack(cartAux->list);
         item->stock -= 1;

@@ -39,7 +39,7 @@ make tests/cart
 
 * Concretar compra funciona bien
 
-* Eliminar carritos................
+* Eliminar ultimo producto del carrito
 
 *
   
