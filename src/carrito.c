@@ -23,7 +23,7 @@ Cart *cartCreate(char *cartName) {
 }
 
 void addToCart(Map *mapCarts, Map* mapName) {
-    char cartName[60];
+    char *cartName = malloc(sizeof(char)*60);
     char productName[100];
     int stock;
 
@@ -65,6 +65,8 @@ void addToCart(Map *mapCarts, Map* mapName) {
 
     cart->total += cartItem->item->price * cartItem->stock;
     cart->size += cartItem->stock;
+
+    free(cartName);
 
 }
 
