@@ -34,10 +34,6 @@ int main(){
 
     char in = '\0';
 
-    int repetida = 0;
-
-    char archivo[30];
-
     while(in != 'q' ){
         mostrarMenu();
         fflush(stdin);
