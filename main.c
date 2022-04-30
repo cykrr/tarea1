@@ -77,6 +77,7 @@ int main(){
                 addToCart(mapCarts, mapNames);
                 break;
             case('X'): // Quitar del carrito
+                popLastCart(mapCarts, mapNames);
                 break;
             case('p'): // Concretar compra
                 cartCheckout(mapCarts, mapNames);
