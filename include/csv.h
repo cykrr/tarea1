@@ -13,17 +13,17 @@ typedef struct {
     List *list;
 }CSV;
 
-/*  Importar canciones desde un 
+/*  Importar los datos de los productos desde un 
  *  archivo CSV (char* nombre_archivo):
  *  El usuario ingresa el nombre del
  *  archivo y la aplicación carga 
- *  todas las canciones.
+ *  todas la información.
  */
 List *CSVimport(char *fileName, Map* mapNames, Map* mapTypes, Map* mapBrands);
 
-/*  Exportar canciones
+/*  Exportar información de productos
  *  CSV(char* nombre_archivo):
- *  La aplicación exporta las canciones
+ *  La aplicación exporta la información de productos
  *  y sus datos a un archivo csv indicado
  *  por el usuario.
  */
