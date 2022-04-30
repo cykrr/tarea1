@@ -33,15 +33,15 @@ make tests/cart
      * '+' Buena dirección y planteamiento de prototipos de funciones, paciencia cuando no entendiamos algo (Por parte del resto)
      * '-' División de la carga de trabajo
 
-Bryam: 
+* Bryam: 
      * '+' Compromiso con ayudar al resto, y preciso a la hora de solucionar los errores
      * '-' Mejorar manejo de código ajeno
 
-Matias: 
+* Matias: 
      * '+' Encontrar errores en la logica del programa, participación
      * '-' Practirar las materias antes que tener que aplicarlas en las tareas (estudiar más)
 
-Nestor: 
+* Nestor: 
      * '+' Buen manejo de la logica en algoritmos, y una redacción clara de la misma 
      * '-' La participación en las reuniones de grupo
 
