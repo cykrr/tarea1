@@ -79,7 +79,7 @@ int main(){
             case('X'): // Quitar del carrito
                 break;
             case('p'): // Concretar compra
-                cartCheckout(mapCarts);
+                cartCheckout(mapCarts, mapNames);
                 break;
             case('C'): // Mostrar carritos
                 showCarts(mapCarts);
@@ -89,6 +89,7 @@ int main(){
                 char cartName[60];
                 fflush(stdin);
                 scanf("%[^\n]*s", cartName);
+                getchar();
                 putchar('\n');
                 printf("Entrada: %s\n", cartName);
                 showCart(searchMap(mapCarts, cartName));

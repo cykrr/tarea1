@@ -22,6 +22,7 @@ void mostrarMenu(){
 
     printf("'p' : Concretar compra\n");
     printf("'C' : Mostrar carritos\n");
+    printf("'c' : Mostrar carrito\n");
 
 
     printf("'q' : Salir\n");
