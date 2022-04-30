@@ -13,17 +13,9 @@
 #include "map.h"
 #include "item.h"
 
-int is_equal_string(void * key1, void * key2) {
-    if(strcmp((char*)key1, (char*)key2)==0) return 1;
-    return 0;
-}
+int lower_than_string(void* key1, void* key2);
+int is_equal_string(void * key1, void * key2);
 
-int lower_than_string(void* key1, void* key2){
-    char* k1=(char*) key1;
-    char* k2=(char*) key2;
-    if(strcmp(k1,k2)<0) return 1;
-    return 0;
-}
 
 /* main function */
 int main(){
@@ -99,3 +91,15 @@ int main(){
     return 0;
 }
 
+
+int is_equal_string(void * key1, void * key2) {
+    if(strcmp((char*)key1, (char*)key2)==0) return 1;
+    return 0;
+}
+
+int lower_than_string(void* key1, void* key2){
+    char* k1=(char*) key1;
+    char* k2=(char*) key2;
+    if(strcmp(k1,k2)<0) return 1;
+    return 0;
+}
