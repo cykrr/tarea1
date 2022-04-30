@@ -85,7 +85,8 @@ void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
             insertMapList(mapTypes, aux -> type, aux);
             insertMapList(mapBrands, aux -> brand, aux);
         }else{
-            strcat(buf, "\x1b[31mError:  Los datos ya existen\x1b[0m\n");
+            strcat(buf, COLOR_RED "Error:  Los datos ya existen\n"
+                    COLOR_RESET);
             break;
         }
         
