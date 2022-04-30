@@ -19,13 +19,29 @@ make tests/cart
 
 # Opciones que funcionan y las que no:
 
-* La opción de ingresar funciona bien, además de contar con margen de error en caso de que ingresen caracteres extras.
-* La función de busqueda cuenta con 3 opciones adicionales, donde se elige si buscar por nombre, por artista, por genero 
-* Mostrar lista no presenta problema, y muestra las canciones con su respectiva información adicional
-* No hay problemas al importar el archivo, la información se guarda correctamente en donde se asigno.
-* Exportar funciona bien, aunque para que lo guarde se debe de poner ".csv" fuera de eso funciona bien
-* Eliminar las canciones funciona bien, y guarda los cambios en caso de exportar
-* Mostrar Playlist funciona, al igual que agregarlas, y si no se crean antes, se crean durante la creación de una canción
+* Importar productos funciona bien, no hay problemas al leer el archivo, además separa los datos según las comas
+
+* Exportar esta pendiente
+
+* Agregar productos, funciona bien y no hemos encotrado errores
+
+* Buscar por tipo muestra todos los datos correctamente
+
+* Busca por marca también funciona bien
+
+* Buscar por nombre igual que los otros funciona bien
+
+* Mostrar todos los productos funciona sin problemas
+
+* Agregar al carrito funciona, bien y en caso de que el carrito no exista crea otro con el nombre que se había ingresado además de  sumar el total a medida que se van agregando los productos
+
+* Mostrar carritos, funciona bien, y los datos se mantienen separados
+
+* Concretar compra funciona bien
+
+* Eliminar carritos................
+
+*
   
 # Aspectos positivos y a mejorar de cada integrante:
     
