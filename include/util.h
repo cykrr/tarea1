@@ -9,4 +9,6 @@ extern char buf[];
 List * genresToList(const char * genre);
 void clrscr();
 
+char *_strdup(const char *str);
+
 #endif
