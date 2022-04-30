@@ -1,6 +1,8 @@
 #include "csv.h"
 #include "util.h"
 #include "menu.h"
+#include "item.h"
+#include "map.h"
 
 /* Lee el archivo csv linea por linea 
  * y crea un struct Song por linea, 
@@ -68,6 +70,22 @@ void populateList(CSV *csv){
     /* leer linea a "read" hasta EOF */
     while((read = getline(&line, &length, csv->fd) != EOF)){
         // Implementar    
+        Item* aux = createItem();
+
+        strcpy(aux->name, get_csv_field(line, 0));
+        strcpy(aux->brand, get_csv_field(line, 1));
+
+        strcpy(aux->type, get_csv_field(line, 2));
+        
+        aux->stock = atoi(get_csv_field(line, 3));
+        aux->price = atoi(get_csv_field(line, 4));
+
+
+        if(searchMap(mapNames,aux -> name) == NULL) { 
+        insertMap(mapNames, aux->name, aux);
+        insertMapList(mapTypes, aux -> type, aux);
+        insertMapList(mapBrands, aux -> brand, aux);
+        }
     }
 }
 
@@ -146,4 +164,3 @@ List *listaImportarArchivo() {
     List *list = CSVimport(archivo);
     return list;
 }
-
