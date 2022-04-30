@@ -1,6 +1,6 @@
 # Como compilar y ejecutar la tarea:
 
-Para compilar es necesario GitBash y la herramienta "make", la cual puede ser instalada en el sig. sitio : [Descargar Make](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download).
+Para compilar es necesario GitBash y la herramienta "make", la cual puede ser descargada desde el sig. sitio : [Descargar Make](https://sourceforge.net/projects/ezwinports/files/make-4.3-without-guile-w32-bin.zip/download).
 ~~Igual puede funcionar en el cmd, pero no cuenta con todas las caracteristicas que quisimos.~~ Agregada función `clrscr` para permitir
 uso del comando especifico de cada sistema operativo.
      
