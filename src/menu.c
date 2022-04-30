@@ -10,6 +10,7 @@ void mostrarMenu(){
     printf("Tienda\n");
 
     printf("'i' : Importar archivo por nombre\n");
+    printf("'e' : Exportar archivo por nombre\n");
     printf("'a' : Agregar producto\n");
     printf("'x' : Quitar producto\n");
     printf("'b' : Buscar producto\n");

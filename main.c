@@ -37,6 +37,9 @@ int main(){
                 listaImportarArchivo(mapNames, mapTypes, mapBrands);
                 break;
 
+            case ('e'): // Exportar archivo por nombre
+                listaExportarArchivo(mapNames);
+                break;
             case('a'): // Agregar producto
                 if(addItem(mapNames,mapTypes,mapBrands) == 1 ){
                     strcat(buf, "Stock del producto actualizado\n");
