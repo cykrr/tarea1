@@ -11,7 +11,7 @@ all: tests prepare $(OBJS) $(NAME) tests/map tests/list
 
 
 
-$(NAME): $(OBJS) $(INCLUDE)
+$(NAME): $(OBJS) $(INCLUDE) main.c
 	$(CC) $(INCLUDES) main.c $(OBJS) -o $(NAME) -g -Wall -Werror -std=c99
 
 prepare:
