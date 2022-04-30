@@ -155,3 +155,25 @@ void listaImportarArchivo(Map* mapNames, Map* mapTypes, Map* mapBrands) {
     CSVimport(archivo, mapNames, mapTypes, mapBrands);
 }
 
+void listaExportarArchivo(Map *map) {
+    char fileName[60];
+
+    printf("Ingrese el nombre del archivo a exportar: ");
+    fflush(stdin);
+    scanf("%[^\n]*s", fileName);
+    getchar();
+
+    FILE *file = fopen(fileName, "w");
+
+    for(Item *item =firstMap(map); 
+            item != NULL;
+            item = nextMap(map)) {
+
+        fprintf(file, "%s,", item->name);
+        fprintf(file, "%s,", item->brand);
+        fprintf(file, "%s,", item->type);
+        fprintf(file, "%d,", item->stock);
+        fprintf(file, "%d\n", item->price);
+    }
+    fclose(file);
+}
