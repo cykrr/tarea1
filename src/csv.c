@@ -68,10 +68,14 @@ void populateList(CSV *csv, Map* mapNames, Map* mapTypes, Map* mapBrands){
         aux->price = atoi(get_csv_field(line, 4));
 
         if(searchMap(mapNames,aux -> name) == NULL) { 
-        insertMap(mapNames, aux->name, aux);
-        insertMapList(mapTypes, aux -> type, aux);
-        insertMapList(mapBrands, aux -> brand, aux);
+            insertMap(mapNames, aux->name, aux);
+            insertMapList(mapTypes, aux -> type, aux);
+            insertMapList(mapBrands, aux -> brand, aux);
+        }else{
+            strcat(buf, "\x1b[31mError:  Los datos ya existen\x1b[0m\n");
+            break;
         }
+        
     }
 }
 
