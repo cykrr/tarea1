@@ -159,6 +159,34 @@ CartItem *searchCartItem(List *list, char *itemName)
     return NULL;
 }
 
+void popLastCart(Map* mapCarts, Map* mapNames){
+    char *cartName = malloc(sizeof(char) * 60);
+
+    fflush(stdin);
+    printf("Ingrese el nombre del carrito: ");
+    scanf("%[^\n]*s", cartName);
+    getchar();
+    Cart* cartAux = searchMap(mapCarts, cartName);
+    CartItem* item = listLast(cartAux->list);
+    
+    if (!cartAux)
+    {
+        strcat(buf, "El carrito \"");
+        strcat(buf, cartName);
+        strcat(buf, "\" no existe\n");
+    }else{
+
+        strcat(buf, "El producto: ");
+        strcat(buf, item->item->name);
+        strcat(buf, " fue eliminado");
+
+        listPopBack(cartAux->list);
+        item->stock -= 1;
+        cartAux->total -= item->item->price;
+    }
+
+}
+
 void cartCheckout(Map *mapCarts, Map *mapNames)
 {
     char *cartName = malloc(sizeof(char) * 60);

@@ -35,6 +35,8 @@ CartItem *cartItemCreate(Item* item, int stock);
 
 CartItem *searchCartItem(List *list, char *itemName);
 
+void popLastCart(Map* mapCarts, Map* mapNames);
+
 void cartCheckout(Map *mapCarts, Map *mapNames);
 
 void deleteStock(Map *mapNames, Cart *cart);
