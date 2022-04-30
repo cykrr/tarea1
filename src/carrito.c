@@ -128,11 +128,16 @@ void showCart(Cart *cart)
         strcat(buf, " ");
         sprintf(texto, "%d", item->stock);
         strcat(buf, texto);
-        strcat(buf, " unidades x ");
+        strcat(buf, " unidades: ");
         sprintf(texto, "%d", item -> item -> price);
+        strcat(buf, "\n  $");
         strcat(buf, texto);
-        strcat(buf, " $c/u Total: $");
+        strcat(buf, " c/u\n  Valor: $");
         sprintf(texto, "%d", item -> item -> price * item -> stock);
+        strcat(buf, texto);
+        strcat(buf, "\n");
+        strcat(buf, "Total a pagar: ");
+        sprintf(texto, "%d", cart->total);
         strcat(buf, texto);
         strcat(buf, "\n");
     }
