@@ -23,7 +23,7 @@ Cart *cartCreate(char *cartName) {
 }
 
 void addToCart(Map *mapCarts, Map* mapName) {
-    char cartName[60];
+    char *cartName = malloc(sizeof(char)*60);
     char productName[100];
     int stock;
 
@@ -127,7 +127,7 @@ CartItem *searchCartItem(List *list, char *itemName) {
 }
 
 void cartCheckout(Map *mapCarts, Map *mapNames, Map *mapTypes, Map *mapBrands){
-    char cartName[60];
+    char *cartName = malloc(sizeof(char)*60);
 
     fflush(stdin);
     printf("Ingrese el nombre del carrito: ");
@@ -149,5 +149,6 @@ void cartCheckout(Map *mapCarts, Map *mapNames, Map *mapTypes, Map *mapBrands){
         eraseMap(mapCarts, cartName);
 
     }
+    free(cartName);
 
 }
