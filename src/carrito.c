@@ -72,10 +72,13 @@ void addToCart(Map *mapCarts, Map *mapName)
         cartItem = cartItemCreate(item, stock);
         listPushBack(cart->list, cartItem);
         cartItem->stock = stock;
+    }else{
+        cartItem->stock += stock;
     }
 
+
     cart->total += cartItem->item->price * cartItem->stock;
-    cart->size += cartItem->stock;
+
 }
 
 void showCarts(Map *mapCarts)
