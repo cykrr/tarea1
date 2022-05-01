@@ -112,6 +112,20 @@ void deleteStock(Map *mapNames, Cart *cart){
     }
 }
 
+int stockCheck(Cart *cart, Map *mapNames)
+{
+    int disponible = 1;
+    for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
+    {
+        Item *aux = searchMap(mapNames, item -> item -> name);
+        if(aux -> stock < item -> stock){
+            disponible = 0;
+            break;
+        }
+    }
+    return disponible;
+}
+
 void showCart(Cart *cart)
 {
     printf("Productos del carrito: \n");
@@ -205,15 +219,22 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
     }
     else
     {
-        showCart(cart);
-        strcat(buf, "\nTotal a pagar: ");
-        char total[10];
-        sprintf(total, "%d", cart->total);
-        strcat(buf, total);
-        strcat(buf, "\n");
-        eraseMap(mapCarts, cartName);
-        strcat(buf, "\nCompra exitosa! \n\n");
-        deleteStock(mapNames, cart);
+        if(stockCheck(cart, mapNames) == 1)
+        {
+            showCart(cart);
+            strcat(buf, "\nTotal a pagar: ");
+            char total[10];
+            sprintf(total, "%d", cart->total);
+            strcat(buf, total);
+            strcat(buf, "\n");
+            eraseMap(mapCarts, cartName);
+            strcat(buf, "\nCompra exitosa! \n\n");
+            deleteStock(mapNames, cart);
+        }
+        else
+        {
+            strcat(buf, "\nCompra fallida: stock insuficiente\n");
+        }
     }
 
     free(cartName);
