@@ -147,14 +147,10 @@ void showCart(Cart *cart)
         sprintf(texto, "%d", item->stock);
         strcat(buf, texto);
         strcat(buf, " unidades: ");
-        sprintf(texto, "%d", item -> item -> price);
-        strcat(buf, "\n  $");
-        strcat(buf, texto);
-        strcat(buf, " c/u\n  Valor: $");
+        strcat(buf, "\n    Valor: $ ");
         sprintf(texto, "%d", item -> item -> price);
         strcat(buf, texto);
-        strcat(buf, "\n");
-        strcat(buf, "Total: ");
+        strcat(buf, " c/u \n    Total: ");
         sprintf(texto, "%d", item -> item -> price * item -> stock);
         strcat(buf, texto);
         strcat(buf, "\n");
@@ -242,9 +238,23 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
         }
         else
         {
+            updateCart(cart);
             strcat(buf, "\nCompra fallida: stock insuficiente\n");
         }
     }
 
     free(cartName);
+}
+
+
+void updateCart(Cart *cart){
+    for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
+    {
+        while(item -> item -> stock < item -> stock){
+            printf("En stock %d\nCuantos desea llevar?",item->item->stock);
+            scanf("%d",&(item -> stock));
+            printf("\n");
+        }
+
+    }
 }

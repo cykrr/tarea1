@@ -43,4 +43,6 @@ void deleteStock(Map *mapNames, Cart *cart);
 
 int stockCheck(Cart *cart, Map *mapNames);
 
+void updateCart(Cart *cart);
+
 #endif
