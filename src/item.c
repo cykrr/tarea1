@@ -52,7 +52,7 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     putchar('\n');
 
 
-    return EXIT_SUCCESS;
+    return found;
 
 }
 
