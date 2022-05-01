@@ -62,15 +62,17 @@ void addToCart(Map *mapCarts, Map *mapName)
     getchar();
 
     CartItem *cartItem = searchCartItem(cart->list, productName);
-    cartItem = cartItemCreate(item, stock);
-    listPushBack(cart->list, cartItem);
-    cartItem->stock = stock;
-    /*if (!cartItem)
+    CartItem *lastItem;//Guarda el ultimo item agregado
+    if (!cartItem)
     {
         cartItem = cartItemCreate(item, stock);
         listPushBack(cart->list, cartItem);
         cartItem->stock = stock;
-    }*/
+        lastItem = cartItem;
+    }else{
+        cartItem->stock += stock;
+        lastItem = cartItem;
+    }
     cart->total += cartItem->item->price * cartItem->stock;
     cart->size += cartItem->stock;
 }
@@ -182,7 +184,6 @@ void popLastCart(Map* mapCarts, Map* mapNames){
         strcat(buf, cartName);
         strcat(buf, "\" no existe\n");
     }else{
-
         strcat(buf, "El producto ");
         strcat(buf, item->item->name);
         strcat(buf, " fue eliminado\n\n");
