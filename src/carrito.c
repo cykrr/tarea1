@@ -128,11 +128,11 @@ void showCart(Cart *cart)
         strcat(buf, "\n  $");
         strcat(buf, texto);
         strcat(buf, " c/u\n  Valor: $");
-        sprintf(texto, "%d", item -> item -> price * item -> stock);
+        sprintf(texto, "%d", item -> item -> price);
         strcat(buf, texto);
         strcat(buf, "\n");
-        strcat(buf, "Total a pagar: ");
-        sprintf(texto, "%d", cart->total);
+        strcat(buf, "Total: ");
+        sprintf(texto, "%d", item -> item -> price * item -> stock);
         strcat(buf, texto);
         strcat(buf, "\n");
     }
@@ -206,7 +206,7 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
     else
     {
         showCart(cart);
-        strcat(buf, "Total a pagar: ");
+        strcat(buf, "\nTotal a pagar: ");
         char total[10];
         sprintf(total, "%d", cart->total);
         strcat(buf, total);
