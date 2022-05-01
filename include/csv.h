@@ -27,7 +27,7 @@ void CSVimport(char *fileName, Map* mapNames, Map* mapTypes, Map* mapBrands);
  *  y sus datos a un archivo csv indicado
  *  por el usuario.
  */
-void CSVexport(List *list, char *fileName);
+void CSVexport(Map *map, char *name);
 
 void CSVcreate(CSV *csv);
 

@@ -100,35 +100,24 @@ void CSVimport(char *name, Map* mapNames, Map* mapTypes, Map* mapBrands){
     fclose(import->fd);
 }
 
-void CSVexport(List *list, char *name){
+void CSVexport(Map *map, char *name){
     remove(name);
     FILE* file = fopen(name, "w");
     if (!file) {
         printf("Error creando el archivo %s\n", name);
     }
-    /*
-    for(Song *song = listFirst(list); song != NULL; song=listNext(list)) {
-        fprintf(file, "%s,", song->name);
-        fprintf(file, "%s,", song->artist);
-        if(song->genres->length != 1) fprintf(file, "\"");
-
-        int i = 0;
-        for(char *genre = listFirst(song->genres); genre != NULL; genre = listNext(song->genres), i++){
-            fprintf(file, "%s", genre);
-            
-            if(song->genres->length != i+1)
-                fprintf(file, ", ");
-        }
-
-        fprintf( file, (song->genres->length != 1) ? "\","  : "," );
-
-        fprintf(file, "%s,", song->year);
-        fprintf(file, "%s", song->playlist);
+    
+    for(Item *item = firstMap(map); item != NULL; item=nextMap(map)) {
+        fprintf(file, "%s,", item->name);
+        fprintf(file, "%s,", item->brand);
+        fprintf(file, "%s,", item->type);
+        fprintf(file, "%d", item->stock);
+        fprintf(file, "%d", item->price);
 
         fprintf(file, "\n");
 
     }
-    */
+    
     fclose(file);
 }
 
@@ -162,6 +151,7 @@ void listaExportarArchivo(Map *map) {
     fflush(stdin);
     scanf("%[^\n]*s", fileName);
     getchar();
+    strcat(fileName,".csv");
 
     FILE *file = fopen(fileName, "w");
 
