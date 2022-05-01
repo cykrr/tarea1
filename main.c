@@ -76,7 +76,7 @@ int main(){
             case('C'): // Mostrar carritos
                 showCarts(mapCarts);
                 break;
-            case('c'):
+            case('c'): // Mostrar carrito
                 showCartMain(mapCarts);
                 break;
             default:

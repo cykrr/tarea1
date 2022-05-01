@@ -186,23 +186,20 @@ void popLastCart(Map* mapCarts, Map* mapNames){
     scanf("%[^\n]*s", cartName);
     getchar();
     Cart* cartAux = searchMap(mapCarts, cartName);
-    CartItem* item = listLast(cartAux->list);
-
-    if (!cartAux)
-    {
+    if (cartAux == NULL){
         strcat(buf, "El carrito \"");
         strcat(buf, cartName);
         strcat(buf, "\" no existe\n");
-    }else{
-
-        strcat(buf, "El producto ");
-        strcat(buf, item->item->name);
-        strcat(buf, " fue eliminado\n\n");
-
-        listPopBack(cartAux->list);
-        item->stock -= 1;
-        cartAux->total -= item->item->price;
+        return;
     }
+
+    CartItem* item = listLast(cartAux->list);
+    strcat(buf, "El producto ");
+    strcat(buf, item->item->name);
+    strcat(buf, " fue eliminado\n\n");
+    listPopBack(cartAux->list);
+    item->stock -= 1;
+    cartAux->total -= item->item->price;
 
 }
 
