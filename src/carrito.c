@@ -48,6 +48,16 @@ void addToCart(Map *mapCarts, Map *mapName)
         return;
     }
 
+    printf("Cuantos productos desea añadir?: ");
+    fflush(stdin);
+    scanf("%d", &stock);
+    getchar();
+
+    if(item -> stock < stock){
+        strcat(buf, COLOR_RED "Error: Stock insuficiente\n" COLOR_RESET);
+        return;
+    }
+
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart)
     {
@@ -55,11 +65,6 @@ void addToCart(Map *mapCarts, Map *mapName)
         insertMap(mapCarts, cart->name, cart);
     }
     free(cartName);
-
-    printf("Cuantos productos desea añadir?: ");
-    fflush(stdin);
-    scanf("%d", &stock);
-    getchar();
 
     CartItem *cartItem = searchCartItem(cart->list, productName);
     if (!cartItem)
