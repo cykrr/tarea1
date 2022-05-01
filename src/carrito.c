@@ -137,7 +137,7 @@ int stockCheck(Cart *cart, Map *mapNames)
 
 void showCart(Cart *cart)
 {
-    printf("Productos del carrito: \n");
+    strcat(buf,"Productos del carrito: \n");
     for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
     {
         char texto[100];
@@ -258,3 +258,21 @@ void updateCart(Cart *cart){
 
     }
 }
+
+void showCartMain(Map *mapCarts){
+
+    printf("Ingrese el nombre del carrito: ");
+    char cartName[60];
+    fflush(stdin);
+    scanf("%[^\n]*s", cartName);
+    getchar();
+    putchar('\n');
+    Cart *cart = searchMap(mapCarts, cartName);
+    if(cart == NULL){
+        strcat(buf,"Carrito no existe\n");
+        return;
+    }
+    showCart(cart);
+
+}          
+

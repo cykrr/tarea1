@@ -45,4 +45,6 @@ int stockCheck(Cart *cart, Map *mapNames);
 
 void updateCart(Cart *cart);
 
+void showCartMain(Map *mapCarts);
+
 #endif

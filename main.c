@@ -77,14 +77,7 @@ int main(){
                 showCarts(mapCarts);
                 break;
             case('c'):
-                printf("Ingrese el nombre del carrito: ");
-                char cartName[60];
-                fflush(stdin);
-                scanf("%[^\n]*s", cartName);
-                getchar();
-                putchar('\n');
-                printf("Entrada: %s\n", cartName);
-                showCart(searchMap(mapCarts, cartName));
+                showCartMain(mapCarts);
                 break;
             default:
                 break;
