@@ -73,9 +73,11 @@ void addToCart(Map *mapCarts, Map *mapName)
         listPushBack(cart->list, cartItem);
         cartItem->stock = stock;
         cart->total += cartItem->item->price * cartItem->stock;
+        cart->size += stock;
     }else{
         cart->total -= cartItem->item->price * cartItem->stock;
         cartItem->stock += stock;
+        cart->size += stock;
         cart->total += cartItem->item->price * cartItem->stock;
     }
 
@@ -241,8 +243,24 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
         }
         else
         {
-            updateCart(cart);
-            strcat(buf, "\nCompra fallida: stock insuficiente\n");
+            printf("\nCompra fallida: stock insuficiente\n");
+            printf("Desea arreglar su carro? y/n");
+            char repuesta;
+            scanf("%c\n",&repuesta);
+            if(repuesta == 'y'){
+                updateCart(cart);
+                if(stockCheck(cart, mapNames) == 1){
+                    showCart(cart);
+                    strcat(buf, "\nTotal a pagar: ");
+                    char total[10];
+                    sprintf(total, "%d", cart->total);
+                    strcat(buf, total);
+                    strcat(buf, "\n");
+                    eraseMap(mapCarts, cartName);
+                    strcat(buf, "\nCompra exitosa! \n\n");
+                    deleteStock(mapNames, cart);
+                }
+            }
         }
     }
 
@@ -254,8 +272,12 @@ void updateCart(Cart *cart){
     for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
     {
         while(item -> item -> stock < item -> stock){
-            printf("En stock %d\nCuantos desea llevar?",item->item->stock);
-            scanf("%d",&(item -> stock));
+            printf("Producto: %s\nEn stock: %d\nCuantos desea llevar?\n",item ->item->name,item -> item -> stock);
+            cart -> size -= item -> stock;
+            cart->total -= item->item->price * item->stock;
+            scanf("%d",&(item->stock));
+            cart -> size += item -> stock;
+            cart->total += item->item->price * item->stock;
             printf("\n");
         }
 
