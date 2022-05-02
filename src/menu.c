@@ -9,7 +9,7 @@ void mostrarMenu(){
     printf("%s", buf);
     strcpy(buf, "");
 
-    printf("Tienda\n");
+    printf("\033[36m\nTienda\n"COLOR_RESET);
 
     printf("'i' : Importar archivo por nombre\n");
     printf("'e' : Exportar archivo por nombre\n");
@@ -36,11 +36,11 @@ void mostrarMenuBuscar(Map* mapNames, Map* mapTypes, Map* mapBrands){
     strcpy(buf, "");
 
 
-    printf("Menu de busqueda\n");
-    printf("n: Por Nombre\n");
-    printf("t: Por Tipo\n");
-    printf("m: Por Marca\n");
-    printf("e: Salir\n");
+    printf(COLOR_CYAN"Menu de busqueda\n"COLOR_RESET);
+    printf("'n': Por Nombre\n");
+    printf("'t': Por Tipo\n");
+    printf("'m': Por Marca\n");
+    printf("'e': Salir\n");
     
                 
 }

@@ -1,5 +1,6 @@
 #include "item.h"
 #include "map.h"
+#include "util.h"
 Item *createItem(){
 	Item *item = (Item *)malloc(sizeof(Item));
         strcpy(item->name, "");
