@@ -12,13 +12,15 @@ typedef struct {
     int stock;
 } CartItem;
 
+
+
 typedef struct Cart {
     char name[60];
     // Necesitamos implementar una pila en vez de una lista
     List *list;
-
     int size;
     int total;
+    CartItem lastCartItem;
 } Cart;
 
 int deleteItem(Cart *cart);

@@ -21,7 +21,7 @@ make tests/cart
 
 * Importar productos funciona bien, no hay problemas al leer el archivo, además separa los datos según las comas
 
-* Exportar esta pendiente
+* Exportar esta listo
 
 * Agregar productos, funciona bien y no hemos encotrado errores
 
@@ -39,31 +39,30 @@ make tests/cart
 
 * Concretar compra funciona bien
 
-* Eliminar ultimo producto del carrito
+* Eliminar ultimo producto pendiente
 
 *
   
 # Aspectos positivos y a mejorar de cada integrante:
     
 * Benjamín: 
-     * '+' Buena dirección y planteamiento de prototipos de funciones, paciencia cuando no entendiamos algo (Por parte del resto)
-     * '-' División de la carga de trabajo
+     * '+' Liderazgo, mejoró en la división de trabajo
 
 * Bryam: 
-     * '+' Compromiso con ayudar al resto, y preciso a la hora de solucionar los errores
-     * '-' Mejorar manejo de código ajeno
+     * '+' Buena planificación respecto a la utilización de estructuras de datos
+     * '-' Mejorar manejo de código ajeno, y confusión de manejo de punteros en multiples mapas
 
 * Matias: 
-     * '+' Encontrar errores en la logica del programa, participación
-     * '-' Practirar las materias antes que tener que aplicarlas en las tareas (estudiar más)
+     * '+' Mejora en la aplicación de codigo, respecto a la tarea anterior, y mayor autonmia en general
+     * '-' Practicar las materias antes que tener que aplicarlas en las tareas (estudiar más), y prestar mayor atención a detalles en el código (sobretodo respecto a la memoria)
 
 * Nestor: 
-     * '+' Buen manejo de la logica en algoritmos, y una redacción clara de la misma 
-     * '-' La participación en las reuniones de grupo
+     * '+' Buena resolución de problemas, y solución de errores
+     * '-' La participación en las reuniones de grupo (aunque participa tanto como puede)
 
 # Puntos premio/castigo a cada integrante según el trabajo hecho:
 
-* Benjamin: 3
-* Bryam: -1
-* Matias: -1
-* Nestor: -1
+* Benjamin: 1
+* Bryam: 0
+* Matias: -2
+* Nestor: 1
