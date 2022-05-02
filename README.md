@@ -39,9 +39,8 @@ make tests/cart
 
 * Concretar compra funciona bien
 
-* Eliminar ultimo producto pendiente
+* Eliminar ultimo producto funciona como debería.
 
-*
   
 # Aspectos positivos y a mejorar de cada integrante:
     
