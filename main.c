@@ -13,12 +13,14 @@
 #include "map.h"
 #include "item.h"
 
+// Funciones para trabajar con mapas.
 int lower_than_string(void* key1, void* key2);
 int is_equal_string(void * key1, void * key2);
 
 
 /* main function */
 int main(){
+    // Crear mapas a utilizar.
     Map * mapNames = createMap(is_equal_string);
     Map * mapTypes = createMap(is_equal_string);
     Map * mapBrands = createMap(is_equal_string);
@@ -28,6 +30,9 @@ int main(){
 
     while(in != 'q' ){
         mostrarMenu();
+
+        // Leer caracter de la entrada estándar.
+
         fflush(stdin);
         scanf("%c", &in);
         getchar();
