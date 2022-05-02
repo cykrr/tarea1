@@ -108,7 +108,7 @@ void showCarts(Map *mapCarts)
         strcat(buf, "Total a pagar: ");
         {
             char total[10];
-            sprintf(total, COLOR_GREEN"$%d"COLOR_RESET, cart->total);
+            sprintf(total, "$%d", cart->total);
             strcat(buf, total);
         }
         strcat(buf, "\n");
@@ -155,10 +155,10 @@ void showCart(Cart *cart)
         strcat(buf, texto);
         strcat(buf, " unidades: ");
         strcat(buf, "\n    Valor: ");
-        sprintf(texto, COLOR_GREEN"$%d"COLOR_RESET, item -> item -> price);
+        sprintf(texto, "$%d", item -> item -> price);
         strcat(buf, texto);
         strcat(buf, " c/u \n    Total: ");
-        sprintf(texto, COLOR_GREEN"$%d"COLOR_RESET, item -> item -> price * item -> stock);
+        sprintf(texto, "$%d", item -> item -> price * item -> stock);
         strcat(buf, texto);
         strcat(buf, "\n");
     }
@@ -231,12 +231,12 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
         if(stockCheck(cart, mapNames) == 1)
         {
             showCart(cart);
-            strcat(buf, "\nTotal a pagar: ");
+            strcat(buf, "\nTotal a pagar: "COLOR_GREEN);
             char total[10];
-            sprintf(total, COLOR_GREEN"$%d"COLOR_RESET, cart->total);
+            sprintf(total, "$%d", cart->total);
             strcat(buf, total);
             strcat(buf, "\n");
-            strcat(buf, "\nCompra exitosa! \n\n");
+            strcat(buf, "\nCompra exitosa! \n\n"COLOR_RESET);
             printf("%s", buf);
             deleteStock(mapNames, cart);
             eraseMap(mapCarts, cartName);
@@ -251,13 +251,13 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
                 updateCart(cart);
                 if(stockCheck(cart, mapNames) == 1){
                     showCart(cart);
-                    strcat(buf, "\nTotal a pagar: ");
+                    strcat(buf, "\nTotal a pagar: "COLOR_GREEN);
                     char total[10];
-                    sprintf(total, COLOR_GREEN"$%d"COLOR_RESET, cart->total);
+                    sprintf(total, "$%d", cart->total);
                     strcat(buf, total);
                     strcat(buf, "\n");
                     eraseMap(mapCarts, cartName);
-                    strcat(buf, "\nCompra exitosa! \n\n");
+                    strcat(buf, "\nCompra exitosa! \n\n"COLOR_RESET);
                     deleteStock(mapNames, cart);
                 }
             }
