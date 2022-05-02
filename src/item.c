@@ -46,6 +46,14 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     } else{ 
         //comprobar que el producto sea 100% igual(nombre,marca,brand)
         Item *aux = searchMap(mapNames,item -> name);
+        if (strcmp(item->brand, aux->brand) != 0 ||
+                strcmp(item->type, aux->type) != 0) {
+                strcat(buf, COLOR_RED"Error: El producto no coincide con\n"
+                        "marca o tipo de otro producto del mismo "
+                        "nombre"COLOR_RESET);
+
+                return 1;
+        }
         aux->stock += item->stock;
         found++;
     }
