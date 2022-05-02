@@ -19,6 +19,7 @@ Cart *cartCreate(char *cartName)
         return NULL;
     }
     strcpy(cart->name, cartName);
+    free(cartName);
     cart->size = 0;
     cart->total = 0;
     cart->list = listCreate();
@@ -27,7 +28,7 @@ Cart *cartCreate(char *cartName)
 
 void addToCart(Map *mapCarts, Map *mapName)
 {
-    char *cartName = malloc(sizeof(char) * 60);
+    char cartName[60];
     char productName[100];
     int stock;
 
@@ -61,10 +62,9 @@ void addToCart(Map *mapCarts, Map *mapName)
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart)
     {
-        cart = cartCreate(cartName);
+        cart = cartCreate(_strdup(cartName));
         insertMap(mapCarts, cart->name, cart);
     }
-    free(cartName);
 
     //Guarda el ultimo item añadido, después de verificar que el carrito existe
     cart->lastCartItem.item = item;
