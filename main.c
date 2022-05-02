@@ -80,14 +80,7 @@ int main(){
                 }
 
                 break; // break b
-            // Mostrar todos los productos por tipo
-            /*case('t'):
-                showItemsByType(mapTypes);
-                break;
-            // Mostrar todos los productos por marca
-            case('m'):
-                showItemsByBrand(mapBrands);*/
-                break;
+
             case('M'): // Mostrar todos los productos
                 showItems(mapNames);
                 break;
