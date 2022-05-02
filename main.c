@@ -52,6 +52,7 @@ int main(){
                 break;
             case('b'): // Buscar producto
                 mostrarMenuBuscar(mapNames, mapTypes, mapBrands);
+                fflush(stdin);
                 scanf("%c", &in);
                 getchar();
                 switch (in){
