@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "list.h"
 #include "util.h"
-
+#include "map.h"
 void mostrarMenu();
 
 void mostrarLista(List *lista, int repetida);
@@ -12,5 +12,5 @@ void mostrarLista(List *lista, int repetida);
 
 void mostrarMenuBuscar();
 
-void mostrarMenuPlaylists();
+void mostrarMenuPlaylists(Map* mapNames, Map* mapTypes, Map* mapBrands);
 #endif

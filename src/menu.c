@@ -1,6 +1,8 @@
 #include "menu.h"
 #include "util.h"
 #include "string.h"
+#include "map.h"
+#include "item.h"
 
 void mostrarMenu(){
     clrscr();
@@ -11,12 +13,11 @@ void mostrarMenu(){
 
     printf("'i' : Importar archivo por nombre\n");
     printf("'e' : Exportar archivo por nombre\n");
+
     printf("'a' : Agregar producto\n");
-    printf("'x' : Quitar producto\n");
-    printf("'b' : Buscar producto\n");
-    printf("'t' : Buscar productos por tipo\n");
-    printf("'m' : Buscar productos por marca\n");
-    printf("'n' : Buscar productos por nombre\n");
+    printf("'b' : Mostrar menú de busqueda\n");
+    /*printf("'t' : Buscar productos por tipo\n");
+    printf("'m' : Buscar productos por marca\n");*/
     printf("'M' : Mostrar todos los productos\n");
     printf("'A' : Agregar al carrito\n");
     printf("'X' : Quitar al carrito\n");
@@ -29,37 +30,20 @@ void mostrarMenu(){
     printf("'q' : Salir\n");
 }
 
-void mostrarMenuBuscar(){
-    system("clear");
+void mostrarMenuBuscar(Map* mapNames, Map* mapTypes, Map* mapBrands){
+    clrscr();
     printf("%s", buf);
     strcpy(buf, "");
 
+
     printf("Menu de busqueda\n");
     printf("n: Por Nombre\n");
-    printf("a: Por Artista\n");
-    printf("g: Por Genero\n");
-    printf("q: Salir\n");
-
+    printf("t: Por Tipo\n");
+    printf("m: Por Marca\n");
+    printf("e: Salir\n");
+    
+                
 }
 
 
-void mostrarLista(List *lista, int repetida){
-
-    strcat(buf, "Mostrando playlist ");
-    strcat(buf, lista->name);
-    strcat(buf, "\n");
-    if(lista->length){
-        strcat(buf, "Canciones añadidas:\n");
-        /*
-        for(Producto *producto = listFirst(lista); song != NULL; song = listNext(lista)){
-            mostrarCancion(song);
-        }
-        */
-        strcat(buf, "\n");
-    } else {
-        strcat(buf, COLOR_RED "Error:  No hay canciones en la lista (");
-        strcat(buf, lista->name);
-        strcat(buf, ")\n"COLOR_RESET);
-    }
-}
 

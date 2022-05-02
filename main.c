@@ -51,15 +51,31 @@ int main(){
                 showItem(mapNames -> head -> data);
                 break;
             case('b'): // Buscar producto
-                searchItem(mapNames);
+                mostrarMenuBuscar(mapNames, mapTypes, mapBrands);
+                scanf("%c", &in);
+                getchar();
+                switch (in){
+                case ('n'):
+                    searchItem(mapNames);
+                    break;
+                case ('t'):
+                    showItemsByType(mapTypes);
+                    break;
+
+                case ('m'):
+                    showItemsByBrand(mapBrands);
+                    break;
+                case('e'):
+                    break;
+                }
                 break;
             // Mostrar todos los productos por tipo
-            case('t'):
+            /*case('t'):
                 showItemsByType(mapTypes);
                 break;
             // Mostrar todos los productos por marca
             case('m'):
-                showItemsByBrand(mapBrands);
+                showItemsByBrand(mapBrands);*/
                 break;
             case('M'): // Mostrar todos los productos
                 showItems(mapNames);
