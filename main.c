@@ -62,19 +62,24 @@ int main(){
                 getchar();
                 switch (in){
                 case ('n'):
+                    // Por nombre
                     searchItem(mapNames);
                     break;
                 case ('t'):
+                    // Por tipo
                     showItemsByType(mapTypes);
                     break;
 
                 case ('m'):
+                    // Por Marca
                     showItemsByBrand(mapBrands);
                     break;
+                    // Salir del menú de busqueda
                 case('e'):
                     break;
                 }
-                break;
+
+                break; // break b
             // Mostrar todos los productos por tipo
             /*case('t'):
                 showItemsByType(mapTypes);
