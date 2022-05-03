@@ -10,6 +10,7 @@ int deleteItem(Cart *cart)
     return EXIT_FAILURE;
 }
 
+//Inicializa un dato de tipo cart
 Cart *cartCreate(char *cartName)
 {
     Cart *cart = malloc(sizeof(Cart));
@@ -26,6 +27,7 @@ Cart *cartCreate(char *cartName)
     return cart;
 }
 
+//Agrega productos a un carrito, si el carrito no existe se crea uno nuevo con el nombre recibido
 void addToCart(Map *mapCarts, Map *mapName)
 {
     char cartName[60];
@@ -59,6 +61,7 @@ void addToCart(Map *mapCarts, Map *mapName)
         return;
     }
 
+    //Comprueba la existencia del carrito, si no, crea uno nuevo
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart)
     {
@@ -71,7 +74,7 @@ void addToCart(Map *mapCarts, Map *mapName)
     cart->lastCartItem.stock = stock;
 
     CartItem *cartItem = searchCartItem(cart->list, productName);
-
+    //Comprueba si el producto seleccionado ya tiene existencias en el carrito
     if (!cartItem)
     {
         cartItem = cartItemCreate(item, stock);
@@ -89,10 +92,11 @@ void addToCart(Map *mapCarts, Map *mapName)
 
 }
 
+//Muestra todos los carritos
 void showCarts(Map *mapCarts)
 {
     int cartCount = 0;
-
+    //Recorre los elementos del mapa de carritos
     for (Cart *cart = firstMap(mapCarts);
          cart != NULL;
          cart = nextMap(mapCarts),
@@ -116,12 +120,14 @@ void showCarts(Map *mapCarts)
         }
         strcat(buf, "\n");
     }
+    //En caso de que no haya ningún carrito, se muestra un mensaje por pantalla
     if (!cartCount)
     {
         strcat(buf, COLOR_RED "No existen carritos\n" COLOR_RESET);
     }
 }
 
+//Función que reduce el stock de los productos al concretar una compra
 void deleteStock(Map *mapNames, Cart *cart){
     for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
     {
@@ -131,6 +137,7 @@ void deleteStock(Map *mapNames, Cart *cart){
     }
 }
 
+//Comprueba la disponibilidad del stock solicitado
 int stockCheck(Cart *cart, Map *mapNames)
 {
     int disponible = 1;
@@ -145,6 +152,7 @@ int stockCheck(Cart *cart, Map *mapNames)
     return disponible;
 }
 
+//Función que muestra detalladamente el contenido de un carrito
 void showCart(Cart *cart)
 {
     strcat(buf,"Productos del carrito: \n");
@@ -167,6 +175,7 @@ void showCart(Cart *cart)
     }
 }
 
+//Crea un elemento del tipo CartItem
 CartItem *cartItemCreate(Item *item, int stock)
 {
     CartItem *new = malloc(sizeof(CartItem));
@@ -175,6 +184,7 @@ CartItem *cartItemCreate(Item *item, int stock)
     return new;
 }
 
+//Comprueba si el carrito contiene determinado item
 CartItem *searchCartItem(List *list, char *itemName)
 {
     CartItem *cartItem;
@@ -188,6 +198,7 @@ CartItem *searchCartItem(List *list, char *itemName)
     return NULL;
 }
 
+//Elimina el ultimo elemento ingresado a un carrito
 void popLastCart(Map* mapCarts, Map* mapNames){
     char *cartName = malloc(sizeof(char) * 60);
 
@@ -195,6 +206,7 @@ void popLastCart(Map* mapCarts, Map* mapNames){
     printf("Ingrese el nombre del carrito: ");
     scanf("%[^\n]*s", cartName);
     getchar();
+    //Comprueba si el carrito existe
     Cart* cartAux = searchMap(mapCarts, cartName);
     if (cartAux == NULL){
         strcat(buf, "El carrito \"");
@@ -206,16 +218,13 @@ void popLastCart(Map* mapCarts, Map* mapNames){
     while( cartAux->lastCartItem.item != auxSearch->item){
         auxSearch = listNext(cartAux->list);
     }
-    //CartItem* item;
     strcat(buf, "El producto ");
     strcat(buf, cartAux->lastCartItem.item->name);
     strcat(buf, " fue eliminado\n\n");
-    //listPopBack(cartAux->list);
     auxSearch->stock -= cartAux->lastCartItem.stock;
-    //cartAux->total -= item->item->price;
-
 }
 
+//Concreta la compra
 void cartCheckout(Map *mapCarts, Map *mapNames)
 {
     char *cartName = malloc(sizeof(char) * 60);
@@ -225,6 +234,7 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
     scanf("%[^\n]*s", cartName);
     getchar();
 
+    //Comprueba si el carrito existe
     Cart *cart = searchMap(mapCarts, cartName);
     if (!cart)
     {
@@ -234,6 +244,7 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
     }
     else
     {
+        //Comprueba la disponibilidad del stock a comprar
         if(stockCheck(cart, mapNames) == 1)
         {
             showCart(cart);
@@ -249,6 +260,7 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
         }
         else
         {
+            //En caso de que no haya stock suficiente, se arregla el carrito para poder efectuar la compra
             printf("\nCompra fallida: stock insuficiente\n");
             printf("Desea arreglar su carro? y/n");
             char repuesta;
@@ -273,7 +285,7 @@ void cartCheckout(Map *mapCarts, Map *mapNames)
     free(cartName);
 }
 
-
+//Corrige el stock de un producto del carrito
 void updateCart(Cart *cart){
     for (CartItem *item = listFirst(cart->list); item != NULL; item = listNext(cart->list))
     {

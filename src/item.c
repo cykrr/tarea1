@@ -1,6 +1,8 @@
 #include "item.h"
 #include "map.h"
 #include "util.h"
+
+//Crea un elemento de tipo Item
 Item *createItem(){
 	Item *item = (Item *)malloc(sizeof(Item));
         strcpy(item->name, "");
@@ -11,7 +13,7 @@ Item *createItem(){
 	return item;
 }
 
-
+//Agrega un nuevo producto o stock a un producto existente
 int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
     Item *item = createItem();
@@ -39,6 +41,7 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
     getchar();
     int found = 0;
 
+    //Se guarda el item en los 3 mapas
     if(searchMap(mapNames,item -> name) == NULL) { 
         insertMap(mapNames, item->name, item);
         insertMapList(mapTypes, item -> type, item);
@@ -65,6 +68,7 @@ int addItem(Map* mapNames, Map* mapTypes, Map* mapBrands){
 
 }
 
+//Interta una lista a un mapa
 void insertMapList(Map * map, char *key, Item * item){
     List *aux = searchMap(map,key);
     if(aux == NULL){
@@ -74,7 +78,7 @@ void insertMapList(Map * map, char *key, Item * item){
     listPushBack(aux,item);
 }
 
-
+//Función para buscar un item usando como clave el nombre
 void findItem(Map* map, void * key) {
 
     char name[60];
@@ -92,7 +96,7 @@ void findItem(Map* map, void * key) {
 }
 
 
-
+//Muestra los detalles de un producto
 void showItem(Item *item){
     strcat(buf, "  Nombre: " );
     strcat(buf,item->name);
@@ -110,6 +114,7 @@ void showItem(Item *item){
     strcat(buf, "\n\n");
 }
 
+//Muestra todos los productos
 void showItems(Map *nameMap) {
     int itemCount = 0;
     if(firstMap(nameMap)) {
@@ -130,6 +135,7 @@ void showItems(Map *nameMap) {
 
 }
 
+//Muestra los productos de determinada marca
 void showItemsByBrand(Map* mapBrands) {
     char brand[30];
     printf("Ingrese la marca a mostrar: ");
@@ -149,6 +155,7 @@ void showItemsByBrand(Map* mapBrands) {
     }
 }
 
+//Muestra los productos de determinado tipo
 void showItemsByType(Map* mapTypes) {
     char type[30];
     printf("Ingrese tipo de producto a mostrar: ");
@@ -168,6 +175,7 @@ void showItemsByType(Map* mapTypes) {
     }
 }
 
+//Funcion para mostrar una lista
 void showList(List *list) {
     for(Item *item = listFirst(list);
             item != NULL; 
@@ -176,6 +184,7 @@ void showList(List *list) {
     }
 }
 
+//Busca un item
 void searchItem(Map *map) {
     char nombre[60];
     printf("Ingrese nombre del producto: ");

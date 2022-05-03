@@ -62,6 +62,6 @@ make tests/cart
 # Puntos premio/castigo a cada integrante según el trabajo hecho:
 
 * Benjamin: 1
-* Bryam: 0
-* Matias: -2
+* Bryam: -1
+* Matias: -1
 * Nestor: 1

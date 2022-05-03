@@ -16,8 +16,6 @@ void mostrarMenu(){
 
     printf("'a' : Agregar producto\n");
     printf("'b' : Mostrar menú de busqueda\n");
-    /*printf("'t' : Buscar productos por tipo\n");
-    printf("'m' : Buscar productos por marca\n");*/
     printf("'M' : Mostrar todos los productos\n");
     printf("'A' : Agregar al carrito\n");
     printf("'X' : Quitar al carrito\n");
