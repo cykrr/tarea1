@@ -7,20 +7,18 @@
 
 // Item en el carrito
 typedef struct {
-    // Item en la tienda
     Item *item;
     int stock;
 } CartItem;
 
 
 
-typedef struct Cart {
+typedef struct Cart {   //Carrito
     char name[60];
-    // Necesitamos implementar una pila en vez de una lista
-    List *list;
-    int size;
-    int total;
-    CartItem lastCartItem;
+    List *list;         //Lista de productos del carrito
+    int size;           //Cantidad de items en el carrito
+    int total;          //Total en pesos del carrito
+    CartItem lastCartItem;//Ultimo item ingresado al carrito
 } Cart;
 
 int deleteItem(Cart *cart);
