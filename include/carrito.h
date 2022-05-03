@@ -23,28 +23,28 @@ typedef struct Cart {   //Carrito
 
 int deleteItem(Cart *cart);
 
-void addToCart(Map *mapCarts, Map *mapName);
+void addToCart(Map *mapCarts, Map *mapName); //Agrega un item al carrito
 
-Cart *cartCreate(char *cartName);
+Cart *cartCreate(char *cartName); //Inicializa un carrito
 
-void showCarts(Map *mapCarts);
+void showCarts(Map *mapCarts);  //Muestra los carritos y su informacion
 
-void showCart(Cart *cart);
+void showCart(Cart *cart);      //Muestra la informacion de un solo carrito
 
-CartItem *cartItemCreate(Item* item, int stock);
+CartItem *cartItemCreate(Item* item, int stock);    //Crea un item para el carrito
 
-CartItem *searchCartItem(List *list, char *itemName);
+CartItem *searchCartItem(List *list, char *itemName);   //Busca un item en el carrito
 
-void popLastCart(Map* mapCarts, Map* mapNames);
+void popLastCart(Map* mapCarts, Map* mapNames);         //Elimina el ultimo item del carrito
 
-void cartCheckout(Map *mapCarts, Map *mapNames);
+void cartCheckout(Map *mapCarts, Map *mapNames);        //Se lleva a cabo la compra del carrito
 
-void deleteStock(Map *mapNames, Cart *cart);
+void deleteStock(Map *mapNames, Cart *cart);            //Elmina el stock al realizar la compra
 
-int stockCheck(Cart *cart, Map *mapNames);
+int stockCheck(Cart *cart, Map *mapNames);              //Revisa si hay stock para concretar la compra
 
-void updateCart(Cart *cart);
+void updateCart(Cart *cart);                            //Actualiza el carrito en caso de no tener stock para realizar la compra
 
-void showCartMain(Map *mapCarts);
+void showCartMain(Map *mapCarts);                      //Muestra el carrito dentro del main
 
 #endif

@@ -42,7 +42,7 @@ void addToCart(Map *mapCarts, Map *mapName)
     scanf("%[^\n]*s", productName);
     getchar();
 
-    Item *item = searchMap(mapName, productName);
+    Item *item = searchMap(mapName, productName); //Comprueba que exista el producto
     if (!item)
     {
         strcat(buf, COLOR_RED "Error: No existe dicho producto\n" COLOR_RESET);
@@ -53,7 +53,7 @@ void addToCart(Map *mapCarts, Map *mapName)
     fflush(stdin);
     scanf("%d", &stock);
     getchar();
-
+    //Comprueba si hay stock sufiente para agregar al carrito
     if(item -> stock < stock){
         strcat(buf, COLOR_RED "Error: Stock insuficiente\n" COLOR_RESET);
         return;
